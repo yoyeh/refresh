@@ -10,7 +10,9 @@
 		0735D6FB1AC4940400DAB825 /* NowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0735D6FA1AC4940400DAB825 /* NowViewController.swift */; };
 		0735D6FD1AC4952D00DAB825 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0735D6FC1AC4952D00DAB825 /* ContactsViewController.swift */; };
 		073F86C11ACCC6F600814584 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F86C01ACCC6F500814584 /* Contacts.swift */; };
-		073F86C31ACD021F00814584 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86C21ACD021E00814584 /* Default-568h@2x.png */; };
+		073F86CA1ACD1B2500814584 /* available.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86C81ACD1B2500814584 /* available.png */; };
+		073F86CB1ACD1B2500814584 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86C91ACD1B2500814584 /* Default-568h@2x.png */; };
+		073F86CD1ACD23EB00814584 /* not_available.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86CC1ACD23EB00814584 /* not_available.png */; };
 		07C4F3FB1AC3855E0071A762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */; };
 		07C4F4001AC3855E0071A762 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C4F3FE1AC3855E0071A762 /* Main.storyboard */; };
 		07C4F4021AC3855E0071A762 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07C4F4011AC3855E0071A762 /* Images.xcassets */; };
@@ -33,7 +35,9 @@
 		0735D6FA1AC4940400DAB825 /* NowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowViewController.swift; sourceTree = "<group>"; };
 		0735D6FC1AC4952D00DAB825 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		073F86C01ACCC6F500814584 /* Contacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
-		073F86C21ACD021E00814584 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		073F86C81ACD1B2500814584 /* available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = available.png; path = Refresh/Images.xcassets/available.png; sourceTree = "<group>"; };
+		073F86C91ACD1B2500814584 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Refresh/Images.xcassets/Default-568h@2x.png"; sourceTree = "<group>"; };
+		073F86CC1ACD23EB00814584 /* not_available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = not_available.png; path = Refresh/Images.xcassets/not_available.png; sourceTree = "<group>"; };
 		07C4F3F51AC3855E0071A762 /* Refresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Refresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C4F3F91AC3855E0071A762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +71,9 @@
 		07C4F3EC1AC3855C0071A762 = {
 			isa = PBXGroup;
 			children = (
-				073F86C21ACD021E00814584 /* Default-568h@2x.png */,
+				073F86C81ACD1B2500814584 /* available.png */,
+				073F86C91ACD1B2500814584 /* Default-568h@2x.png */,
+				073F86CC1ACD23EB00814584 /* not_available.png */,
 				07C4F3F71AC3855E0071A762 /* Refresh */,
 				07C4F40D1AC3855F0071A762 /* RefreshTests */,
 				07C4F3F61AC3855E0071A762 /* Products */,
@@ -205,9 +211,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				07C4F4001AC3855E0071A762 /* Main.storyboard in Resources */,
-				073F86C31ACD021F00814584 /* Default-568h@2x.png in Resources */,
+				073F86CA1ACD1B2500814584 /* available.png in Resources */,
 				07C4F4051AC3855E0071A762 /* LaunchScreen.xib in Resources */,
 				07C4F4021AC3855E0071A762 /* Images.xcassets in Resources */,
+				073F86CB1ACD1B2500814584 /* Default-568h@2x.png in Resources */,
+				073F86CD1ACD23EB00814584 /* not_available.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

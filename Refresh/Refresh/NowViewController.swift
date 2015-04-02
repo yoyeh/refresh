@@ -31,6 +31,7 @@ class NowViewController: UITableViewController {
         friend1.lastCallDate = "03/01/2015"
         friend1.lastCallInfo = "Talked about COS 333 project."
         friend1.specialDates = "null"
+        friend1.status = "available"
         
         // Add it to the array
         contacts.append(friend1)
@@ -43,6 +44,7 @@ class NowViewController: UITableViewController {
         friend2.lastCallDate = "03/02/2015"
         friend2.lastCallInfo = "Talked about the weather."
         friend2.specialDates = "null"
+        friend2.status = "available"
         
         // Add it to the array
         contacts.append(friend2)
@@ -55,6 +57,7 @@ class NowViewController: UITableViewController {
         friend3.lastCallDate = "03/03/2015"
         friend3.lastCallInfo = "Talked about life."
         friend3.specialDates = "null"
+        friend1.status = "notavailable"
         
         // Add it to the array
         contacts.append(friend3)
@@ -62,20 +65,8 @@ class NowViewController: UITableViewController {
         // Sort the contacts array by callFrequency
         contacts.sort { $0.callFrequency < $1.callFrequency }
     }
-    
-    // MARK: - Segues
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow() {
-//                let contact = contacts[indexPath.row]
-//                (segue.destinationViewController as VehicleDetailViewController).detailVehicle = vehicle
-//            }
-//        }
-//    }
-    
-    // MARK: - Table View
-    
+
+    // Table View
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -85,10 +76,21 @@ class NowViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reusableCell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as UITableViewCell
         
         let contact = contacts[indexPath.row] as Contacts
         cell.textLabel?.text = contact.firstName
+
+        var availableImage = UIImage(named: "available.png")
+        var notAvailableImage = UIImage(named: "not_available.png")
+        if contact.status == "available" {
+            cell.imageView?.image = availableImage
+        }
+        else {
+            cell.imageView?.image = notAvailableImage
+        }
+        
+        
         return cell
     }
 }
