@@ -27,7 +27,7 @@ class NowViewController: UITableViewController {
         var friend1 = Contacts()
         friend1.firstName = "Paul"
         friend1.lastName = "Chang"
-        friend1.callFrequency = 2
+        friend1.callFrequency = 4
         friend1.lastCallDate = "03/01/2015"
         friend1.lastCallInfo = "Talked about COS 333 project."
         friend1.specialDates = "null"
@@ -39,7 +39,7 @@ class NowViewController: UITableViewController {
         var friend2 = Contacts()
         friend2.firstName = "Malena"
         friend2.lastName = "de la Fuente"
-        friend2.callFrequency = 3
+        friend2.callFrequency = 2
         friend2.lastCallDate = "03/02/2015"
         friend2.lastCallInfo = "Talked about the weather."
         friend2.specialDates = "null"
@@ -47,8 +47,20 @@ class NowViewController: UITableViewController {
         // Add it to the array
         contacts.append(friend2)
         
-        // Sort the array by the model year
-        contacts.sort { $0.callFrequency > $1.callFrequency }
+        // Create another contact.
+        var friend3 = Contacts()
+        friend3.firstName = "Yolanda"
+        friend3.lastName = "Yeh"
+        friend3.callFrequency = 3
+        friend3.lastCallDate = "03/03/2015"
+        friend3.lastCallInfo = "Talked about life."
+        friend3.specialDates = "null"
+        
+        // Add it to the array
+        contacts.append(friend3)
+        
+        // Sort the contacts array by callFrequency
+        contacts.sort { $0.callFrequency < $1.callFrequency }
     }
     
     // MARK: - Segues
