@@ -76,20 +76,19 @@ class NowViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
-        cell.textLabel?.text = contact.firstName
+        cell.nameLabel.text = contact.firstName + " " + contact.lastName
 
         var availableImage = UIImage(named: "available.png")
         var notAvailableImage = UIImage(named: "not_available.png")
         if contact.status == "available" {
-            cell.imageView?.image = availableImage
+            cell.statusImageView.image = availableImage
         }
         else {
-            cell.imageView?.image = notAvailableImage
+            cell.statusImageView.image = notAvailableImage
         }
-        
         
         return cell
     }

@@ -112,22 +112,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" textLabel="pcl-Yr-yby" imageView="PTt-5q-CR3" style="IBUITableViewCellStyleDefault" id="MKa-0t-mhi">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NowContactCell" id="MKa-0t-mhi" customClass="NowContactCell" customModule="Refresh" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MKa-0t-mhi" id="qkP-pD-xgx">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pcl-Yr-yby">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="70Q-9d-nO8">
+                                            <rect key="frame" x="8" y="0.0" width="44" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="a6f-T1-3Ol"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsp-IA-vtl">
+                                            <rect key="frame" x="52" y="0.0" width="42" height="44"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Default.png" id="PTt-5q-CR3">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Xsp-IA-vtl" firstAttribute="top" secondItem="qkP-pD-xgx" secondAttribute="top" id="PuK-tj-xJv"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="70Q-9d-nO8" secondAttribute="bottom" constant="-9" id="c5y-KR-Xam"/>
+                                        <constraint firstItem="Xsp-IA-vtl" firstAttribute="leading" secondItem="70Q-9d-nO8" secondAttribute="trailing" id="dEt-eT-O0h"/>
+                                        <constraint firstItem="70Q-9d-nO8" firstAttribute="top" secondItem="qkP-pD-xgx" secondAttribute="topMargin" id="e5e-NF-A4k"/>
+                                        <constraint firstItem="70Q-9d-nO8" firstAttribute="top" secondItem="qkP-pD-xgx" secondAttribute="top" id="gbX-Ak-8SC"/>
+                                        <constraint firstItem="70Q-9d-nO8" firstAttribute="leading" secondItem="qkP-pD-xgx" secondAttribute="leadingMargin" id="sW8-SK-bZI"/>
+                                        <constraint firstItem="70Q-9d-nO8" firstAttribute="bottom" secondItem="Xsp-IA-vtl" secondAttribute="bottom" id="u5U-3y-nHQ"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="e5e-NF-A4k"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="Xsp-IA-vtl" id="GtQ-50-uBP"/>
+                                    <outlet property="statusImageView" destination="70Q-9d-nO8" id="JeT-Uq-Q2b"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -139,7 +160,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XM3-hb-OjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2930" y="-54"/>
+            <point key="canvasLocation" x="2930" y="-73"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xtX-hw-QTN">
@@ -162,7 +183,4 @@
             <point key="canvasLocation" x="1170" y="-52"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Default.png" width="16" height="16"/>
-    </resources>
 </document>
