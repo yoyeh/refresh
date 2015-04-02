@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hae-fT-hFa">
-                                <rect key="frame" x="16" y="20" width="568" height="29"/>
+                                <rect key="frame" x="16" y="28" width="568" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,11 +54,11 @@
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1eU-dY-5pm"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DK5-7T-EZT"/>
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Exu-i3-QCW"/>
-                            <constraint firstItem="Hae-fT-hFa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Qqx-Ud-HHg"/>
+                            <constraint firstItem="Hae-fT-hFa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Qqx-Ud-HHg"/>
                             <constraint firstItem="rip-Rw-F5J" firstAttribute="leading" secondItem="pkb-Hr-QIo" secondAttribute="trailing" constant="8" id="TL5-4e-UGZ"/>
                             <constraint firstItem="pkb-Hr-QIo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Tgt-eb-Mqy"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kbZ-u2-9IO"/>
-                            <constraint firstItem="DGa-tv-Y74" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="23" id="oZN-6G-Tel"/>
+                            <constraint firstItem="DGa-tv-Y74" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="15" id="oZN-6G-Tel"/>
                             <constraint firstItem="rip-Rw-F5J" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="8" id="xvQ-du-VRN"/>
                         </constraints>
                     </view>
@@ -74,7 +74,7 @@
         <!--Contacts-->
         <scene sceneID="UIp-aG-hAc">
             <objects>
-                <viewController id="5Q4-Tr-3Ko" sceneMemberID="viewController">
+                <viewController id="5Q4-Tr-3Ko" customClass="ContactsViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TqH-fK-N3e"/>
                         <viewControllerLayoutGuide type="bottom" id="7U2-Sf-m48"/>
@@ -104,36 +104,31 @@
             <point key="canvasLocation" x="2070" y="465"/>
         </scene>
         <!--Now-->
-        <scene sceneID="v2R-D5-dPv">
+        <scene sceneID="gsh-AI-5eP">
             <objects>
-                <viewController id="hUU-3c-yOo" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="glE-ce-EhV"/>
-                        <viewControllerLayoutGuide type="bottom" id="CU3-nW-J30"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="az9-jH-WxL">
+                <tableViewController id="Gw8-Oe-JUt" customClass="NowViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sGh-q0-8PR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN5-Qk-bFo">
-                                <rect key="frame" x="16" y="28" width="568" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="uN5-Qk-bFo" firstAttribute="trailing" secondItem="az9-jH-WxL" secondAttribute="trailingMargin" id="UAp-hE-tYQ"/>
-                            <constraint firstItem="uN5-Qk-bFo" firstAttribute="leading" secondItem="az9-jH-WxL" secondAttribute="leadingMargin" id="VxA-Cs-XFv"/>
-                            <constraint firstItem="uN5-Qk-bFo" firstAttribute="top" secondItem="glE-ce-EhV" secondAttribute="bottom" constant="8" id="wph-iB-FTP"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Now" id="E1u-Mc-Vwb"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="emt-w1-eTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableCell" id="MKa-0t-mhi">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MKa-0t-mhi" id="qkP-pD-xgx">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Gw8-Oe-JUt" id="8L2-Z1-Cfs"/>
+                            <outlet property="delegate" destination="Gw8-Oe-JUt" id="r7s-BT-g9I"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Now" id="DVO-ym-6UI"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XM3-hb-OjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2742" y="-41"/>
+            <point key="canvasLocation" x="2870" y="-80"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xtX-hw-QTN">
@@ -147,7 +142,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="EMF-ry-gal"/>
-                        <segue destination="hUU-3c-yOo" kind="relationship" relationship="viewControllers" id="dFr-eu-iVG"/>
+                        <segue destination="Gw8-Oe-JUt" kind="relationship" relationship="viewControllers" id="UKT-wV-mmG"/>
                         <segue destination="5Q4-Tr-3Ko" kind="relationship" relationship="viewControllers" id="iu1-8g-5Tz"/>
                     </connections>
                 </tabBarController>
