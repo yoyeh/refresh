@@ -25,7 +25,6 @@ class ContactsDetailViewController: UIViewController {
         if let contact = detailContact {
             title = contact.firstName
             detailLabel?.text = contact.contactDetails
-            println(contact.contactDetails)
         }
     }
     
