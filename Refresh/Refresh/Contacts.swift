@@ -16,7 +16,7 @@ class Contacts {
     var lastCallInfo = "null"
     var specialDates = "null"
     
-    var status = "notavailable"
+    var status = 1 // status: [0] unavailable [1] unknown [2] available
     var phoneNumber = "null"
     
     var contactDetails:String {

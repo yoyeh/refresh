@@ -31,7 +31,7 @@ class NowViewController: UITableViewController {
         friend1.lastCallDate = "03/01/2015"
         friend1.lastCallInfo = "Talked about COS 333 project."
         friend1.specialDates = "null"
-        friend1.status = "available"
+        friend1.status = 2
         friend1.phoneNumber = "9172825940"
         
         // Add it to the array
@@ -45,7 +45,7 @@ class NowViewController: UITableViewController {
         friend2.lastCallDate = "03/02/2015"
         friend2.lastCallInfo = "Talked about the weather."
         friend2.specialDates = "null"
-        friend2.status = "available"
+        friend2.status = 2
         friend2.phoneNumber = "7654041348"
         
         // Add it to the array
@@ -55,17 +55,20 @@ class NowViewController: UITableViewController {
         var friend3 = Contacts()
         friend3.firstName = "Yolanda"
         friend3.lastName = "Yeh"
-        friend3.callFrequency = 3
+        friend3.callFrequency = 1
         friend3.lastCallDate = "03/03/2015"
         friend3.lastCallInfo = "Talked about life."
         friend3.specialDates = "null"
-        friend1.status = "notavailable"
+        friend1.status = 0
         
         // Add it to the array
         contacts.append(friend3)
         
         // Sort the contacts array by callFrequency
         contacts.sort { $0.callFrequency < $1.callFrequency }
+        
+        // Sort the contacts array by status
+        contacts.sort { $0.status < $1.status }
     }
 
     // Table View
