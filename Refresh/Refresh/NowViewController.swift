@@ -18,7 +18,7 @@ class NowViewController: UITableViewController {
         setupContactArray()
     }
     
-    // MARK: - Data setup
+    // Data setup
     func setupContactArray() {
         // Clear the array. (Start from scratch.)
         contacts.removeAll(keepCapacity: true)
@@ -32,6 +32,7 @@ class NowViewController: UITableViewController {
         friend1.lastCallInfo = "Talked about COS 333 project."
         friend1.specialDates = "null"
         friend1.status = "available"
+        friend1.phoneNumber = "9172825940"
         
         // Add it to the array
         contacts.append(friend1)
@@ -45,6 +46,7 @@ class NowViewController: UITableViewController {
         friend2.lastCallInfo = "Talked about the weather."
         friend2.specialDates = "null"
         friend2.status = "available"
+        friend2.phoneNumber = "7654041348"
         
         // Add it to the array
         contacts.append(friend2)
@@ -75,6 +77,7 @@ class NowViewController: UITableViewController {
         return contacts.count
     }
     
+    // Display all contacts
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as NowContactCell
         
@@ -91,5 +94,14 @@ class NowViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    // Call contact on click
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let contact = contacts[indexPath.row] as Contacts
+        var phoneNumber = contact.phoneNumber
+        if let url = NSURL(string: "tel://\(phoneNumber)") {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
 }

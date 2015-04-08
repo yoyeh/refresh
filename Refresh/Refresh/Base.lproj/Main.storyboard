@@ -71,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="2008" y="-1436"/>
         </scene>
-        <!--Now List-->
+        <!--Now-->
         <scene sceneID="B2x-9r-y6j">
             <objects>
                 <tableViewController id="bAh-vY-GdO" customClass="NowViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
@@ -118,7 +118,7 @@
                             <outlet property="delegate" destination="bAh-vY-GdO" id="YDO-rf-iee"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Now List" id="Maq-q7-09V"/>
+                    <navigationItem key="navigationItem" title="Now" id="Maq-q7-09V"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmh-eU-VNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
