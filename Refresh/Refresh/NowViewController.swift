@@ -79,7 +79,7 @@ class NowViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
-        cell.nameLabel.text = contact.firstName + " " + contact.lastName
+        cell.nameLabel.text = contact.firstName
 
         var availableImage = UIImage(named: "available.png")
         var notAvailableImage = UIImage(named: "not_available.png")

@@ -17,7 +17,7 @@ class ContactsViewController: UITableViewController {
         setupContactArray()
     }
     
-    // MARK: - Data setup
+    // Data setup
     func setupContactArray() {
         // Clear the array. (Start from scratch.)
         contacts.removeAll(keepCapacity: true)
@@ -52,6 +52,7 @@ class ContactsViewController: UITableViewController {
         contacts.sort { $0.callFrequency < $1.callFrequency }
     }
     
+    // Handle Segues to other views
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showContactDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
