@@ -30,6 +30,8 @@
 		07C4F4051AC3855E0071A762 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C4F4031AC3855E0071A762 /* LaunchScreen.xib */; };
 		07C4F4111AC3855F0071A762 /* RefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4F4101AC3855F0071A762 /* RefreshTests.swift */; };
 		07C4F44B1AC48D0E0071A762 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4F44A1AC48D0E0071A762 /* ViewController.swift */; };
+		07DC9E691AD6211100977DA4 /* RefreshNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9E681AD6211100977DA4 /* RefreshNetwork.swift */; };
+		07DC9E6B1AD621EE00977DA4 /* RefreshLocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9E6A1AD621EE00977DA4 /* RefreshLocalDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		07C4F40F1AC3855F0071A762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07C4F4101AC3855F0071A762 /* RefreshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTests.swift; sourceTree = "<group>"; };
 		07C4F44A1AC48D0E0071A762 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		07DC9E681AD6211100977DA4 /* RefreshNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshNetwork.swift; sourceTree = "<group>"; };
+		07DC9E6A1AD621EE00977DA4 /* RefreshLocalDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshLocalDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 		07C4F3F71AC3855E0071A762 /* Refresh */ = {
 			isa = PBXGroup;
 			children = (
+				07DC9E681AD6211100977DA4 /* RefreshNetwork.swift */,
+				07DC9E6A1AD621EE00977DA4 /* RefreshLocalDatabase.swift */,
 				0790681F1AD3804400612C53 /* fmdb */,
 				073F86C01ACCC6F500814584 /* Contacts.swift */,
 				073F86D21ACD992900814584 /* NowContactCell.swift */,
@@ -301,9 +307,11 @@
 				073F86DF1ACDE20000814584 /* ContactsDetailViewController.swift in Sources */,
 				0790681C1AD3803600612C53 /* FMDatabasePool.m in Sources */,
 				073F86D31ACD992A00814584 /* NowContactCell.swift in Sources */,
+				07DC9E6B1AD621EE00977DA4 /* RefreshLocalDatabase.swift in Sources */,
 				0790681D1AD3803600612C53 /* FMDatabaseQueue.m in Sources */,
 				07C4F3FB1AC3855E0071A762 /* AppDelegate.swift in Sources */,
 				0790681E1AD3803600612C53 /* FMResultSet.m in Sources */,
+				07DC9E691AD6211100977DA4 /* RefreshNetwork.swift in Sources */,
 				073F86C11ACCC6F600814584 /* Contacts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
