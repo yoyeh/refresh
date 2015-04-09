@@ -89,7 +89,7 @@ class NowViewController: UITableViewController {
 
         var availableImage = UIImage(named: "available.png")
         var notAvailableImage = UIImage(named: "not_available.png")
-        if contact.status == "available" {
+        if contact.status == 2 {
             cell.statusImageView.image = availableImage
         }
         else {

@@ -19,6 +19,10 @@ class Contacts {
     var status = 1 // status: [0] unavailable [1] unknown [2] available
     var phoneNumber = "null"
     
+    var fullName:String {
+        return "\(firstName) \(lastName)"
+    }
+    
     var contactDetails:String {
         var details = "Name\n\(firstName) \(lastName)\n\n"
         details += "Call Frequency\n\(callFrequency)\n\n"
