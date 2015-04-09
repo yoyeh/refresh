@@ -30,7 +30,7 @@ class ContactsViewController: UITableViewController {
         friend1.lastCallDate = "03/01/2015"
         friend1.lastCallInfo = "Talked about COS 333 project."
         friend1.specialDates = "null"
-        friend1.status = "available"
+        friend1.status = 2
         
         // Add it to the array
         contacts.append(friend1)
@@ -43,7 +43,7 @@ class ContactsViewController: UITableViewController {
         friend2.lastCallDate = "03/02/2015"
         friend2.lastCallInfo = "Talked about the weather."
         friend2.specialDates = "null"
-        friend2.status = "available"
+        friend2.status = 2
         
         // Add it to the array
         contacts.append(friend2)

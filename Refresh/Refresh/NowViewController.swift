@@ -65,10 +65,10 @@ class NowViewController: UITableViewController {
         contacts.append(friend3)
         
         // Sort the contacts array by callFrequency
-        contacts.sort { $0.callFrequency < $1.callFrequency }
+        contacts.sort { $0.callFrequency > $1.callFrequency }
         
         // Sort the contacts array by status
-        contacts.sort { $0.status < $1.status }
+        contacts.sort { $0.status > $1.status }
     }
 
     // Table View
