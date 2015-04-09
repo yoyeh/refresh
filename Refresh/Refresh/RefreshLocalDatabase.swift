@@ -49,6 +49,7 @@ class LocalDatabase
     // Add a single new contact
     func addContact(contact: Contacts)
     {
+        println("gets into addContact")
         var name = contact.firstName
         var phone = contact.phoneNumber
         let contactDB = FMDatabase(path: databasePath)
@@ -62,9 +63,10 @@ class LocalDatabase
             let insertSQL = "INSERT INTO CONTACTS (name, phone, frequency, lastdate, lastinfo, specialdates, available) VALUES ('\(name)', '\(phone)', '\(contact.callFrequency)', '\(contact.lastCallDate)', '\(contact.lastCallInfo)', '\(contact.specialDates)', '\(contact.status)')"
             // check it was inserted
             let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
+            contactDB.close()
             
             if !result {
-                println("Error: \(contactDB.lastErrorMessage())")
+                println("Custom Error: \(contactDB.lastErrorMessage())")
             }
         }
         
@@ -77,9 +79,9 @@ class LocalDatabase
         let contactDB = FMDatabase(path : databasePath)
         
         if contactDB.open() {
+            println("gets into accessContact(contact")
             let querySQL = "SELECT name, frequency, lastdate, specialdates, lastinfo, available FROM CONTACTS WHERE phone = '\(phoneNumber)'"
             let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            contactDB.close()
             
             var resultContact = Contacts()
             
@@ -92,17 +94,15 @@ class LocalDatabase
                 resultContact.lastCallInfo = results!.stringForColumn("lastinfo")
                 //println(results?.stringForColumn("available"))
                 
+                contactDB.close()
                 return resultContact
             }
-            else {
-                println("not found")
-                return nil
-            }
-        }
-        else {
-            println("Error: \(contactDB.lastErrorMessage())")
+            contactDB.close()
+            println("not found")
             return nil
         }
+        println("Custom Error: \(contactDB.lastErrorMessage())")
+        return nil
     }
     
     // Return list of all contacts
@@ -112,13 +112,14 @@ class LocalDatabase
         let contactDB = FMDatabase(path : databasePath)
         
         if contactDB.open() {
-            let querySQL = "SELECT ALL FROM CONTACTS"
+            println("gets into returnContactList")
+            let querySQL = "SELECT * FROM CONTACTS"
             let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            contactDB.close()
-            
+            println("Finsihed executing query \(querySQL)")
             
             while results?.next() == true {
                 var newContact = Contacts()
+                println("successfully made new contact object to append")
                 
                 newContact.phoneNumber = results!.stringForColumn("phone")
                 newContact.firstName = results!.stringForColumn("name")
@@ -130,10 +131,12 @@ class LocalDatabase
                 
                 contactsArray.append(newContact)
             }
+            contactDB.close()
+            println("Finished closing the database")
             return contactsArray
         }
 
-        println("Error: \(contactDB.lastErrorMessage())")
+        println("Custom Error: \(contactDB.lastErrorMessage())")
         return nil
     }
     

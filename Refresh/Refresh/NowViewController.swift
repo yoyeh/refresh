@@ -17,6 +17,7 @@ class NowViewController: UITableViewController {
         super.viewDidLoad()
         
         var localdatabase = LocalDatabase()
+        localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
 //        setupContactArray()
     }

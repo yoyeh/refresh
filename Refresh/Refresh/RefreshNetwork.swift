@@ -126,10 +126,10 @@ class ServerUser
     }
 
     //Changing the status of the person you have initialized your
-    func changeStatus(status: Bool)
+    func changeStatus(status: Int)
     {
         //println(status)
-        let jsonObject:[String:Bool] = ["status":status]
+        let jsonObject:[String:Int] = ["status":status]
         HTTPJSON("PUT", url: databaseURL + "/db/status/\(yourPhoneNumber)", jsonObj: jsonObject, {
             (data: String, error: String?) -> Void in
             if error != nil {

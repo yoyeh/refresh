@@ -18,8 +18,22 @@ class ContactsViewController: UITableViewController {
     }
     
     @IBAction func addContacts(sender: AnyObject) {
-        var localdatabase = LocalDatabase()
         
+        var localdatabase = LocalDatabase()
+        localdatabase.initializeDatabase()
+        var contacts = [Contacts]()
+        
+        var mainUser = Contacts()
+        mainUser.firstName = "Main"
+        mainUser.lastName = "User"
+        mainUser.callFrequency = 4
+        mainUser.lastCallDate = "03/01/2015"
+        mainUser.lastCallInfo = "Testing 1"
+        mainUser.specialDates = "null"
+        mainUser.status = 2
+        mainUser.phoneNumber = "6099378865"
+
+
         // Create a contact.
         var friend1 = Contacts()
         friend1.firstName = "Paul"
@@ -29,7 +43,9 @@ class ContactsViewController: UITableViewController {
         friend1.lastCallInfo = "Testing 1"
         friend1.specialDates = "null"
         friend1.status = 2
+        friend1.phoneNumber = "9172825940"
         
+        contacts.append(friend1)
         localdatabase.addContact(friend1)
         
         // Create another contact.
@@ -41,8 +57,12 @@ class ContactsViewController: UITableViewController {
         friend2.lastCallInfo = "Testing 2."
         friend2.specialDates = "null"
         friend2.status = 2
+        friend2.phoneNumber = "7654041348"
+        contacts.append(friend2)
         
         // Add it to the array
+        var serveruser = ServerUser(yourContactInfo: mainUser, serverConnection: true)
+        serveruser.addContactToServer(contacts)
         localdatabase.addContact(friend2)
     }
     
