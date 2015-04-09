@@ -16,8 +16,7 @@ class LocalDatabase
     {
         // creating path to database
         let filemgr = NSFileManager.defaultManager()
-        let dirPaths =
-        NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         
         let docsDir = dirPaths[0] as String
         // checking if database exists
@@ -32,7 +31,7 @@ class LocalDatabase
             }
             
             if contactDB.open() {
-                let sql_stmt = "CREATE TABLE IF NOT EXISTS CONTACTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, PHONE TEXT, FREQUENCY INTEGER, LASTDATE TEXT, LASTINFO TEXT, SPECIALDATES TEXT, AVAILABLE TEXT)"
+                let sql_stmt = "CREATE TABLE IF NOT EXISTS CONTACTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, PHONE TEXT, FREQUENCY INTEGER, LASTDATE TEXT, LASTINFO TEXT, SPECIALDATES TEXT, AVAILABLE INTEGER)"
                 
                 if !contactDB.executeStatements(sql_stmt) {
                     println("Error: \(contactDB.lastErrorMessage())")
@@ -48,8 +47,10 @@ class LocalDatabase
     }
     
     // Add a single new contact
-    func addContact(name : NSString, phone : NSString)
+    func addContact(contact: Contacts)
     {
+        var name = contact.firstName
+        var phone = contact.phoneNumber
         let contactDB = FMDatabase(path: databasePath)
         
         var contact = Contacts()
@@ -70,34 +71,71 @@ class LocalDatabase
     }
     
     // Accesses a single contact using phone number
-    func accessContact(phone : NSString)
+    func accessContact(contact: Contacts) -> Contacts?
     {
+        var phoneNumber = contact.phoneNumber
         let contactDB = FMDatabase(path : databasePath)
         
         if contactDB.open() {
-            let querySQL = "SELECT name, frequency, lastdate, specialdates, lastinfo, available FROM CONTACTS WHERE phone = '\(phone)'"
+            let querySQL = "SELECT name, frequency, lastdate, specialdates, lastinfo, available FROM CONTACTS WHERE phone = '\(phoneNumber)'"
+            let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+            contactDB.close()
             
-            let results:FMResultSet? = contactDB.executeQuery(querySQL,
-                withArgumentsInArray: nil)
+            var resultContact = Contacts()
+            
             if results?.next() == true {
-                println(results?.stringForColumn("name"))
-                println(results?.stringForColumn("frequency"))
-                println(results?.stringForColumn("lastdate"))
-                println(results?.stringForColumn("specialdates"))
-                println(results?.stringForColumn("lastinfo"))
-                println(results?.stringForColumn("available"))
+                resultContact.phoneNumber = phoneNumber
+                resultContact.firstName = results!.stringForColumn("name")
+                resultContact.callFrequency = results!.stringForColumn("frequency").toInt()!
+                resultContact.lastCallDate = results!.stringForColumn("lastdate")
+                resultContact.lastCallInfo = results!.stringForColumn("lastinfo")
+                resultContact.lastCallInfo = results!.stringForColumn("lastinfo")
+                //println(results?.stringForColumn("available"))
+                
+                return resultContact
             }
             else {
                 println("not found")
+                return nil
             }
-            contactDB.close()
         }
         else {
             println("Error: \(contactDB.lastErrorMessage())")
+            return nil
         }
     }
     
     // Return list of all contacts
+    func returnContactList() -> [Contacts]?
+    {
+        var contactsArray:[Contacts] = []
+        let contactDB = FMDatabase(path : databasePath)
+        
+        if contactDB.open() {
+            let querySQL = "SELECT ALL FROM CONTACTS"
+            let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+            contactDB.close()
+            
+            
+            while results?.next() == true {
+                var newContact = Contacts()
+                
+                newContact.phoneNumber = results!.stringForColumn("phone")
+                newContact.firstName = results!.stringForColumn("name")
+                newContact.callFrequency = results!.stringForColumn("frequency").toInt()!
+                newContact.lastCallDate = results!.stringForColumn("lastdate")
+                newContact.lastCallInfo = results!.stringForColumn("lastinfo")
+                newContact.lastCallInfo = results!.stringForColumn("lastinfo")
+                //println(results?.stringForColumn("available"))
+                
+                contactsArray.append(newContact)
+            }
+            return contactsArray
+        }
+
+        println("Error: \(contactDB.lastErrorMessage())")
+        return nil
+    }
     
     // Delete contact
 }

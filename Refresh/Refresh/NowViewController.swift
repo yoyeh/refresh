@@ -15,7 +15,10 @@ class NowViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupContactArray()
+        
+        var localdatabase = LocalDatabase()
+        contacts = localdatabase.returnContactList()!
+//        setupContactArray()
     }
     
     // Data setup

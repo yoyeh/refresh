@@ -173,7 +173,13 @@
                             <outlet property="delegate" destination="Xyc-mg-CJ0" id="S2w-6R-mTc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Contacts" id="FXM-jb-M8W"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="FXM-jb-M8W">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mkG-H2-SLf">
+                            <connections>
+                                <action selector="addContacts:" destination="Xyc-mg-CJ0" id="VkA-X4-kao"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="En4-z3-ICk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

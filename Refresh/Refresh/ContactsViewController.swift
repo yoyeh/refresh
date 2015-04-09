@@ -14,7 +14,36 @@ class ContactsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupContactArray()
+//        setupContactArray()
+    }
+    
+    @IBAction func addContacts(sender: AnyObject) {
+        var localdatabase = LocalDatabase()
+        
+        // Create a contact.
+        var friend1 = Contacts()
+        friend1.firstName = "Paul"
+        friend1.lastName = "Chang"
+        friend1.callFrequency = 4
+        friend1.lastCallDate = "03/01/2015"
+        friend1.lastCallInfo = "Testing 1"
+        friend1.specialDates = "null"
+        friend1.status = 2
+        
+        localdatabase.addContact(friend1)
+        
+        // Create another contact.
+        var friend2 = Contacts()
+        friend2.firstName = "Malena"
+        friend2.lastName = "de la Fuente"
+        friend2.callFrequency = 2
+        friend2.lastCallDate = "03/02/2015"
+        friend2.lastCallInfo = "Testing 2."
+        friend2.specialDates = "null"
+        friend2.status = 2
+        
+        // Add it to the array
+        localdatabase.addContact(friend2)
     }
     
     // Data setup
