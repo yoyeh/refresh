@@ -45,5 +45,7 @@ class Contacts {
         
     }
     
+    init() {}
+    
     
 }
