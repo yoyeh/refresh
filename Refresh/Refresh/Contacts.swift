@@ -31,4 +31,19 @@ class Contacts {
 
         return details
     }
+    
+    init(firstname: String, lastname: String, callfrequency: Int, lastcalldate: String, lastcallinfo: String, specialdates: String, Status: Int, phonenumber: String)
+    {
+        firstName = firstname
+        lastName = lastname
+        callFrequency = callfrequency
+        lastCallDate = lastcalldate
+        lastCallInfo = lastcallinfo
+        specialDates = specialdates
+        status = Status
+        phoneNumber = phonenumber
+        
+    }
+    
+    
 }
