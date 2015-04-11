@@ -49,7 +49,6 @@ class LocalDatabase
     // Add a single new contact
     func addContact(contact: Contacts)
     {
-        println("gets into addContact")
         var name = contact.firstName
         var phone = contact.phoneNumber
         let contactDB = FMDatabase(path: databasePath)
@@ -63,13 +62,15 @@ class LocalDatabase
             let insertSQL = "INSERT INTO CONTACTS (name, phone, frequency, lastdate, lastinfo, specialdates, available) VALUES ('\(name)', '\(phone)', '\(contact.callFrequency)', '\(contact.lastCallDate)', '\(contact.lastCallInfo)', '\(contact.specialDates)', '\(contact.status)')"
             // check it was inserted
             let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
-            contactDB.close()
             
             if !result {
                 println("Custom Error: \(contactDB.lastErrorMessage())")
             }
+            contactDB.close()
+            return
         }
-        
+        println("Custom Error: \(contactDB.lastErrorMessage())")
+        return
     }
     
     // Accesses a single contact using phone number
@@ -91,7 +92,7 @@ class LocalDatabase
                 resultContact.callFrequency = results!.stringForColumn("frequency").toInt()!
                 resultContact.lastCallDate = results!.stringForColumn("lastdate")
                 resultContact.lastCallInfo = results!.stringForColumn("lastinfo")
-                resultContact.lastCallInfo = results!.stringForColumn("lastinfo")
+                resultContact.specialDates = results!.stringForColumn("specialdates")
                 //println(results?.stringForColumn("available"))
                 
                 contactDB.close()
@@ -112,27 +113,23 @@ class LocalDatabase
         let contactDB = FMDatabase(path : databasePath)
         
         if contactDB.open() {
-            println("gets into returnContactList")
             let querySQL = "SELECT * FROM CONTACTS"
             let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            println("Finsihed executing query \(querySQL)")
             
             while results?.next() == true {
                 var newContact = Contacts()
-                println("successfully made new contact object to append")
                 
                 newContact.phoneNumber = results!.stringForColumn("phone")
                 newContact.firstName = results!.stringForColumn("name")
                 newContact.callFrequency = results!.stringForColumn("frequency").toInt()!
                 newContact.lastCallDate = results!.stringForColumn("lastdate")
                 newContact.lastCallInfo = results!.stringForColumn("lastinfo")
-                newContact.lastCallInfo = results!.stringForColumn("lastinfo")
+                newContact.specialDates = results!.stringForColumn("specialdates")
                 //println(results?.stringForColumn("available"))
                 
                 contactsArray.append(newContact)
             }
             contactDB.close()
-            println("Finished closing the database")
             return contactsArray
         }
 
@@ -141,4 +138,71 @@ class LocalDatabase
     }
     
     // Delete contact
+    func deleteContact(contact : Contacts)
+    {
+        var phone = contact.phoneNumber
+        let contactDB = FMDatabase(path : databasePath)
+        
+        if contactDB.open() {
+            let querySQL = "DELETE FROM CONTACTS WHERE PHONE = '\(phone)'"
+            let deleted = contactDB.executeUpdate(querySQL, withArgumentsInArray: nil)
+            
+            if (!deleted){
+                println("Custom Error: \(contactDB.lastErrorMessage())")
+            }
+            contactDB.close()
+            return
+            
+        }
+        println("Custom Error: \(contactDB.lastErrorMessage())")
+        return
+    }
+    
+    
+    // Edit contact
+    func editContact(contact : Contacts) -> Contacts?
+    {
+        var phone = contact.phoneNumber
+        let contactDB = FMDatabase(path : databasePath)
+        
+        if contactDB.open() {
+
+            let querySQL = "UPDATE CONTACTS SET name = '\(contact.firstName)', frequency = '\(contact.callFrequency)', lastdate = '\(contact.lastCallDate)', lastinfo = '\(contact.lastCallInfo)', specialdates = '\(contact.specialDates)', available = '\(contact.status)' WHERE phone = '\(phone)'"
+
+            let items = contactDB.executeUpdate(querySQL, withArgumentsInArray: nil)
+            
+            if items {
+                contactDB.close()
+                return contact
+            }
+            
+            contactDB.close()
+            println("not found")
+            return nil
+        }
+        println("Custom Error: \(contactDB.lastErrorMessage())")
+        return nil
+    }
+    
+    func doesContactExist(contact : Contacts)->Bool
+    {
+        var phone = contact.phoneNumber
+        let contactDB = FMDatabase(path : databasePath)
+        
+        if contactDB.open() {
+        let querySQL = "SELECT * FROM CONTACTS WHERE phone = '\(phone)'"
+        let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+            
+            if results?.next() == true {
+                contactDB.close()
+                return true
+            }
+            contactDB.close()
+            return false
+        }
+        println("Custom Error: \(contactDB.lastErrorMessage())")
+        return false
+        
+    }
 }
+    
