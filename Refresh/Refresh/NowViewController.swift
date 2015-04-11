@@ -74,7 +74,6 @@ class NowViewController: UITableViewController {
         var notAvailableImage = UIImage(named: "not_available.png")
         
         var serverUser = ServerUser(yourContactInfo: contact, serverConnection: true)
-        contact.status =
         if contact.status == 2 {
             cell.statusImageView.image = availableImage
         }
