@@ -28,13 +28,13 @@ class ServerUser
         callback: (String, String?) -> Void) {
             let task = NSURLSession.sharedSession().dataTaskWithRequest(
                 request,
-                {
+                completionHandler: {
                     data, response, error in
                     if error != nil {
                         callback("", error.localizedDescription)
                     } else {
                         callback(
-                            NSString(data: data, encoding: NSUTF8StringEncoding)!,
+                            NSString(data: data, encoding: NSUTF8StringEncoding)! as String,
                             nil
                         )
                     }
@@ -48,7 +48,7 @@ class ServerUser
         if NSJSONSerialization.isValidJSONObject(value) {
             if let data = NSJSONSerialization.dataWithJSONObject(value, options: options, error: nil) {
                 if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                    return string
+                    return string as String
                 }
             }
         }
@@ -58,14 +58,14 @@ class ServerUser
     //HTTP Get request
     private func HTTPGet(url: String, callback: (String, String?) -> Void) {
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        HTTPsendRequest(request, callback)
+        HTTPsendRequest(request, callback: callback)
     }
     
     //HTTP Delete request
     private func HTTPDelete(url: String, callback: (String, String?) -> Void) {
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
         request.HTTPMethod = "DELETE"
-        HTTPsendRequest(request, callback)
+        HTTPsendRequest(request, callback: callback)
     }
 
     //verb specifies the HTTP verb associated with the data you are sending in JSON format
@@ -80,7 +80,7 @@ class ServerUser
             let data: NSData = jsonString.dataUsingEncoding(
                 NSUTF8StringEncoding)!
             request.HTTPBody = data
-            HTTPsendRequest(request, callback)
+            HTTPsendRequest(request, callback: callback)
     }
     
     
@@ -94,14 +94,14 @@ class ServerUser
             contactsPhoneNumbers.append(contact.phoneNumber)
         }
         let jsonObject:[String:[AnyObject]] = ["contacts": contactsPhoneNumbers]
-        HTTPJSON("POST", url: databaseURL + "/db/\(yourPhoneNumber)", jsonObj: jsonObject, {
+        HTTPJSON("POST", url: databaseURL + "/db/\(yourPhoneNumber)", jsonObj: jsonObject) {
             (data: String, error: String?) -> Void in
             if error != nil {
                 println(error)
             } else {
                 println(data)
             }
-        })
+        }
         sleep(1)
     }
     
@@ -114,14 +114,14 @@ class ServerUser
             contactsPhoneNumbers.append(contact.phoneNumber)
         }
         let jsonObject:[String:[AnyObject]] = ["contacts": contactsPhoneNumbers]
-        HTTPJSON("PUT", url: databaseURL + "/db/contacts/\(yourPhoneNumber)", jsonObj: jsonObject, {
+        HTTPJSON("PUT", url: databaseURL + "/db/contacts/\(yourPhoneNumber)", jsonObj: jsonObject){
             (data: String, error: String?) -> Void in
             if error != nil {
                 println(error)
             } else {
                 println(data)
             }
-        })
+        }
         sleep(1)
     }
 
@@ -130,14 +130,14 @@ class ServerUser
     {
         //println(status)
         let jsonObject:[String:Int] = ["status":status]
-        HTTPJSON("PUT", url: databaseURL + "/db/status/\(yourPhoneNumber)", jsonObj: jsonObject, {
+        HTTPJSON("PUT", url: databaseURL + "/db/status/\(yourPhoneNumber)", jsonObj: jsonObject){
             (data: String, error: String?) -> Void in
             if error != nil {
                 println(error)
             } else {
                 println(data)
             }
-        })
+        }
         sleep(1)
     }
     

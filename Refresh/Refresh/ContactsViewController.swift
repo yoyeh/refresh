@@ -8,62 +8,103 @@
 
 import Foundation
 import UIKit
+import AddressBookUI
 
-class ContactsViewController: UITableViewController {
+class ContactsViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate {
     var contacts:[Contacts] = []
+    
+    let personPicker: ABPeoplePickerNavigationController
+    
+    // initialize addressbook
+    required init(coder aDecoder: NSCoder) {
+        personPicker = ABPeoplePickerNavigationController()
+        super.init(coder: aDecoder)
+        personPicker.peoplePickerDelegate = self
+    }
+    
+    // initialize mandatory function
+    func peoplePickerNavigationControllerDidCancel(peoplePicker: ABPeoplePickerNavigationController!) {
+    }
+    
+    // open up address book when '+' is hit
+    @IBAction func performPickPerson(sender: AnyObject) {
+        self.presentViewController(personPicker, animated : true, completion : nil)
+    }
+    
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecordRef!) {
+        
+        // Check if it is the right picker
+        if peoplePicker != personPicker {
+            return
+        }
+        
+        // get name of contact
+        let nameCFString : CFString = ABRecordCopyCompositeName(person).takeRetainedValue()
+        let name : NSString = nameCFString as NSString
+        
+        let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
+        
+        // get phone number of contact
+        let phone = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
+        
+        println(phone)
+        // addContact(name, phone)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        setupContactArray()
     }
     
+    // open up address book when '+' is hit
     @IBAction func addContacts(sender: AnyObject) {
-        
-        var localdatabase = LocalDatabase()
-        localdatabase.initializeDatabase()
-        var contacts = [Contacts]()
-        
-        var mainUser = Contacts()
-        mainUser.firstName = "Main"
-        mainUser.lastName = "User"
-        mainUser.callFrequency = 4
-        mainUser.lastCallDate = "03/01/2015"
-        mainUser.lastCallInfo = "Testing 1"
-        mainUser.specialDates = "null"
-        mainUser.status = 2
-        mainUser.phoneNumber = "6099378865"
-
-
-        // Create a contact.
-        var friend1 = Contacts()
-        friend1.firstName = "Paul"
-        friend1.lastName = "Chang"
-        friend1.callFrequency = 4
-        friend1.lastCallDate = "03/01/2015"
-        friend1.lastCallInfo = "Testing 1"
-        friend1.specialDates = "null"
-        friend1.status = 2
-        friend1.phoneNumber = "9172825940"
-        
-        contacts.append(friend1)
-        localdatabase.addContact(friend1)
-        
-        // Create another contact.
-        var friend2 = Contacts()
-        friend2.firstName = "Malena"
-        friend2.lastName = "de la Fuente"
-        friend2.callFrequency = 2
-        friend2.lastCallDate = "03/02/2015"
-        friend2.lastCallInfo = "Testing 2."
-        friend2.specialDates = "null"
-        friend2.status = 2
-        friend2.phoneNumber = "7654041348"
-        contacts.append(friend2)
-        
-        // Add it to the array
-        var serveruser = ServerUser(yourContactInfo: mainUser, serverConnection: true)
-        serveruser.addContactToServer(contacts)
-        localdatabase.addContact(friend2)
+        self.presentViewController(personPicker, animated : true, completion : nil)
+//        var localdatabase = LocalDatabase()
+//        localdatabase.initializeDatabase()
+//        var contacts = [Contacts]()
+//        
+//        var mainUser = Contacts()
+//        mainUser.firstName = "Main"
+//        mainUser.lastName = "User"
+//        mainUser.callFrequency = 4
+//        mainUser.lastCallDate = "03/01/2015"
+//        mainUser.lastCallInfo = "Testing 1"
+//        mainUser.specialDates = "null"
+//        mainUser.status = 2
+//        mainUser.phoneNumber = "6099378865"
+//
+//
+//        // Create a contact.
+//        var friend1 = Contacts()
+//        friend1.firstName = "Paul"
+//        friend1.lastName = "Chang"
+//        friend1.callFrequency = 4
+//        friend1.lastCallDate = "03/01/2015"
+//        friend1.lastCallInfo = "Testing 1"
+//        friend1.specialDates = "null"
+//        friend1.status = 2
+//        friend1.phoneNumber = "9172825940"
+//        
+//        contacts.append(friend1)
+//        localdatabase.addContact(friend1)
+//        
+//        // Create another contact.
+//        var friend2 = Contacts()
+//        friend2.firstName = "Malena"
+//        friend2.lastName = "de la Fuente"
+//        friend2.callFrequency = 2
+//        friend2.lastCallDate = "03/02/2015"
+//        friend2.lastCallInfo = "Testing 2."
+//        friend2.specialDates = "null"
+//        friend2.status = 2
+//        friend2.phoneNumber = "7654041348"
+//        contacts.append(friend2)
+//        
+//        // Add it to the array
+//        var serveruser = ServerUser(yourContactInfo: mainUser, serverConnection: true)
+//        serveruser.addContactToServer(contacts)
+//        localdatabase.addContact(friend2)
     }
     
     // Data setup
@@ -106,7 +147,7 @@ class ContactsViewController: UITableViewController {
         if segue.identifier == "showContactDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let contact = contacts[indexPath.row]
-                (segue.destinationViewController as ContactsDetailViewController).detailContact = contact
+                (segue.destinationViewController as! ContactsDetailViewController).detailContact = contact
             }
         }
     }
@@ -121,7 +162,7 @@ class ContactsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as! UITableViewCell
         
         let contact = contacts[indexPath.row] as Contacts
         cell.textLabel?.text = contact.firstName + " " + contact.lastName
