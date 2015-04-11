@@ -107,7 +107,16 @@ class NowViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let contact = contacts[indexPath.row] as Contacts
         var phoneNumber = contact.phoneNumber
+        
+        var localdatabase = LocalDatabase()
+        localdatabase.initializeDatabase()
+        var date = NSDate()
+        var dateformatter = NSDateFormatter()
+        dateformatter.dateStyle = .ShortStyle
+        
         if let url = NSURL(string: "tel://\(phoneNumber)") {
+            contact.lastCallDate = dateformatter.stringFromDate(date)
+            localdatabase.editContact(contact)
             UIApplication.sharedApplication().openURL(url)
         }
     }
