@@ -86,7 +86,7 @@ class NowViewController: UITableViewController {
     
     // Display all contacts
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as NowContactCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as! NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
         cell.nameLabel.text = contact.firstName
