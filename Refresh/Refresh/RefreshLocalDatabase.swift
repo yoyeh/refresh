@@ -183,5 +183,26 @@ class LocalDatabase
         println("Custom Error: \(contactDB.lastErrorMessage())")
         return nil
     }
+    
+    func doesContactExist(contact : Contacts)->Bool
+    {
+        var phone = contact.phoneNumber
+        let contactDB = FMDatabase(path : databasePath)
+        
+        if contactDB.open() {
+        let querySQL = "SELECT * FROM CONTACTS WHERE phone = '\(phone)'"
+        let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+            
+            if results?.next() == true {
+                contactDB.close()
+                return true
+            }
+            contactDB.close()
+            return false
+        }
+        println("Custom Error: \(contactDB.lastErrorMessage())")
+        return false
+        
+    }
 }
     
