@@ -106,7 +106,7 @@ class ContactsViewController: UITableViewController {
         if segue.identifier == "showContactDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let contact = contacts[indexPath.row]
-                (segue.destinationViewController as ContactsDetailViewController).detailContact = contact
+                (segue.destinationViewController as! ContactsDetailViewController).detailContact = contact
             }
         }
     }
@@ -116,12 +116,13 @@ class ContactsViewController: UITableViewController {
         return 1
     }
     
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as! UITableViewCell
         
         let contact = contacts[indexPath.row] as Contacts
         cell.textLabel?.text = contact.firstName + " " + contact.lastName

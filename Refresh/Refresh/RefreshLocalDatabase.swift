@@ -18,13 +18,13 @@ class LocalDatabase
         let filemgr = NSFileManager.defaultManager()
         let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         
-        let docsDir = dirPaths[0] as String
+        let docsDir = dirPaths[0] as! String
         // checking if database exists
         databasePath = docsDir.stringByAppendingPathComponent("contacts.db")
         
         // creating database if none exists
-        if !filemgr.fileExistsAtPath(databasePath) {
-            let contactDB = FMDatabase(path: databasePath)
+        if !filemgr.fileExistsAtPath(databasePath as String) {
+            let contactDB = FMDatabase(path: databasePath as String)
             
             if contactDB == nil {
                 println("Error: \(contactDB.lastErrorMessage())")
@@ -51,7 +51,7 @@ class LocalDatabase
     {
         var name = contact.firstName
         var phone = contact.phoneNumber
-        let contactDB = FMDatabase(path: databasePath)
+        let contactDB = FMDatabase(path: databasePath as String)
         
         var contact = Contacts()
         
@@ -77,7 +77,7 @@ class LocalDatabase
     func accessContact(contact: Contacts) -> Contacts?
     {
         var phoneNumber = contact.phoneNumber
-        let contactDB = FMDatabase(path : databasePath)
+        let contactDB = FMDatabase(path : databasePath as String)
         
         if contactDB.open() {
             println("gets into accessContact(contact")
@@ -110,7 +110,7 @@ class LocalDatabase
     func returnContactList() -> [Contacts]?
     {
         var contactsArray:[Contacts] = []
-        let contactDB = FMDatabase(path : databasePath)
+        let contactDB = FMDatabase(path : databasePath as String)
         
         if contactDB.open() {
             let querySQL = "SELECT * FROM CONTACTS"
@@ -141,7 +141,7 @@ class LocalDatabase
     func deleteContact(contact : Contacts)
     {
         var phone = contact.phoneNumber
-        let contactDB = FMDatabase(path : databasePath)
+        let contactDB = FMDatabase(path : databasePath as String)
         
         if contactDB.open() {
             let querySQL = "DELETE FROM CONTACTS WHERE PHONE = '\(phone)'"
@@ -159,11 +159,12 @@ class LocalDatabase
     }
     
     
+    
     // Edit contact
     func editContact(contact : Contacts) -> Contacts?
     {
         var phone = contact.phoneNumber
-        let contactDB = FMDatabase(path : databasePath)
+        let contactDB = FMDatabase(path : databasePath as String)
         
         if contactDB.open() {
 
@@ -187,7 +188,7 @@ class LocalDatabase
     func doesContactExist(contact : Contacts)->Bool
     {
         var phone = contact.phoneNumber
-        let contactDB = FMDatabase(path : databasePath)
+        let contactDB = FMDatabase(path : databasePath as String)
         
         if contactDB.open() {
         let querySQL = "SELECT * FROM CONTACTS WHERE phone = '\(phone)'"
