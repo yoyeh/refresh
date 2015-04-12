@@ -57,16 +57,22 @@ class LocalDatabase
         
         if contactDB.open() {
             // insert contact into database
+            if (!doesContactExist(contact)) {
             let insertSQL = "INSERT INTO CONTACTS (name, phone, frequency, lastdate, lastinfo, specialdates, available) VALUES ('\(name)', '\(phone)', '\(contact.callFrequency)', '\(contact.lastCallDate)', '\(contact.lastCallInfo)', '\(contact.specialDates)', '\(contact.status)')"
             // check it was inserted
             let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
             
             if !result {
                 println("Custom Error: \(contactDB.lastErrorMessage())")
-            }
-            contactDB.close()
-            return
+                }
+                contactDB.close()
+                return
+                }
         }
+            if (doesContactExist(contact)) {
+                editContact(contact)
+                return
+            }
         println("Custom Error: \(contactDB.lastErrorMessage())")
         return
     }
