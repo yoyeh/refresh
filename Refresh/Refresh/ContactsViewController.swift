@@ -40,14 +40,16 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         
         // Get name of contact
         newContact.firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
-        newContact.lastName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
+        newContact.lastName = ABRecordCopyValue(person, kABPersonLastNameProperty).takeRetainedValue() as! String
         
         // Get all phone numbers of contact, choose first one
         let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
-        newContact.phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
+        var phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
+        newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
         
         
         localdatabase.addContact(newContact)
+        self.tableView.reloadData()
     }
     
     // Called only once, the first time the view loads
