@@ -94,6 +94,7 @@ class ServerUser
             contactsPhoneNumbers.append(contact.phoneNumber)
         }
         let jsonObject:[String: AnyObject] = ["contacts": contactsPhoneNumbers, "status": status]
+        println(jsonObject)
         HTTPJSON("POST", url: databaseURL + "/db/\(yourPhoneNumber)", jsonObj: jsonObject) {
             (data: String, error: String?) -> Void in
             if error != nil {
@@ -148,7 +149,7 @@ class ServerUser
         var otherPersonPhoneNumber = otherPerson.phoneNumber
         var active = 0
         //You must supply a callback function
-        HTTPGet(databaseURL + "/db/'\(otherPersonPhoneNumber)'/'\(yourPhoneNumber)'") {
+        HTTPGet(databaseURL + "/db/\(otherPersonPhoneNumber)/\(yourPhoneNumber)") {
             (data: String, error: String?) -> Void in
             if error != nil {
                 println(error)

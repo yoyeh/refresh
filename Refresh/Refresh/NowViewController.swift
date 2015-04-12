@@ -56,11 +56,11 @@ class NowViewController: UITableViewController {
         var availableImage = UIImage(named: "available.png")
         var notAvailableImage = UIImage(named: "not_available.png")
         
-        var serverUser = ServerUser(yourContactInfo: contact, serverConnection: true)
+        var serverUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         contact.status = serverUser.getStatusOfAnotherUser(contact)
         
-        print("phonenumber: \(contact.phoneNumber)")
-        print("contact status \(contact.status)")
+        println("phonenumber: \(contact.phoneNumber)")
+        println("contact status \(contact.status)")
         
         if contact.status == 2 {
             cell.statusImageView.image = availableImage
