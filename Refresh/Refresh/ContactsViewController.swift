@@ -55,6 +55,11 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         
         var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         serveruser.putContactToServer(contacts, status: 0)
+
+        var serveruser2 = ServerUser(yourContactInfo: newContact, serverConnection: true)
+        var contacts2:[Contacts] = []
+        contacts2.append(yourContactInformation)
+        serveruser2.putContactToServer(contacts2, status: 2)
     }
     
     // Called only once, the first time the view loads
