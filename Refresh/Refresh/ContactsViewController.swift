@@ -54,6 +54,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         newContact.lastName = lastName
         newContact.phoneNumber = phone
         
+        
         localdatabase.addContact(newContact)
         
         println(firstName + " " + lastName)

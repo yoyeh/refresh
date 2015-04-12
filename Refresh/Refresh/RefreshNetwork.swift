@@ -86,14 +86,14 @@ class ServerUser
     
     //Add the serverUser to the server data base. contacts refers to the
     //contacts of the user
-    func addContactToServer(contacts:[Contacts])
+    func putContactToServer(contacts:[Contacts], status: Int)
     {
         //println(status)
         var contactsPhoneNumbers = [String]()
         for contact in contacts {
             contactsPhoneNumbers.append(contact.phoneNumber)
         }
-        let jsonObject:[String:[AnyObject]] = ["contacts": contactsPhoneNumbers]
+        let jsonObject:[String: AnyObject] = ["contacts": contactsPhoneNumbers, "status": status]
         HTTPJSON("POST", url: databaseURL + "/db/\(yourPhoneNumber)", jsonObj: jsonObject) {
             (data: String, error: String?) -> Void in
             if error != nil {
@@ -143,19 +143,18 @@ class ServerUser
     
     //Getting the status of otherPerson - initialize the RefreshNetowrk
     //object using your own phonenumber.
-    func getStatusOfAnotherUser(otherPerson: Contacts) -> String
+    func getStatusOfAnotherUser(otherPerson: Contacts) -> Int
     {
         var otherPersonPhoneNumber = otherPerson.phoneNumber
-        var active: String = ""
+        var active = 0
         //You must supply a callback function
         HTTPGet(databaseURL + "/db/\(otherPersonPhoneNumber)/\(yourPhoneNumber)") {
             (data: String, error: String?) -> Void in
             if error != nil {
                 println(error)
             } else {
-                //println("We are printing the data")
-                //println(data)
-                active = data
+                if (data.toInt() == nil) {println (error)}
+                else {active = data.toInt()!}
             }
         }
         sleep(1)
