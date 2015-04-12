@@ -85,7 +85,6 @@ class LocalDatabase
         let contactDB = FMDatabase(path : databasePath as String)
         
         if contactDB.open() {
-            println("gets into accessContact(contact")
             let querySQL = "SELECT firstname, lastname, frequency, lastdate, specialdates, lastinfo, available FROM CONTACTS WHERE phone = '\(phoneNumber)'"
             let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
             
@@ -174,9 +173,7 @@ class LocalDatabase
         let contactDB = FMDatabase(path : databasePath as String)
         
         if contactDB.open() {
-
-            let querySQL = "UPDATE CONTACTS SET firstname = '\(contact.firstName)', '\(contact.lastName)',  frequency = '\(contact.callFrequency)', lastdate = '\(contact.lastCallDate)', lastinfo = '\(contact.lastCallInfo)', specialdates = '\(contact.specialDates)', available = '\(contact.status)' WHERE phone = '\(phone)'"
-
+            let querySQL = "UPDATE CONTACTS SET firstname = '\(contact.firstName)', lastname = '\(contact.lastName)',  frequency = '\(contact.callFrequency)', lastdate = '\(contact.lastCallDate)', lastinfo = '\(contact.lastCallInfo)', specialdates = '\(contact.specialDates)', available = '\(contact.status)' WHERE phone = '\(phone)'"
             let items = contactDB.executeUpdate(querySQL, withArgumentsInArray: nil)
             
             if items {
@@ -184,7 +181,6 @@ class LocalDatabase
                 return contact
             }
             contactDB.close()
-            println("not found")
             return nil
         }
         println("Custom Error: \(contactDB.lastErrorMessage())")
@@ -199,7 +195,6 @@ class LocalDatabase
         if contactDB.open() {
         let querySQL = "SELECT * FROM CONTACTS WHERE phone = '\(phone)'"
         let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
-            
             if results?.next() == true {
                 contactDB.close()
                 return true
