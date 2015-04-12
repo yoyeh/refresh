@@ -52,6 +52,8 @@ class LocalDatabase
         var name = contact.firstName
         var phone = contact.phoneNumber
         let contactDB = FMDatabase(path: databasePath as String)
+
+        contact.callFrequency = 2
         
         if contactDB.open() {
             // insert contact into database
