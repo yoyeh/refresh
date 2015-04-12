@@ -37,19 +37,27 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         if peoplePicker != personPicker {
             return
         }
+
+        var localdatabase = LocalDatabase()
+        localdatabase.initializeDatabase()
+        var newContact = Contacts()
         
         // get name of contact
-        let nameCFString : CFString = ABRecordCopyCompositeName(person).takeRetainedValue()
-        let name : NSString = nameCFString as NSString
+        let firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
+        let lastName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
         
+         // get all phone numbers of contact, choose first one
         let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
-        
-        // get phone number of contact
         let phone = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
         
-        println(phone)
-        // addContact(name, phone)
+        newContact.firstName = firstName
+        newContact.lastName = lastName
+        newContact.phoneNumber = phone
         
+        localdatabase.addContact(newContact)
+        
+        println(firstName + " " + lastName)
+        println(phone)
     }
     
     override func viewDidLoad() {
@@ -60,51 +68,6 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     // open up address book when '+' is hit
     @IBAction func addContacts(sender: AnyObject) {
         self.presentViewController(personPicker, animated : true, completion : nil)
-//        var localdatabase = LocalDatabase()
-//        localdatabase.initializeDatabase()
-//        var contacts = [Contacts]()
-//        
-//        var mainUser = Contacts()
-//        mainUser.firstName = "Main"
-//        mainUser.lastName = "User"
-//        mainUser.callFrequency = 4
-//        mainUser.lastCallDate = "03/01/2015"
-//        mainUser.lastCallInfo = "Testing 1"
-//        mainUser.specialDates = "null"
-//        mainUser.status = 2
-//        mainUser.phoneNumber = "6099378865"
-//
-//
-//        // Create a contact.
-//        var friend1 = Contacts()
-//        friend1.firstName = "Paul"
-//        friend1.lastName = "Chang"
-//        friend1.callFrequency = 4
-//        friend1.lastCallDate = "03/01/2015"
-//        friend1.lastCallInfo = "Testing 1"
-//        friend1.specialDates = "null"
-//        friend1.status = 2
-//        friend1.phoneNumber = "9172825940"
-//        
-//        contacts.append(friend1)
-//        localdatabase.addContact(friend1)
-//        
-//        // Create another contact.
-//        var friend2 = Contacts()
-//        friend2.firstName = "Malena"
-//        friend2.lastName = "de la Fuente"
-//        friend2.callFrequency = 2
-//        friend2.lastCallDate = "03/02/2015"
-//        friend2.lastCallInfo = "Testing 2."
-//        friend2.specialDates = "null"
-//        friend2.status = 2
-//        friend2.phoneNumber = "7654041348"
-//        contacts.append(friend2)
-//        
-//        // Add it to the array
-//        var serveruser = ServerUser(yourContactInfo: mainUser, serverConnection: true)
-//        serveruser.addContactToServer(contacts)
-//        localdatabase.addContact(friend2)
     }
     
     // Data setup

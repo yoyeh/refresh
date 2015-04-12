@@ -172,7 +172,6 @@ class LocalDatabase
                 contactDB.close()
                 return contact
             }
-            
             contactDB.close()
             println("not found")
             return nil
