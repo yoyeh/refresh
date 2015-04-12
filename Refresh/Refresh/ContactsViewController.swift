@@ -10,12 +10,11 @@ import Foundation
 import UIKit
 import AddressBookUI
 
-class ContactsViewController: UITableViewController {
+class ContactsViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate {
     var contacts:[Contacts] = []
     var localdatabase = LocalDatabase()
     let personPicker: ABPeoplePickerNavigationController
-    
-    // Initialize addressbook
+
     required init(coder aDecoder: NSCoder) {
         personPicker = ABPeoplePickerNavigationController()
         super.init(coder: aDecoder)
@@ -46,6 +45,10 @@ class ContactsViewController: UITableViewController {
         // Get all phone numbers of contact, choose first one
         let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
         newContact.phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
+
+        
+        localdatabase.addContact(newContact)
+
     }
     
     // Called only once, the first time the view loads
@@ -70,7 +73,7 @@ class ContactsViewController: UITableViewController {
         if segue.identifier == "showContactDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let contact = contacts[indexPath.row]
-                (segue.destinationViewController as ContactsDetailViewController).detailContact = contact
+                (segue.destinationViewController as! ContactsDetailViewController).detailContact = contact
             }
         }
     }
@@ -80,12 +83,13 @@ class ContactsViewController: UITableViewController {
         return 1
     }
     
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as! UITableViewCell
         
         let contact = contacts[indexPath.row] as Contacts
         cell.textLabel?.text = contact.firstName + " " + contact.lastName
