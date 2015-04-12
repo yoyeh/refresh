@@ -52,9 +52,7 @@ class LocalDatabase
         var name = contact.firstName
         var phone = contact.phoneNumber
         let contactDB = FMDatabase(path: databasePath as String)
-        
-        var contact = Contacts()
-        
+
         contact.callFrequency = 2
         
         if contactDB.open() {

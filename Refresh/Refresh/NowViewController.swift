@@ -12,16 +12,17 @@ import UIKit
 var yourContactInformation = Contacts(firstname: "Main", lastname: "User", callfrequency: 5, lastcalldate: "null", lastcallinfo: "null", specialdates: "null", Status: 0, phonenumber: "1112223333")
 
 class NowViewController: UITableViewController {
-
     var contacts:[Contacts] = []
+    var localdatabase = LocalDatabase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var localdatabase = LocalDatabase()
+    }
+    
+    // Called right before view appears each time
+    override func viewWillAppear(animated: Bool) {
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
-//        setupContactArray()
     }
     
     // Data setup

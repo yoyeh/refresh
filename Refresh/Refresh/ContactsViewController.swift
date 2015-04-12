@@ -41,6 +41,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         // Get name of contact
         newContact.firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
         newContact.lastName = ABRecordCopyValue(person, kABPersonLastNameProperty).takeRetainedValue() as! String
+        println(newContact.lastName)
         
         // Get all phone numbers of contact, choose first one
         let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
@@ -48,7 +49,11 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
         
         localdatabase.addContact(newContact)
+        
         self.tableView.reloadData()
+        
+        var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+        serveruser.addContactToServer(contacts)
     }
     
     // Called only once, the first time the view loads
@@ -64,8 +69,6 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     
     // Called when view disappears
     override func viewDidDisappear(animated: Bool) {
-        var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
-        serveruser.addContactToServer(contacts)
     }
     
     // Handle Segues to other views
