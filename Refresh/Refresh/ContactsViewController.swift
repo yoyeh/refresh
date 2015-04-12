@@ -48,12 +48,18 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         var phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
         newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
         
+        contacts.append(newContact)
         localdatabase.addContact(newContact)
         
         self.tableView.reloadData()
         
         var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
-        serveruser.addContactToServer(contacts)
+        serveruser.putContactToServer(contacts, status: 0)
+
+        var serveruser2 = ServerUser(yourContactInfo: newContact, serverConnection: true)
+        var contacts2:[Contacts] = []
+        contacts2.append(yourContactInformation)
+        serveruser2.putContactToServer(contacts2, status: 2)
     }
     
     // Called only once, the first time the view loads
