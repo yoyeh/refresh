@@ -45,10 +45,8 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         // Get all phone numbers of contact, choose first one
         let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
         newContact.phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
-
         
         localdatabase.addContact(newContact)
-
     }
     
     // Called only once, the first time the view loads
@@ -82,7 +80,6 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
