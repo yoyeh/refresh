@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var currentState: UILabel!
     @IBAction func notavailableButton(sender: AnyObject) {
+        currentState.text = sender.currentTitle!
         var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
          serveruser.changeStatus(0)
     }
