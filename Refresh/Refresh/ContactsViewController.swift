@@ -8,97 +8,61 @@
 
 import Foundation
 import UIKit
+import AddressBookUI
 
 class ContactsViewController: UITableViewController {
     var contacts:[Contacts] = []
+    var localdatabase = LocalDatabase()
+    let personPicker: ABPeoplePickerNavigationController
     
+    // Initialize addressbook
+    required init(coder aDecoder: NSCoder) {
+        personPicker = ABPeoplePickerNavigationController()
+        super.init(coder: aDecoder)
+        personPicker.peoplePickerDelegate = self
+    }
+    
+    // Initialize mandatory function
+    func peoplePickerNavigationControllerDidCancel(peoplePicker: ABPeoplePickerNavigationController!) {
+    }
+    
+    // Open up addressbook when user presses '+'
+    @IBAction func performPickPerson(sender: AnyObject) {
+        self.presentViewController(personPicker, animated : true, completion : nil)
+    }
+    
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecordRef!) {
+        // Check if it is the right picker
+        if peoplePicker != personPicker {
+            return
+        }
+
+        var newContact = Contacts()
+        
+        // Get name of contact
+        newContact.firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
+        newContact.lastName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
+        
+        // Get all phone numbers of contact, choose first one
+        let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
+        newContact.phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
+    }
+    
+    // Called only once, the first time the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupContactArray()
-    }
-    
-    @IBAction func addContacts(sender: AnyObject) {
-        
-        var localdatabase = LocalDatabase()
         localdatabase.initializeDatabase()
-        var contacts = [Contacts]()
-        
-        var mainUser = Contacts()
-        mainUser.firstName = "Main"
-        mainUser.lastName = "User"
-        mainUser.callFrequency = 4
-        mainUser.lastCallDate = "03/01/2015"
-        mainUser.lastCallInfo = "Testing 1"
-        mainUser.specialDates = "null"
-        mainUser.status = 2
-        mainUser.phoneNumber = "6099378865"
-
-
-        // Create a contact.
-        var friend1 = Contacts()
-        friend1.firstName = "Paul"
-        friend1.lastName = "Chang"
-        friend1.callFrequency = 4
-        friend1.lastCallDate = "03/01/2015"
-        friend1.lastCallInfo = "Testing 1"
-        friend1.specialDates = "null"
-        friend1.status = 2
-        friend1.phoneNumber = "9172825940"
-        
-        contacts.append(friend1)
-        localdatabase.addContact(friend1)
-        
-        // Create another contact.
-        var friend2 = Contacts()
-        friend2.firstName = "Malena"
-        friend2.lastName = "de la Fuente"
-        friend2.callFrequency = 2
-        friend2.lastCallDate = "03/02/2015"
-        friend2.lastCallInfo = "Testing 2."
-        friend2.specialDates = "null"
-        friend2.status = 2
-        friend2.phoneNumber = "7654041348"
-        contacts.append(friend2)
-        
-        // Add it to the array
-        var serveruser = ServerUser(yourContactInfo: mainUser, serverConnection: true)
-        serveruser.addContactToServer(contacts)
-        localdatabase.addContact(friend2)
     }
     
-    // Data setup
-    func setupContactArray() {
-        // Clear the array. (Start from scratch.)
-        contacts.removeAll(keepCapacity: true)
-        
-        // Create a contact.
-        var friend1 = Contacts()
-        friend1.firstName = "Paul"
-        friend1.lastName = "Chang"
-        friend1.callFrequency = 4
-        friend1.lastCallDate = "03/01/2015"
-        friend1.lastCallInfo = "Talked about COS 333 project."
-        friend1.specialDates = "null"
-        friend1.status = 2
-        
-        // Add it to the array
-        contacts.append(friend1)
-        
-        // Create another contact.
-        var friend2 = Contacts()
-        friend2.firstName = "Malena"
-        friend2.lastName = "de la Fuente"
-        friend2.callFrequency = 2
-        friend2.lastCallDate = "03/02/2015"
-        friend2.lastCallInfo = "Talked about the weather."
-        friend2.specialDates = "null"
-        friend2.status = 2
-        
-        // Add it to the array
-        contacts.append(friend2)
-        
-        // Sort the contacts array by callFrequency
-        contacts.sort { $0.callFrequency < $1.callFrequency }
+    // Called right before view appears each time
+    override func viewWillAppear(animated: Bool) {
+        contacts = localdatabase.returnContactList()!
+    }
+    
+    // Called when view disappears
+    override func viewDidDisappear(animated: Bool) {
+        var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+        serveruser.addContactToServer(contacts)
     }
     
     // Handle Segues to other views
