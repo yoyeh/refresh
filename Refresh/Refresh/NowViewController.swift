@@ -11,6 +11,7 @@ import UIKit
 
 var yourContactInformation = Contacts(firstname: "Main", lastname: "User", callfrequency: 5, lastcalldate: "null", lastcallinfo: "null", specialdates: "null", Status: 0, phonenumber: "1112223333")
 
+
 class NowViewController: UITableViewController {
     var contacts:[Contacts] = []
     var localdatabase = LocalDatabase()
@@ -46,6 +47,10 @@ class NowViewController: UITableViewController {
         return contacts.count
     }
     
+    func statusCallback(statusFromServer: Int, contact: Contacts) {
+        contact.status = statusFromServer
+    }
+    
     // Display all contacts
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as! NowContactCell
@@ -57,10 +62,8 @@ class NowViewController: UITableViewController {
         var notAvailableImage = UIImage(named: "not_available.png")
         
         var serverUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
-        contact.status = serverUser.getStatusOfAnotherUser(contact)
         
-        println("phonenumber: \(contact.phoneNumber)")
-        println("contact status \(contact.status)")
+        serverUser.getStatusOfAnotherUser(contact, callback: statusCallback)
         
         if contact.status == 2 {
             cell.statusImageView.image = availableImage
@@ -69,6 +72,8 @@ class NowViewController: UITableViewController {
             cell.statusImageView.image = notAvailableImage
         }
         
+        sleep(1)
+
         return cell
     }
     

@@ -17,9 +17,7 @@ class ServerUser
     init(yourContactInfo: Contacts, serverConnection: Bool) {
         yourPhoneNumber = yourContactInfo.phoneNumber
         if serverConnection {
-            println("gets into here")
             databaseURL = "https://re-fresh.herokuapp.com"
-            println(databaseURL)
         }
     }
     
@@ -84,8 +82,7 @@ class ServerUser
     }
     
     
-    //Add the serverUser to the server data base. contacts refers to the
-    //contacts of the user
+    //Add the serverUser to the server data base. If contact already exists then simply the information on the server
     func putContactToServer(contacts:[Contacts], status: Int)
     {
         //println(status)
@@ -109,7 +106,6 @@ class ServerUser
     //Add or change the contacts of the server user to the specified argument
     func changeContactsOnServer(contacts:[Contacts])
     {
-        //println(status)
         var contactsPhoneNumbers = [String]()
         for contact in contacts {
             contactsPhoneNumbers.append(contact.phoneNumber)
@@ -126,10 +122,9 @@ class ServerUser
         sleep(1)
     }
 
-    //Changing the status of the person you have initialized your
+    //Changing the status of the person you have initialized your serverUser to
     func changeStatus(status: Int)
     {
-        //println(status)
         let jsonObject:[String:Int] = ["status":status]
         HTTPJSON("PUT", url: databaseURL + "/db/status/\(yourPhoneNumber)", jsonObj: jsonObject){
             (data: String, error: String?) -> Void in
@@ -141,26 +136,24 @@ class ServerUser
         }
         sleep(1)
     }
-    
+
     //Getting the status of otherPerson - initialize the RefreshNetowrk
     //object using your own phonenumber.
-    func getStatusOfAnotherUser(otherPerson: Contacts) -> Int
+    func getStatusOfAnotherUser(otherPerson: Contacts, callback: (Int, Contacts) -> Void)
     {
         var otherPersonPhoneNumber = otherPerson.phoneNumber
-        var active = 0
-        //You must supply a callback function
+        //You must supply a callback function - doing so as a closure
         HTTPGet(databaseURL + "/db/\(otherPersonPhoneNumber)/\(yourPhoneNumber)") {
             (data: String, error: String?) -> Void in
             if error != nil {
                 println(error)
             } else {
                 if (data.toInt() == nil) {println (error)}
-                else {active = data.toInt()!}
+                else {callback(data.toInt()!, otherPerson)}
             }
         }
-        sleep(1)
-        return active
     }
+    
     
     //Deleting the user from your server
     func deleteUserFromServer()
