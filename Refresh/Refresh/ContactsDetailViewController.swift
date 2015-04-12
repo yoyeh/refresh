@@ -32,4 +32,10 @@ class ContactsDetailViewController: UIViewController {
         super.viewDidLoad()
         configureView()
     }
+    
+    @IBOutlet weak var lastCallInfoText: UITextView!
+    
+    @IBAction func editContactInfo(sender: AnyObject) {
+        lastCallInfoText.editable = true
+    }
 }
