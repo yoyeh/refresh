@@ -148,7 +148,7 @@ class ServerUser
         var otherPersonPhoneNumber = otherPerson.phoneNumber
         var active = 0
         //You must supply a callback function
-        HTTPGet(databaseURL + "/db/\(otherPersonPhoneNumber)/\(yourPhoneNumber)") {
+        HTTPGet(databaseURL + "/db/'\(otherPersonPhoneNumber)'/'\(yourPhoneNumber)'") {
             (data: String, error: String?) -> Void in
             if error != nil {
                 println(error)

@@ -64,7 +64,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     // Called when view disappears
     override func viewDidDisappear(animated: Bool) {
         var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
-        serveruser.addContactToServer(contacts)
+        serveruser.putContactToServer(contacts, status: 0)
     }
     
     // Handle Segues to other views
