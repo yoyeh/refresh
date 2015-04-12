@@ -176,7 +176,7 @@
                     <navigationItem key="navigationItem" title="Contacts" id="FXM-jb-M8W">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mkG-H2-SLf">
                             <connections>
-                                <action selector="addContacts:" destination="Xyc-mg-CJ0" id="VkA-X4-kao"/>
+                                <action selector="performPickPerson:" destination="Xyc-mg-CJ0" id="KWY-fz-AQE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
