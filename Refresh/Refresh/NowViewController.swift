@@ -56,11 +56,11 @@ class NowViewController: UITableViewController {
         var availableImage = UIImage(named: "available.png")
         var notAvailableImage = UIImage(named: "not_available.png")
         
-        var serverUser = ServerUser(yourContactInfo: contact, serverConnection: true)
+        var serverUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         contact.status = serverUser.getStatusOfAnotherUser(contact)
         
-        print("phonenumber: \(contact.phoneNumber)")
-        print("contact status \(contact.status)")
+        println("phonenumber: \(contact.phoneNumber)")
+        println("contact status \(contact.status)")
         
         if contact.status == 2 {
             cell.statusImageView.image = availableImage
@@ -76,7 +76,16 @@ class NowViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let contact = contacts[indexPath.row] as Contacts
         var phoneNumber = contact.phoneNumber
+        
+        var localdatabase = LocalDatabase()
+        localdatabase.initializeDatabase()
+        var date = NSDate()
+        var dateformatter = NSDateFormatter()
+        dateformatter.dateStyle = .ShortStyle
+        
         if let url = NSURL(string: "tel://\(phoneNumber)") {
+            contact.lastCallDate = dateformatter.stringFromDate(date)
+            localdatabase.editContact(contact)
             UIApplication.sharedApplication().openURL(url)
         }
     }

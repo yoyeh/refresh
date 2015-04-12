@@ -48,7 +48,9 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         var phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
         newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
         
+        if (!localdatabase.doesContactExist(newContact)) {
         contacts.append(newContact)
+        }
         localdatabase.addContact(newContact)
         
         self.tableView.reloadData()
@@ -98,7 +100,6 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as! UITableViewCell
-        
         let contact = contacts[indexPath.row] as Contacts
         cell.textLabel?.text = contact.firstName + " " + contact.lastName
         
