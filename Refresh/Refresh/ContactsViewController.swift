@@ -12,134 +12,63 @@ import AddressBookUI
 
 class ContactsViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate {
     var contacts:[Contacts] = []
-    
+    var localdatabase = LocalDatabase()
     let personPicker: ABPeoplePickerNavigationController
-    
-    // initialize addressbook
+
     required init(coder aDecoder: NSCoder) {
         personPicker = ABPeoplePickerNavigationController()
         super.init(coder: aDecoder)
         personPicker.peoplePickerDelegate = self
     }
     
-    // initialize mandatory function
+    // Initialize mandatory function
     func peoplePickerNavigationControllerDidCancel(peoplePicker: ABPeoplePickerNavigationController!) {
     }
     
-    // open up address book when '+' is hit
+    // Open up addressbook when user presses '+'
     @IBAction func performPickPerson(sender: AnyObject) {
         self.presentViewController(personPicker, animated : true, completion : nil)
     }
     
     func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecordRef!) {
-        
         // Check if it is the right picker
         if peoplePicker != personPicker {
             return
         }
+
+        var newContact = Contacts()
         
-        // get name of contact
-        let nameCFString : CFString = ABRecordCopyCompositeName(person).takeRetainedValue()
-        let name : NSString = nameCFString as NSString
+        // Get name of contact
+        newContact.firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
+        newContact.lastName = ABRecordCopyValue(person, kABPersonLastNameProperty).takeRetainedValue() as! String
+        println(newContact.lastName)
         
+        // Get all phone numbers of contact, choose first one
         let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
+        var phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
+        newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
         
-        // get phone number of contact
-        let phone = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
+        localdatabase.addContact(newContact)
         
-        println(phone)
-        // addContact(name, phone)
+        self.tableView.reloadData()
         
+        var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+        serveruser.addContactToServer(contacts)
     }
     
+    // Called only once, the first time the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupContactArray()
+        localdatabase.initializeDatabase()
     }
     
-    // open up address book when '+' is hit
-    @IBAction func addContacts(sender: AnyObject) {
-        self.presentViewController(personPicker, animated : true, completion : nil)
-//        var localdatabase = LocalDatabase()
-//        localdatabase.initializeDatabase()
-//        var contacts = [Contacts]()
-//        
-//        var mainUser = Contacts()
-//        mainUser.firstName = "Main"
-//        mainUser.lastName = "User"
-//        mainUser.callFrequency = 4
-//        mainUser.lastCallDate = "03/01/2015"
-//        mainUser.lastCallInfo = "Testing 1"
-//        mainUser.specialDates = "null"
-//        mainUser.status = 2
-//        mainUser.phoneNumber = "6099378865"
-//
-//
-//        // Create a contact.
-//        var friend1 = Contacts()
-//        friend1.firstName = "Paul"
-//        friend1.lastName = "Chang"
-//        friend1.callFrequency = 4
-//        friend1.lastCallDate = "03/01/2015"
-//        friend1.lastCallInfo = "Testing 1"
-//        friend1.specialDates = "null"
-//        friend1.status = 2
-//        friend1.phoneNumber = "9172825940"
-//        
-//        contacts.append(friend1)
-//        localdatabase.addContact(friend1)
-//        
-//        // Create another contact.
-//        var friend2 = Contacts()
-//        friend2.firstName = "Malena"
-//        friend2.lastName = "de la Fuente"
-//        friend2.callFrequency = 2
-//        friend2.lastCallDate = "03/02/2015"
-//        friend2.lastCallInfo = "Testing 2."
-//        friend2.specialDates = "null"
-//        friend2.status = 2
-//        friend2.phoneNumber = "7654041348"
-//        contacts.append(friend2)
-//        
-//        // Add it to the array
-//        var serveruser = ServerUser(yourContactInfo: mainUser, serverConnection: true)
-//        serveruser.addContactToServer(contacts)
-//        localdatabase.addContact(friend2)
+    // Called right before view appears each time
+    override func viewWillAppear(animated: Bool) {
+        contacts = localdatabase.returnContactList()!
     }
     
-    // Data setup
-    func setupContactArray() {
-        // Clear the array. (Start from scratch.)
-        contacts.removeAll(keepCapacity: true)
-        
-        // Create a contact.
-        var friend1 = Contacts()
-        friend1.firstName = "Paul"
-        friend1.lastName = "Chang"
-        friend1.callFrequency = 4
-        friend1.lastCallDate = "03/01/2015"
-        friend1.lastCallInfo = "Talked about COS 333 project."
-        friend1.specialDates = "null"
-        friend1.status = 2
-        
-        // Add it to the array
-        contacts.append(friend1)
-        
-        // Create another contact.
-        var friend2 = Contacts()
-        friend2.firstName = "Malena"
-        friend2.lastName = "de la Fuente"
-        friend2.callFrequency = 2
-        friend2.lastCallDate = "03/02/2015"
-        friend2.lastCallInfo = "Talked about the weather."
-        friend2.specialDates = "null"
-        friend2.status = 2
-        
-        // Add it to the array
-        contacts.append(friend2)
-        
-        // Sort the contacts array by callFrequency
-        contacts.sort { $0.callFrequency < $1.callFrequency }
+    // Called when view disappears
+    override func viewDidDisappear(animated: Bool) {
     }
     
     // Handle Segues to other views
@@ -156,7 +85,6 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
