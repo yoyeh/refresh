@@ -73,7 +73,7 @@ class NowViewController: UITableViewController {
         var availableImage = UIImage(named: "available.png")
         var notAvailableImage = UIImage(named: "not_available.png")
         
-        var serverUser = ServerUser(yourContactInfo: contact, serverConnection: false)
+        var serverUser = ServerUser(yourContactInfo: contact, serverConnection: true)
         contact.status = serverUser.getStatusOfAnotherUser(contact)
         
         print("phonenumber: \(contact.phoneNumber)")
