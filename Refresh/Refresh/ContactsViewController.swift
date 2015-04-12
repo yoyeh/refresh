@@ -48,7 +48,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         var phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
         newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
         
-        
+        contacts.append(newContact)
         localdatabase.addContact(newContact)
         
         self.tableView.reloadData()

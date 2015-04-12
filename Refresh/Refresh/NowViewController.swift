@@ -24,6 +24,8 @@ class NowViewController: UITableViewController {
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
         sortContacts()
+        
+        self.tableView.reloadData()
     }
     
     // Sort contacts
