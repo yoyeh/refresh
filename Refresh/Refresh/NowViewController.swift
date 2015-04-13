@@ -49,6 +49,9 @@ class NowViewController: UITableViewController {
     
     func statusCallback(statusFromServer: Int, contact: Contacts) {
         contact.status = statusFromServer
+        println("----------------")
+        println("phonenumber in callback: \(contact.phoneNumber)")
+        println("status in callback: \(contact.status)")
     }
     
     // Display all contacts
@@ -63,6 +66,11 @@ class NowViewController: UITableViewController {
         
         var serverUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         
+        println("----------------")
+        println("phonenumber: \(contact.phoneNumber)")
+        println("status: \(contact.status)")
+        
+        
         serverUser.getStatusOfAnotherUser(contact, callback: statusCallback)
         
         if contact.status == 2 {
@@ -71,8 +79,6 @@ class NowViewController: UITableViewController {
         else {
             cell.statusImageView.image = notAvailableImage
         }
-        
-        sleep(1)
 
         return cell
     }
