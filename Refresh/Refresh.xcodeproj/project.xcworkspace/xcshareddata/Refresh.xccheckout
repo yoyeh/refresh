@@ -10,8 +10,6 @@
 	<string>Refresh</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>04101981B66E318109934C9516F88D824BB96459</key>
-		<string>https://github.com/ccgus/fmdb.git</string>
 		<key>C9970A44B7FF8AD7DEE8CEFEEF514BA4B72E34D2</key>
 		<string>https://github.com/yoyeh/refresh.git</string>
 	</dict>
@@ -19,8 +17,6 @@
 	<string>Refresh/Refresh.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>04101981B66E318109934C9516F88D824BB96459</key>
-		<string>../../../../fmdb</string>
 		<key>C9970A44B7FF8AD7DEE8CEFEEF514BA4B72E34D2</key>
 		<string>../../..</string>
 	</dict>
@@ -32,14 +28,6 @@
 	<string>C9970A44B7FF8AD7DEE8CEFEEF514BA4B72E34D2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>04101981B66E318109934C9516F88D824BB96459</string>
-			<key>IDESourceControlWCCName</key>
-			<string>fmdb</string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

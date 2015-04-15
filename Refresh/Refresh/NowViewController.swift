@@ -15,18 +15,34 @@ var yourContactInformation = Contacts(firstname: "Main", lastname: "User", callf
 class NowViewController: UITableViewController {
     var contacts:[Contacts] = []
     var localdatabase = LocalDatabase()
+    //var displayCell:[Int] = []
+    var availableImage = UIImage(named: "available.png")
+    var notAvailableImage = UIImage(named: "not_available.png")
+    var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: false)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("Inside viewDidLoad()")
     }
     
     // Called right before view appears each time
     override func viewWillAppear(animated: Bool) {
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
+        
+        println("Inside viewWillAppear")
+        //Let's call the array first
+        serverUser.getStatusOfOtherUsers(contacts, callback: statusCallback)
+        sleep(1)
+            
         sortContacts()
+        println("Getting out of viewWillAppear()")
         
         self.tableView.reloadData()
+    }
+    
+    private func statusCallback(statusesFromServer: [Int], contacts: [Contacts]) {
     }
     
     // Sort contacts
@@ -47,32 +63,13 @@ class NowViewController: UITableViewController {
         return contacts.count
     }
     
-    func statusCallback(statusFromServer: Int, contact: Contacts) {
-        contact.status = statusFromServer
-        println("----------------")
-        println("phonenumber in callback: \(contact.phoneNumber)")
-        println("status in callback: \(contact.status)")
-    }
-    
     // Display all contacts
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as! NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
         cell.nameLabel.text = contact.firstName
-
-        var availableImage = UIImage(named: "available.png")
-        var notAvailableImage = UIImage(named: "not_available.png")
-        
-        var serverUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
-        
-        println("----------------")
-        println("phonenumber: \(contact.phoneNumber)")
-        println("status: \(contact.status)")
-        
-        
-        serverUser.getStatusOfAnotherUser(contact, callback: statusCallback)
-        
         if contact.status == 2 {
             cell.statusImageView.image = availableImage
         }
