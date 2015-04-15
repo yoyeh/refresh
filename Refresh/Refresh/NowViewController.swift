@@ -18,9 +18,8 @@ class NowViewController: UITableViewController {
     //var displayCell:[Int] = []
     var availableImage = UIImage(named: "available.png")
     var notAvailableImage = UIImage(named: "not_available.png")
-    var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: false)
+    var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         println("Inside viewDidLoad()")
@@ -32,7 +31,7 @@ class NowViewController: UITableViewController {
         contacts = localdatabase.returnContactList()!
         
         println("Inside viewWillAppear")
-        //Let's call the array first
+        
         serverUser.getStatusOfOtherUsers(contacts, callback: statusCallback)
         sleep(1)
             
