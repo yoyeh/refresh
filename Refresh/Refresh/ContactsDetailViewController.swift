@@ -13,6 +13,19 @@ class ContactsDetailViewController: UIViewController {
     
     @IBOutlet weak var detailLabel: UILabel!
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBAction func editButtonPressed(sender: UIBarButtonItem) {
+        frequencyStepper.hidden = false
+    }
+    
+    
+    @IBOutlet weak var callFrequencyLabel: UILabel!
+    @IBOutlet weak var frequencyStepper: UIStepper!
+    
+    @IBAction func frequencyStepperValueChanged(sender: UIStepper) {
+        callFrequencyLabel.text = Int(sender.value).description
+    }
+    
     var detailContact: Contacts? {
         didSet {
             // Update the view.
@@ -31,6 +44,15 @@ class ContactsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        
+        frequencyStepper.wraps = true
+        frequencyStepper.autorepeat = true
+        frequencyStepper.minimumValue = 1
+        frequencyStepper.maximumValue = 8
+        frequencyStepper.hidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
     }
     
     @IBOutlet weak var lastCallInfoText: UITextView!

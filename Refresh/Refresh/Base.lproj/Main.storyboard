@@ -185,10 +185,10 @@
             </objects>
             <point key="canvasLocation" x="2800" y="202"/>
         </scene>
-        <!--View Controller-->
+        <!--Contacts Detail View Controller-->
         <scene sceneID="bpi-Aj-4VS">
             <objects>
-                <viewController id="fsf-AB-ms8" sceneMemberID="viewController">
+                <viewController id="fsf-AB-ms8" customClass="ContactsDetailViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bdw-Ki-iH7"/>
                         <viewControllerLayoutGuide type="bottom" id="c7p-Zt-lB0"/>
@@ -197,8 +197,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQb-yQ-wnr">
-                                <rect key="frame" x="16" y="97" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call every" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQb-yQ-wnr">
+                                <rect key="frame" x="16" y="97" width="76" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -210,6 +210,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3G-hT-QSN">
+                                <rect key="frame" x="16" y="126" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kJY-Ur-LSg">
+                                <rect key="frame" x="490" y="122" width="94" height="29"/>
+                                <connections>
+                                    <action selector="frequencyStepperValueChanged:" destination="fsf-AB-ms8" eventType="valueChanged" id="mbf-EI-Dbv"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -217,11 +229,26 @@
                             <constraint firstItem="sQb-yQ-wnr" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="33" id="4XQ-Cb-vds"/>
                             <constraint firstItem="c7p-Zt-lB0" firstAttribute="top" secondItem="fIL-uN-W7T" secondAttribute="bottom" constant="276" id="98R-u9-8Mt"/>
                             <constraint firstItem="sQb-yQ-wnr" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="YLV-cS-xrg"/>
+                            <constraint firstItem="m3G-hT-QSN" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="ZdV-L8-1p1"/>
+                            <constraint firstItem="kJY-Ur-LSg" firstAttribute="trailing" secondItem="6hy-6r-BaL" secondAttribute="trailingMargin" id="bjO-Nd-9TK"/>
+                            <constraint firstItem="m3G-hT-QSN" firstAttribute="top" secondItem="sQb-yQ-wnr" secondAttribute="bottom" constant="8" id="llf-fm-wQM"/>
                             <constraint firstItem="fIL-uN-W7T" firstAttribute="top" secondItem="sQb-yQ-wnr" secondAttribute="bottom" constant="29" id="rCn-L2-KJa"/>
                             <constraint firstItem="fIL-uN-W7T" firstAttribute="trailing" secondItem="6hy-6r-BaL" secondAttribute="trailingMargin" id="t3k-rf-AwK"/>
+                            <constraint firstItem="kJY-Ur-LSg" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="58" id="uYs-J4-M3Y"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="CZP-b2-5GT"/>
+                    <navigationItem key="navigationItem" id="CZP-b2-5GT">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ZKg-ld-zmQ">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="fsf-AB-ms8" id="HmT-2U-X7z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="callFrequencyLabel" destination="m3G-hT-QSN" id="mS8-70-gDM"/>
+                        <outlet property="editButton" destination="ZKg-ld-zmQ" id="ZEY-Ip-JsK"/>
+                        <outlet property="frequencyStepper" destination="kJY-Ur-LSg" id="B8t-3a-PTh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ct-4D-4M1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

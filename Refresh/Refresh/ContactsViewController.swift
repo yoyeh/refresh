@@ -84,7 +84,9 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         if segue.identifier == "showContactDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let contact = contacts[indexPath.row]
-                (segue.destinationViewController as! ContactsDetailViewController).detailContact = contact
+                let navController = segue.destinationViewController as! UINavigationController
+                let detailController = navController.topViewController as! ContactsDetailViewController
+                detailController.detailContact = contact
             }
         }
     }
