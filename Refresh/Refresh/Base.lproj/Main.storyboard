@@ -203,16 +203,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIL-uN-W7T">
-                                <rect key="frame" x="16" y="147" width="568" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3G-hT-QSN">
-                                <rect key="frame" x="16" y="126" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="126" width="49" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -225,15 +218,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fIL-uN-W7T" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="0lE-OP-yN3"/>
                             <constraint firstItem="sQb-yQ-wnr" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="33" id="4XQ-Cb-vds"/>
-                            <constraint firstItem="c7p-Zt-lB0" firstAttribute="top" secondItem="fIL-uN-W7T" secondAttribute="bottom" constant="276" id="98R-u9-8Mt"/>
                             <constraint firstItem="sQb-yQ-wnr" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="YLV-cS-xrg"/>
                             <constraint firstItem="m3G-hT-QSN" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="ZdV-L8-1p1"/>
                             <constraint firstItem="kJY-Ur-LSg" firstAttribute="trailing" secondItem="6hy-6r-BaL" secondAttribute="trailingMargin" id="bjO-Nd-9TK"/>
                             <constraint firstItem="m3G-hT-QSN" firstAttribute="top" secondItem="sQb-yQ-wnr" secondAttribute="bottom" constant="8" id="llf-fm-wQM"/>
-                            <constraint firstItem="fIL-uN-W7T" firstAttribute="top" secondItem="sQb-yQ-wnr" secondAttribute="bottom" constant="29" id="rCn-L2-KJa"/>
-                            <constraint firstItem="fIL-uN-W7T" firstAttribute="trailing" secondItem="6hy-6r-BaL" secondAttribute="trailingMargin" id="t3k-rf-AwK"/>
                             <constraint firstItem="kJY-Ur-LSg" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="58" id="uYs-J4-M3Y"/>
                         </constraints>
                     </view>

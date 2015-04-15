@@ -10,14 +10,24 @@ import Foundation
 import UIKit
 
 class ContactsDetailViewController: UIViewController {
+    var localdatabase = LocalDatabase()
+    var updatedContact = Contacts()
     
-    @IBOutlet weak var detailLabel: UILabel!
+//    @IBOutlet weak var detailLabel: UILabel!
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBAction func editButtonPressed(sender: UIBarButtonItem) {
-        frequencyStepper.hidden = false
+        if sender.title == "Edit" {
+            frequencyStepper.hidden = false
+            sender.title = "Done"
+        }
+        else { // if done
+            sender.title = "Edit"
+            frequencyStepper.hidden = true
+            updatedContact.callFrequency = Int(frequencyStepper.value)
+            localdatabase.editContact(updatedContact)
+        }
     }
-    
     
     @IBOutlet weak var callFrequencyLabel: UILabel!
     @IBOutlet weak var frequencyStepper: UIStepper!
@@ -37,12 +47,19 @@ class ContactsDetailViewController: UIViewController {
         // Update the user interface for the detail item.
         if let contact = detailContact {
             title = contact.firstName
-            detailLabel?.text = contact.contactDetails
+            
+            callFrequencyLabel?.text = String(contact.callFrequency)
+
+            
+            // write copy contact duplicate or copy function?
+            updatedContact = Contacts(firstname: contact.firstName, lastname: contact.lastName, callfrequency: contact.callFrequency, lastcalldate: contact.lastCallDate, lastcallinfo: contact.lastCallInfo, specialdates: contact.specialDates, Status: contact.status, phonenumber: contact.phoneNumber)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        localdatabase.initializeDatabase()
+        
         configureView()
         
         frequencyStepper.wraps = true
@@ -50,14 +67,17 @@ class ContactsDetailViewController: UIViewController {
         frequencyStepper.minimumValue = 1
         frequencyStepper.maximumValue = 8
         frequencyStepper.hidden = true
+        frequencyStepper.value = Double(updatedContact.callFrequency)
     }
     
     override func viewDidAppear(animated: Bool) {
+//        localdatabase.accessContact(<#contact: Contacts#>)
+        
     }
     
-    @IBOutlet weak var lastCallInfoText: UITextView!
+//    @IBOutlet weak var lastCallInfoText: UITextView!
     
-    @IBAction func editContactInfo(sender: AnyObject) {
-        lastCallInfoText.editable = true
-    }
+//    @IBAction func editContactInfo(sender: AnyObject) {
+//        lastCallInfoText.editable = true
+//    }
 }
