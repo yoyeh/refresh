@@ -204,8 +204,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3G-hT-QSN">
-                                <rect key="frame" x="16" y="126" width="49" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="16" y="126" width="45" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -215,10 +215,18 @@
                                     <action selector="frequencyStepperValueChanged:" destination="fsf-AB-ms8" eventType="valueChanged" id="mbf-EI-Dbv"/>
                                 </connections>
                             </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lza-kd-I5S">
+                                <rect key="frame" x="16" y="168" width="45" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sQb-yQ-wnr" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="33" id="4XQ-Cb-vds"/>
+                            <constraint firstItem="lza-kd-I5S" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="UnL-7P-b51"/>
+                            <constraint firstItem="lza-kd-I5S" firstAttribute="top" secondItem="m3G-hT-QSN" secondAttribute="bottom" constant="20" id="VhG-sL-i8q"/>
                             <constraint firstItem="sQb-yQ-wnr" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="YLV-cS-xrg"/>
                             <constraint firstItem="m3G-hT-QSN" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="ZdV-L8-1p1"/>
                             <constraint firstItem="kJY-Ur-LSg" firstAttribute="trailing" secondItem="6hy-6r-BaL" secondAttribute="trailingMargin" id="bjO-Nd-9TK"/>
@@ -235,6 +243,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="callFrequencyLabel" destination="m3G-hT-QSN" id="mS8-70-gDM"/>
+                        <outlet property="detailLabel" destination="lza-kd-I5S" id="OXA-Mi-b1a"/>
                         <outlet property="editButton" destination="ZKg-ld-zmQ" id="ZEY-Ip-JsK"/>
                         <outlet property="frequencyStepper" destination="kJY-Ur-LSg" id="B8t-3a-PTh"/>
                     </connections>

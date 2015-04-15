@@ -24,9 +24,7 @@ class Contacts {
     }
     
     var contactDetails:String {
-        var details = "Name\n\(firstName) \(lastName)\n\n"
-        details += "Call Frequency\n\(callFrequency)\n\n"
-        details += "Last Call\n\(lastCallDate)\n\(lastCallInfo)\n\n"
+        var details = "Last Call\n\(lastCallDate)\n\(lastCallInfo)\n\n"
         details += "Special Dates\n\(specialDates)\n\n"
 
         return details

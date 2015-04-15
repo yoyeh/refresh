@@ -13,9 +13,11 @@ class ContactsDetailViewController: UIViewController {
     var localdatabase = LocalDatabase()
     var updatedContact = Contacts()
     
-//    @IBOutlet weak var detailLabel: UILabel!
-    
+    @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var callFrequencyLabel: UILabel!
+    @IBOutlet weak var frequencyStepper: UIStepper!
+    
     @IBAction func editButtonPressed(sender: UIBarButtonItem) {
         if sender.title == "Edit" {
             frequencyStepper.hidden = false
@@ -28,9 +30,6 @@ class ContactsDetailViewController: UIViewController {
             localdatabase.editContact(updatedContact)
         }
     }
-    
-    @IBOutlet weak var callFrequencyLabel: UILabel!
-    @IBOutlet weak var frequencyStepper: UIStepper!
     
     @IBAction func frequencyStepperValueChanged(sender: UIStepper) {
         callFrequencyLabel.text = Int(sender.value).description
@@ -49,7 +48,7 @@ class ContactsDetailViewController: UIViewController {
             title = contact.firstName
             
             callFrequencyLabel?.text = String(contact.callFrequency)
-
+            detailLabel?.text = contact.contactDetails
             
             // write copy contact duplicate or copy function?
             updatedContact = Contacts(firstname: contact.firstName, lastname: contact.lastName, callfrequency: contact.callFrequency, lastcalldate: contact.lastCallDate, lastcallinfo: contact.lastCallInfo, specialdates: contact.specialDates, Status: contact.status, phonenumber: contact.phoneNumber)
@@ -72,10 +71,7 @@ class ContactsDetailViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
 //        localdatabase.accessContact(<#contact: Contacts#>)
-        
     }
-    
-//    @IBOutlet weak var lastCallInfoText: UITextView!
     
 //    @IBAction func editContactInfo(sender: AnyObject) {
 //        lastCallInfoText.editable = true
