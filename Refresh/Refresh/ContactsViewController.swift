@@ -107,4 +107,14 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         
         return cell
     }
+    
+    // Delete contact by swiping
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let contactToDelete = contacts[indexPath.row] as Contacts
+            contacts.removeAtIndex(indexPath.row)
+            localdatabase.deleteContact(contactToDelete)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
 }
