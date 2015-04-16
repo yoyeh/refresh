@@ -10,16 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var currentState: UILabel!
-    @IBAction func notavailableButton(sender: AnyObject) {
-        currentState.text = sender.currentTitle!
-        var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
-         serveruser.changeStatus(0)
-    }
+    @IBOutlet weak var currentStatus: UILabel!
     
-    @IBAction func availableButton(sender: UIButton) {
-        currentState.text = sender.currentTitle!
-        
+    
+    @IBOutlet weak var availableButton: UIButton!
+    @IBOutlet weak var unavailableButton: UIButton!
+    
+    @IBAction func clickedAvailableButton(sender: AnyObject) {
+        currentStatus.text = "Available"
+        var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+        serveruser.changeStatus(0)
+    }
+
+    @IBAction func clickedUnavailableButton(sender: AnyObject) {
+        currentStatus.text = "Unavailable"
         var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         serveruser.changeStatus(2)
     }
@@ -33,7 +37,6 @@ class ViewController: UIViewController {
 //        super.didReceiveMemoryWarning()
 //        // Dispose of any resources that can be recreated.
 //    }
-
 
 }
 
