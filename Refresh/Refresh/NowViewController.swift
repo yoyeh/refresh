@@ -88,24 +88,58 @@ class NowViewController: UITableViewController {
         let contact = contacts[indexPath.row] as Contacts
         var phoneNumber = contact.phoneNumber
         
+        if let url = NSURL(string: "tel://\(phoneNumber)") {
+            UIApplication.sharedApplication().openURL(url)
+            var startTime = NSDate.timeIntervalSinceReferenceDate()
+            afterPhoneCall(contact, startTime: startTime)
+        }
+    }
+    // save date and info after phone call
+    func afterPhoneCall(contact : Contacts, startTime : NSTimeInterval)
+    {
+        sleep(3)
+        let alertController: UIAlertController = UIAlertController(title: "Returning to Refresh!", message: "", preferredStyle: .Alert)
+        let OKAction : UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        var elapsed = currentTime - startTime
+            if elapsed >= 90 {
+                self.saveInfo(contact)
+            }
+        }
+        alertController.addAction(OKAction)
+        self.presentViewController(alertController, animated : true, completion: nil)
+    }
+    
+    func saveInfo(contact : Contacts)
+    {
         var localdatabase = LocalDatabase()
         localdatabase.initializeDatabase()
+        
         var date = NSDate()
         var dateformatter = NSDateFormatter()
         dateformatter.dateStyle = .ShortStyle
         
-        if let url = NSURL(string: "tel://\(phoneNumber)") {
-            var startTime = NSDate.timeIntervalSinceReferenceDate()
-            var currentTime: NSTimeInterval = 0
-            
-            UIApplication.sharedApplication().openURL(url)
-            currentTime = NSDate.timeIntervalSinceReferenceDate()
-            var elapsedTime = currentTime - startTime
-            
-            if elapsedTime >= 90 {
-                contact.lastCallDate = dateformatter.stringFromDate(date)
-                localdatabase.editContact(contact)
+        contact.lastCallDate = dateformatter.stringFromDate(date)
+        localdatabase.editContact(contact)
+        
+        var inputText : UITextField?
+        let actionSheetController: UIAlertController = UIAlertController(title: "Call Info", message: "What did you talk about?", preferredStyle: .Alert)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
             }
+        
+        actionSheetController.addAction(cancelAction)
+        
+        actionSheetController.addTextFieldWithConfigurationHandler { (textField) in
+            //TextField configuration
+            inputText = textField
         }
-    }
+        let OKAction = UIAlertAction(title: "Save", style: .Default) { (action) in
+            contact.lastCallInfo = inputText!.text
+            localdatabase.editContact(contact)
+        }
+        actionSheetController.addAction(OKAction)
+        
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        }
 }
