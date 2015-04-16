@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qk-he-TCj">
-                                <rect key="frame" x="215" y="318" width="170" height="35"/>
+                                <rect key="frame" x="215" y="283" width="170" height="35"/>
                                 <state key="normal" image="AvailableButton.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIC-qh-vXD">
-                                <rect key="frame" x="215" y="376" width="170" height="35"/>
+                                <rect key="frame" x="215" y="341" width="170" height="35"/>
                                 <state key="normal" image="UnavailableButton.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -51,6 +51,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1eU-dY-5pm"/>
+                            <constraint firstAttribute="centerY" secondItem="6Qk-he-TCj" secondAttribute="centerY" id="4Jb-Di-TQR"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5Wj-gT-4Z9"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DK5-7T-EZT"/>
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Exu-i3-QCW"/>
@@ -59,7 +60,6 @@
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Qqx-Ud-HHg"/>
                             <constraint firstAttribute="centerX" secondItem="6Qk-he-TCj" secondAttribute="centerX" id="W5y-iz-bIr"/>
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="157" id="Ykr-4o-9Xy"/>
-                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="81" id="ZUP-au-WEd"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kbZ-u2-9IO"/>
                         </constraints>
                     </view>
