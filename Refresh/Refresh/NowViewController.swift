@@ -33,6 +33,10 @@ class NowViewController: UITableViewController {
         // Sort the contacts array by callFrequency
         contacts.sort { $0.callFrequency > $1.callFrequency }
         
+        let df1 = NSDateFormatter()
+        let df2 = NSDateFormatter()
+        // sort the contacts by last date called
+        
         // Sort the contacts array by status
         contacts.sort { $0.status > $1.status }
     }
@@ -84,9 +88,17 @@ class NowViewController: UITableViewController {
         dateformatter.dateStyle = .ShortStyle
         
         if let url = NSURL(string: "tel://\(phoneNumber)") {
-            contact.lastCallDate = dateformatter.stringFromDate(date)
-            localdatabase.editContact(contact)
+            var startTime = NSDate.timeIntervalSinceReferenceDate()
+            var currentTime: NSTimeInterval = 0
+            
             UIApplication.sharedApplication().openURL(url)
+            currentTime = NSDate.timeIntervalSinceReferenceDate()
+            var elapsedTime = currentTime - startTime
+            
+            if elapsedTime >= 90 {
+                contact.lastCallDate = dateformatter.stringFromDate(date)
+                localdatabase.editContact(contact)
+            }
         }
     }
 }
