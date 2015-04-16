@@ -17,54 +17,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGa-tv-Y74">
-                                <rect key="frame" x="16" y="72" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkb-Hr-QIo">
-                                <rect key="frame" x="16" y="101" width="62" height="30"/>
-                                <state key="normal" title="Available">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="availableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gvl-GW-h0n"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rip-Rw-F5J">
-                                <rect key="frame" x="86" y="101" width="91" height="30"/>
-                                <state key="normal" title="Not Available">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="notavailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Yw-QD-sW0"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hae-fT-hFa">
                                 <rect key="frame" x="16" y="28" width="568" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGa-tv-Y74">
+                                <rect key="frame" x="16" y="214" width="568" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qk-he-TCj">
+                                <rect key="frame" x="215" y="318" width="170" height="35"/>
+                                <state key="normal" image="AvailableButton.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedAvailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="emZ-5h-mXO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIC-qh-vXD">
+                                <rect key="frame" x="215" y="376" width="170" height="35"/>
+                                <state key="normal" image="UnavailableButton.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedUnavailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rXP-8p-AKJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pkb-Hr-QIo" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="8" id="0gb-RY-cG8"/>
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1eU-dY-5pm"/>
+                            <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5Wj-gT-4Z9"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DK5-7T-EZT"/>
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Exu-i3-QCW"/>
+                            <constraint firstAttribute="centerX" secondItem="UIC-qh-vXD" secondAttribute="centerX" id="LGM-p1-Zcw"/>
+                            <constraint firstItem="UIC-qh-vXD" firstAttribute="top" secondItem="6Qk-he-TCj" secondAttribute="bottom" constant="23" id="PiX-i8-PEP"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Qqx-Ud-HHg"/>
-                            <constraint firstItem="rip-Rw-F5J" firstAttribute="leading" secondItem="pkb-Hr-QIo" secondAttribute="trailing" constant="8" id="TL5-4e-UGZ"/>
-                            <constraint firstItem="pkb-Hr-QIo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Tgt-eb-Mqy"/>
+                            <constraint firstAttribute="centerX" secondItem="6Qk-he-TCj" secondAttribute="centerX" id="W5y-iz-bIr"/>
+                            <constraint firstItem="DGa-tv-Y74" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="157" id="Ykr-4o-9Xy"/>
+                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="81" id="ZUP-au-WEd"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kbZ-u2-9IO"/>
-                            <constraint firstItem="DGa-tv-Y74" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="15" id="oZN-6G-Tel"/>
-                            <constraint firstItem="rip-Rw-F5J" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="8" id="xvQ-du-VRN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Status" image="status_icon.png" id="4YM-Pm-aZa"/>
                     <connections>
-                        <outlet property="currentState" destination="DGa-tv-Y74" id="h9x-Zy-ACR"/>
+                        <outlet property="availableButton" destination="6Qk-he-TCj" id="Ut0-9Z-3ie"/>
+                        <outlet property="currentStatus" destination="DGa-tv-Y74" id="kH8-MB-lRY"/>
+                        <outlet property="unavailableButton" destination="UIC-qh-vXD" id="kYy-Lu-nn6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -309,6 +312,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AvailableButton.png" width="170" height="35"/>
+        <image name="UnavailableButton.png" width="170" height="35"/>
         <image name="contacts_icon.png" width="60" height="60"/>
         <image name="now_icon.png" width="60" height="60"/>
         <image name="status_icon.png" width="60" height="60"/>

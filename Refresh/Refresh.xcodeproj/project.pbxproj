@@ -12,12 +12,14 @@
 		073F86C11ACCC6F600814584 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F86C01ACCC6F500814584 /* Contacts.swift */; };
 		073F86CB1ACD1B2500814584 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86C91ACD1B2500814584 /* Default-568h@2x.png */; };
 		073F86D31ACD992A00814584 /* NowContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F86D21ACD992900814584 /* NowContactCell.swift */; };
-		073F86D61ACDBD3F00814584 /* available.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86D41ACDBD3E00814584 /* available.png */; };
-		073F86D71ACDBD3F00814584 /* not_available.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86D51ACDBD3E00814584 /* not_available.png */; };
 		073F86D91ACDC71E00814584 /* status_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86D81ACDC71D00814584 /* status_icon.png */; };
 		073F86DC1ACDCA2C00814584 /* contacts_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86DA1ACDCA2C00814584 /* contacts_icon.png */; };
 		073F86DD1ACDCA2C00814584 /* now_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86DB1ACDCA2C00814584 /* now_icon.png */; };
 		073F86DF1ACDE20000814584 /* ContactsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F86DE1ACDE20000814584 /* ContactsDetailViewController.swift */; };
+		076DD3411ADF06CE00DE484B /* available.png in Resources */ = {isa = PBXBuildFile; fileRef = 076DD33F1ADF06CE00DE484B /* available.png */; };
+		076DD3421ADF06CE00DE484B /* unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 076DD3401ADF06CE00DE484B /* unavailable.png */; };
+		076DD3451ADF12FA00DE484B /* AvailableButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 076DD3431ADF12FA00DE484B /* AvailableButton.png */; };
+		076DD3461ADF12FA00DE484B /* UnavailableButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 076DD3441ADF12FA00DE484B /* UnavailableButton.png */; };
 		079067EB1AD37B5000612C53 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 079067EA1AD37B5000612C53 /* libsqlite3.dylib */; };
 		0790681A1AD3803600612C53 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 079068101AD3803600612C53 /* FMDatabase.m */; };
 		0790681B1AD3803600612C53 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 079068121AD3803600612C53 /* FMDatabaseAdditions.m */; };
@@ -50,12 +52,14 @@
 		073F86C01ACCC6F500814584 /* Contacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		073F86C91ACD1B2500814584 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Refresh/Images.xcassets/Default-568h@2x.png"; sourceTree = "<group>"; };
 		073F86D21ACD992900814584 /* NowContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NowContactCell.swift; path = ../NowContactCell.swift; sourceTree = "<group>"; };
-		073F86D41ACDBD3E00814584 /* available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = available.png; path = Images.xcassets/available.png; sourceTree = "<group>"; };
-		073F86D51ACDBD3E00814584 /* not_available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = not_available.png; path = Images.xcassets/not_available.png; sourceTree = "<group>"; };
 		073F86D81ACDC71D00814584 /* status_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_icon.png; path = Images.xcassets/status_icon.png; sourceTree = "<group>"; };
 		073F86DA1ACDCA2C00814584 /* contacts_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contacts_icon.png; path = Images.xcassets/contacts_icon.png; sourceTree = "<group>"; };
 		073F86DB1ACDCA2C00814584 /* now_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = now_icon.png; path = Images.xcassets/now_icon.png; sourceTree = "<group>"; };
 		073F86DE1ACDE20000814584 /* ContactsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsDetailViewController.swift; sourceTree = "<group>"; };
+		076DD33F1ADF06CE00DE484B /* available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = available.png; path = Images.xcassets/available.png; sourceTree = "<group>"; };
+		076DD3401ADF06CE00DE484B /* unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unavailable.png; path = Images.xcassets/unavailable.png; sourceTree = "<group>"; };
+		076DD3431ADF12FA00DE484B /* AvailableButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AvailableButton.png; path = Images.xcassets/AvailableButton.png; sourceTree = "<group>"; };
+		076DD3441ADF12FA00DE484B /* UnavailableButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UnavailableButton.png; path = Images.xcassets/UnavailableButton.png; sourceTree = "<group>"; };
 		079067EA1AD37B5000612C53 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		079067EC1AD37BC700612C53 /* Refresh-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Refresh-Bridging-Header.h"; sourceTree = "<group>"; };
 		0790680F1AD3803500612C53 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = fmdb/FMDatabase.h; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 		07C4F3F71AC3855E0071A762 /* Refresh */ = {
 			isa = PBXGroup;
 			children = (
+				076DD3431ADF12FA00DE484B /* AvailableButton.png */,
+				076DD3441ADF12FA00DE484B /* UnavailableButton.png */,
 				07DC9E681AD6211100977DA4 /* RefreshNetwork.swift */,
 				07DC9E6A1AD621EE00977DA4 /* RefreshLocalDatabase.swift */,
 				0790681F1AD3804400612C53 /* fmdb */,
@@ -155,11 +161,11 @@
 				07C4F3FE1AC3855E0071A762 /* Main.storyboard */,
 				07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */,
 				07C4F4011AC3855E0071A762 /* Images.xcassets */,
+				076DD33F1ADF06CE00DE484B /* available.png */,
+				076DD3401ADF06CE00DE484B /* unavailable.png */,
 				073F86D81ACDC71D00814584 /* status_icon.png */,
 				073F86DA1ACDCA2C00814584 /* contacts_icon.png */,
 				073F86DB1ACDCA2C00814584 /* now_icon.png */,
-				073F86D41ACDBD3E00814584 /* available.png */,
-				073F86D51ACDBD3E00814584 /* not_available.png */,
 				07C4F4031AC3855E0071A762 /* LaunchScreen.xib */,
 				07C4F3F81AC3855E0071A762 /* Supporting Files */,
 				079067EC1AD37BC700612C53 /* Refresh-Bridging-Header.h */,
@@ -274,11 +280,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				07C4F4001AC3855E0071A762 /* Main.storyboard in Resources */,
+				076DD3411ADF06CE00DE484B /* available.png in Resources */,
 				073F86DC1ACDCA2C00814584 /* contacts_icon.png in Resources */,
-				073F86D61ACDBD3F00814584 /* available.png in Resources */,
+				076DD3461ADF12FA00DE484B /* UnavailableButton.png in Resources */,
 				07C4F4051AC3855E0071A762 /* LaunchScreen.xib in Resources */,
+				076DD3421ADF06CE00DE484B /* unavailable.png in Resources */,
+				076DD3451ADF12FA00DE484B /* AvailableButton.png in Resources */,
 				073F86D91ACDC71E00814584 /* status_icon.png in Resources */,
-				073F86D71ACDBD3F00814584 /* not_available.png in Resources */,
 				07C4F4021AC3855E0071A762 /* Images.xcassets in Resources */,
 				073F86DD1ACDCA2C00814584 /* now_icon.png in Resources */,
 				073F86CB1ACD1B2500814584 /* Default-568h@2x.png in Resources */,

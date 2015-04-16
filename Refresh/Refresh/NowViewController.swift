@@ -17,7 +17,7 @@ class NowViewController: UITableViewController {
     var localdatabase = LocalDatabase()
     //var displayCell:[Int] = []
     var availableImage = UIImage(named: "available.png")
-    var notAvailableImage = UIImage(named: "not_available.png")
+    var notAvailableImage = UIImage(named: "unavailable.png")
     var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
 
     override func viewDidLoad() {
