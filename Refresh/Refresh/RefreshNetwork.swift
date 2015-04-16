@@ -211,18 +211,18 @@ class ServerUser
             } else {
                 for (phonenumber, status) in data
                 {
-                    println(phonenumber)
-                    println(phoneToContactDict[phonenumber]!.status)
+                    //println(phonenumber)
+                    //println(phoneToContactDict[phonenumber]!.status)
                     phoneToContactDict[phonenumber]!.status = status
                     
                 }
                 
-                for (phonenumber, status) in data
+                /*for (phonenumber, status) in data
                 {
                     println(phonenumber)
                     println(phoneToContactDict[phonenumber]!.status)
                     
-                }
+                }*/
             }
         })
     }

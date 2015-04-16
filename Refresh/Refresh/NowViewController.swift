@@ -27,16 +27,28 @@ class NowViewController: UITableViewController {
     
     // Called right before view appears each time
     override func viewWillAppear(animated: Bool) {
+        
+        /*var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+        actInd.center = self.view.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(actInd)
+        actInd.startAnimating()
+        actInd.stopAnimating()*/
+        
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
         
         println("Inside viewWillAppear")
-        
+
         serverUser.getStatusOfOtherUsers(contacts, callback: statusCallback)
         sleep(1)
-            
+        
+        
+        
         sortContacts()
         println("Getting out of viewWillAppear()")
+    
         
         self.tableView.reloadData()
     }
