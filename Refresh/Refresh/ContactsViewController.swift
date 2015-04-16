@@ -84,7 +84,9 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         if segue.identifier == "showContactDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let contact = contacts[indexPath.row]
-                (segue.destinationViewController as! ContactsDetailViewController).detailContact = contact
+                let navController = segue.destinationViewController as! UINavigationController
+                let detailController = navController.topViewController as! ContactsDetailViewController
+                detailController.detailContact = contact
             }
         }
     }
@@ -104,5 +106,15 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         cell.textLabel?.text = contact.firstName + " " + contact.lastName
         
         return cell
+    }
+    
+    // Delete contact by swiping
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let contactToDelete = contacts[indexPath.row] as Contacts
+            contacts.removeAtIndex(indexPath.row)
+            localdatabase.deleteContact(contactToDelete)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
     }
 }
