@@ -11,21 +11,37 @@ import UIKit
 
 var yourContactInformation = Contacts(firstname: "Main", lastname: "User", callfrequency: 5, lastcalldate: "null", lastcallinfo: "null", specialdates: "null", Status: 0, phonenumber: "1112223333")
 
+
 class NowViewController: UITableViewController {
     var contacts:[Contacts] = []
     var localdatabase = LocalDatabase()
-    
+    //var displayCell:[Int] = []
+    var availableImage = UIImage(named: "available.png")
+    var notAvailableImage = UIImage(named: "unavailable.png")
+    var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("Inside viewDidLoad()")
     }
     
     // Called right before view appears each time
     override func viewWillAppear(animated: Bool) {
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
+        
+        println("Inside viewWillAppear")
+        
+        serverUser.getStatusOfOtherUsers(contacts, callback: statusCallback)
+        sleep(1)
+            
         sortContacts()
+        println("Getting out of viewWillAppear()")
         
         self.tableView.reloadData()
+    }
+    
+    private func statusCallback(statusesFromServer: [Int], contacts: [Contacts]) {
     }
     
     // Sort contacts
@@ -51,28 +67,19 @@ class NowViewController: UITableViewController {
     }
     
     // Display all contacts
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as! NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
         cell.nameLabel.text = contact.firstName
-
-        var availableImage = UIImage(named: "available.png")
-        var notAvailableImage = UIImage(named: "not_available.png")
-        
-        var serverUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
-        contact.status = serverUser.getStatusOfAnotherUser(contact)
-        
-        println("phonenumber: \(contact.phoneNumber)")
-        println("contact status \(contact.status)")
-        
         if contact.status == 2 {
             cell.statusImageView.image = availableImage
         }
         else {
             cell.statusImageView.image = notAvailableImage
         }
-        
+
         return cell
     }
     

@@ -58,10 +58,10 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         serveruser.putContactToServer(contacts, status: 0)
 
-        var serveruser2 = ServerUser(yourContactInfo: newContact, serverConnection: true)
-        var contacts2:[Contacts] = []
-        contacts2.append(yourContactInformation)
-        serveruser2.putContactToServer(contacts2, status: 2)
+//        var serveruser2 = ServerUser(yourContactInfo: newContact, serverConnection: true)
+//        var contacts2:[Contacts] = []
+//        contacts2.append(yourContactInformation)
+//        serveruser2.putContactToServer(contacts2, status: 2)
     }
     
     // Called only once, the first time the view loads
@@ -84,7 +84,9 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         if segue.identifier == "showContactDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let contact = contacts[indexPath.row]
-                (segue.destinationViewController as! ContactsDetailViewController).detailContact = contact
+                let navController = segue.destinationViewController as! UINavigationController
+                let detailController = navController.topViewController as! ContactsDetailViewController
+                detailController.detailContact = contact
             }
         }
     }
@@ -104,5 +106,15 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         cell.textLabel?.text = contact.firstName + " " + contact.lastName
         
         return cell
+    }
+    
+    // Delete contact by swiping
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let contactToDelete = contacts[indexPath.row] as Contacts
+            contacts.removeAtIndex(indexPath.row)
+            localdatabase.deleteContact(contactToDelete)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
     }
 }
