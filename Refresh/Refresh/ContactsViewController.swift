@@ -39,17 +39,23 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         var newContact = Contacts()
         
         // Get name of contact
-        newContact.firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as! String
-        newContact.lastName = ABRecordCopyValue(person, kABPersonLastNameProperty).takeRetainedValue() as! String
-        println(newContact.lastName)
+        if var first = ABRecordCopyValue(person, kABPersonFirstNameProperty)?.takeRetainedValue() as? String {
+            newContact.firstName = first
+        }
+        if var last = ABRecordCopyValue(person, kABPersonFirstNameProperty)?.takeRetainedValue() as? String {
+            newContact.lastName = last
+        }
         
         // Get all phone numbers of contact, choose first one
-        let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
-        var phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as! String
-        newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
+        if var phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty)?.takeRetainedValue() {
+            if let phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as? String {
+                newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
+            }
+        }
+        // TODO: else should throw visible error to user and not add to database
         
         if (!localdatabase.doesContactExist(newContact)) {
-        contacts.append(newContact)
+            contacts.append(newContact)
         }
         localdatabase.addContact(newContact)
         
