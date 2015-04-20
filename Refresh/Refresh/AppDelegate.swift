@@ -23,6 +23,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings( settings )
         application.registerForRemoteNotifications()
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if defaults.boolForKey("firstLaunch") {
+            // not first launch
+            let verStatus = defaults.integerForKey("verificationStatus")
+            if verStatus == 0 {
+                // show screen to enter phone number
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                var initialViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("VerifyPhoneStoryboardID") as! UIViewController
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }
+            else if verStatus == 1 {
+                // resend text option
+            }
+            else {
+                // open normal app view, no verification process
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                var initialViewController: UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("TabBarStoryboardID") as! UITabBarController
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }
+        }
+        else {
+            // first launch
+            defaults.setBool(true, forKey: "firstLaunch")
+            defaults.setInteger(0, forKey: "verificationStatus")
+            // verification status
+            // [0] has not entered phone number
+            // [1] phone number entered but not verfied
+            // [2] phone number verified
+        }
+        
         return true
     }
     

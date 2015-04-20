@@ -32,6 +32,7 @@
 		07C4F4051AC3855E0071A762 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C4F4031AC3855E0071A762 /* LaunchScreen.xib */; };
 		07C4F4111AC3855F0071A762 /* RefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4F4101AC3855F0071A762 /* RefreshTests.swift */; };
 		07C4F44B1AC48D0E0071A762 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4F44A1AC48D0E0071A762 /* ViewController.swift */; };
+		07CED34C1AE4BC7300DEC805 /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CED34B1AE4BC7300DEC805 /* PhoneVerificationViewController.swift */; };
 		07DC9E691AD6211100977DA4 /* RefreshNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9E681AD6211100977DA4 /* RefreshNetwork.swift */; };
 		07DC9E6B1AD621EE00977DA4 /* RefreshLocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9E6A1AD621EE00977DA4 /* RefreshLocalDatabase.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		07C4F40F1AC3855F0071A762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07C4F4101AC3855F0071A762 /* RefreshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTests.swift; sourceTree = "<group>"; };
 		07C4F44A1AC48D0E0071A762 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		07CED34B1AE4BC7300DEC805 /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		07DC9E681AD6211100977DA4 /* RefreshNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshNetwork.swift; sourceTree = "<group>"; };
 		07DC9E6A1AD621EE00977DA4 /* RefreshLocalDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshLocalDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +160,7 @@
 				07C4F44A1AC48D0E0071A762 /* ViewController.swift */,
 				0735D6FC1AC4952D00DAB825 /* ContactsViewController.swift */,
 				073F86DE1ACDE20000814584 /* ContactsDetailViewController.swift */,
+				07CED34B1AE4BC7300DEC805 /* PhoneVerificationViewController.swift */,
 				07C4F3FE1AC3855E0071A762 /* Main.storyboard */,
 				07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */,
 				07C4F4011AC3855E0071A762 /* Images.xcassets */,
@@ -309,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0735D6FB1AC4940400DAB825 /* NowViewController.swift in Sources */,
+				07CED34C1AE4BC7300DEC805 /* PhoneVerificationViewController.swift in Sources */,
 				0790681A1AD3803600612C53 /* FMDatabase.m in Sources */,
 				0735D6FD1AC4952D00DAB825 /* ContactsViewController.swift in Sources */,
 				07C4F44B1AC48D0E0071A762 /* ViewController.swift in Sources */,
@@ -447,8 +451,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul  Chang (BME7LJVLF7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul  Chang (BME7LJVLF7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Refresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -465,8 +469,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul  Chang (BME7LJVLF7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul  Chang (BME7LJVLF7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Refresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

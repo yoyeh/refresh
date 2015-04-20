@@ -77,7 +77,7 @@
         <!--Now-->
         <scene sceneID="B2x-9r-y6j">
             <objects>
-                <tableViewController id="bAh-vY-GdO" customClass="NowViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NowViewStoryboardID" id="bAh-vY-GdO" customClass="NowViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QU0-qD-ju9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,7 +275,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="xtX-hw-QTN">
             <objects>
-                <tabBarController storyboardIdentifier="story" id="d3M-Ik-DT3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarStoryboardID" id="d3M-Ik-DT3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Tay-MM-be5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -291,6 +291,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRP-MY-GUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="680" y="-86"/>
+        </scene>
+        <!--Phone Verification View Controller-->
+        <scene sceneID="cbK-09-Y9g">
+            <objects>
+                <viewController storyboardIdentifier="VerifyPhoneStoryboardID" id="NK8-IV-A3M" customClass="PhoneVerificationViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V8A-gq-8p4"/>
+                        <viewControllerLayoutGuide type="bottom" id="EmH-No-73o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hhB-U8-nOc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Your Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erl-pz-OZn">
+                                <rect key="frame" x="16" y="189" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6M-7s-HaV">
+                                <rect key="frame" x="281" y="335" width="38" height="30"/>
+                                <state key="normal" title="Verify">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedVerifyButton:" destination="NK8-IV-A3M" eventType="touchUpInside" id="KSI-2l-M4U"/>
+                                    <segue destination="d3M-Ik-DT3" kind="show" id="koY-WC-bo8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="d6M-7s-HaV" secondAttribute="centerX" id="ALK-mb-gPu"/>
+                            <constraint firstItem="erl-pz-OZn" firstAttribute="leading" secondItem="hhB-U8-nOc" secondAttribute="leadingMargin" id="SxQ-pX-Duc"/>
+                            <constraint firstItem="erl-pz-OZn" firstAttribute="trailing" secondItem="hhB-U8-nOc" secondAttribute="trailingMargin" id="bod-ba-IiW"/>
+                            <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="169" id="iAW-Lj-4Nc"/>
+                            <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="125" id="jJz-x0-zND"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="VerifyButton" destination="d6M-7s-HaV" id="4Rs-gP-lov"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yza-GF-GEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-176" y="431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HiB-BS-7w8">
