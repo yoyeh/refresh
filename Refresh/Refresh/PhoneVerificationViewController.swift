@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
-class PhoneVerificationViewController: UIViewController {
+class PhoneVerificationViewController: UIViewController, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet weak var verifyButton: UIButton!
     @IBOutlet weak var phoneNumberInput: UITextField!
@@ -23,7 +24,18 @@ class PhoneVerificationViewController: UIViewController {
             defaults.setInteger(2, forKey: "verificationStatus") // set to verified
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
             
-            // set or update main user contact information. Create contact here or in RefreshNetwork method?
+            // TODO set or update main user contact information. Create contact here or in RefreshNetwork method?
+            
+            // text message
+            if (MFMessageComposeViewController.canSendText()) {
+            var messageVC = MFMessageComposeViewController()
+            
+            messageVC.body = "Click send to verify your phone number. [RANDOMCODE]"
+            messageVC.recipients = ["9172825940"] // replace with custom phone number
+            messageVC.messageComposeDelegate = self
+            
+            self.presentViewController(messageVC, animated: true, completion: nil)
+            }
         }
         else {
             // prompt user with alert to enter valid phone number
@@ -47,6 +59,22 @@ class PhoneVerificationViewController: UIViewController {
     
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+        switch (result.value) {
+        case MessageComposeResultCancelled.value:
+            println("Message was cancelled")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        case MessageComposeResultFailed.value:
+            println("Message failed")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        case MessageComposeResultSent.value:
+            println("Message was sent")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        default:
+            break;
+        }
     }
     
 }

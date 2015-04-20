@@ -14,14 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        var types: UIUserNotificationType = UIUserNotificationType.Badge |
-            UIUserNotificationType.Alert |
-            UIUserNotificationType.Sound
-        
-        var settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
-        
-        application.registerUserNotificationSettings( settings )
-        application.registerForRemoteNotifications()
+//        var types: UIUserNotificationType = UIUserNotificationType.Badge |
+//            UIUserNotificationType.Alert |
+//            UIUserNotificationType.Sound
+//        
+//        var settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
+//        
+//        application.registerUserNotificationSettings( settings )
+//        application.registerForRemoteNotifications()
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
