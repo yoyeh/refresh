@@ -286,13 +286,14 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="EMF-ry-gal"/>
                         <segue destination="Xd5-lB-GUJ" kind="relationship" relationship="viewControllers" id="3E8-k1-9vm"/>
                         <segue destination="Age-bF-lCn" kind="relationship" relationship="viewControllers" id="rJg-3o-bBb"/>
+                        <segue destination="NK8-IV-A3M" kind="relationship" relationship="viewControllers" id="G37-1e-7RZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRP-MY-GUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680" y="-86"/>
+            <point key="canvasLocation" x="668" y="-94"/>
         </scene>
-        <!--Phone Verification View Controller-->
+        <!--Me-->
         <scene sceneID="cbK-09-Y9g">
             <objects>
                 <viewController storyboardIdentifier="VerifyPhoneStoryboardID" id="NK8-IV-A3M" customClass="PhoneVerificationViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
@@ -320,23 +321,35 @@
                                     <segue destination="d3M-Ik-DT3" kind="show" id="koY-WC-bo8"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="96U-lA-dSX">
+                                <rect key="frame" x="239" y="260" width="123" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="LsK-2w-tXC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="d6M-7s-HaV" secondAttribute="centerX" id="ALK-mb-gPu"/>
+                            <constraint firstItem="96U-lA-dSX" firstAttribute="centerX" secondItem="erl-pz-OZn" secondAttribute="centerX" id="R7H-YC-UrQ"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="leading" secondItem="hhB-U8-nOc" secondAttribute="leadingMargin" id="SxQ-pX-Duc"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="trailing" secondItem="hhB-U8-nOc" secondAttribute="trailingMargin" id="bod-ba-IiW"/>
+                            <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="96U-lA-dSX" secondAttribute="bottom" constant="45" id="gsP-YV-CoH"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="169" id="iAW-Lj-4Nc"/>
                             <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="125" id="jJz-x0-zND"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Me" image="status_icon.png" id="Bvh-IC-Zdu"/>
                     <connections>
-                        <outlet property="VerifyButton" destination="d6M-7s-HaV" id="4Rs-gP-lov"/>
+                        <outlet property="phoneNumberInput" destination="96U-lA-dSX" id="bYv-Ib-UCZ"/>
+                        <outlet property="verifyButton" destination="d6M-7s-HaV" id="WuZ-80-yNJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yza-GF-GEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-176" y="431"/>
+            <point key="canvasLocation" x="-172" y="851"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HiB-BS-7w8">
