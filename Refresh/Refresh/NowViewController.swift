@@ -19,29 +19,38 @@ class NowViewController: UITableViewController {
     var availableImage = UIImage(named: "available.png")
     var notAvailableImage = UIImage(named: "unavailable.png")
     var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+    var statusUpdateTime:Double = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("Inside viewDidLoad()")
     }
     
     // Called right before view appears each time
     override func viewWillAppear(animated: Bool) {
+        /*var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+        actInd.center = self.view.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(actInd)
+        actInd.startAnimating()
+        actInd.stopAnimating()*/
+        
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
-        
-        println("Inside viewWillAppear")
-        
-        serverUser.getStatusOfOtherUsers(contacts, callback: statusCallback)
+
+        serverUser.getStatusOfOtherUsers(contacts)
         sleep(1)
-            
-        sortContacts()
-        println("Getting out of viewWillAppear()")
         
-        self.tableView.reloadData()
+        var statusUpdate = NSTimer.scheduledTimerWithTimeInterval(statusUpdateTime, target: self, selector: Selector("updateStatus"), userInfo: nil, repeats: true)
+        
+        
     }
     
-    private func statusCallback(statusesFromServer: [Int], contacts: [Contacts]) {
+    func updateStatus()
+    {
+        serverUser.getStatusOfOtherUsers(contacts)
+        sortContacts()
+        self.tableView.reloadData()
     }
     
     // Sort contacts

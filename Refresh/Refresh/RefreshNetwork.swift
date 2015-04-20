@@ -27,7 +27,7 @@ class ServerUser
     //call and it will be executed.
     private func HTTPsendRequest(request: NSMutableURLRequest,
         callback: (String, String?) -> Void) {
-            println("Actually in HTTPsendRequst")
+            //println("Actually in HTTPsendRequst")
             
             //completion handler is what gets called after request finishes. It uses
             //callback as an error handler or way to actually deal with the request
@@ -36,8 +36,8 @@ class ServerUser
                 completionHandler:
                 {
                     data, response, error in
-                    println("In completion handler")
-                    println(data)
+                    //println("In completion handler")
+                    //println(data)
                     if error != nil {
                         callback("", error.localizedDescription)//1) callback as error handler
                     } else {
@@ -48,9 +48,9 @@ class ServerUser
                         )
                     }
             })
-            println("Gets past let task in HTTPsendRequest")
+            //println("Gets past let task in HTTPsendRequest")
             task.resume()//actually sending over the HTTP request
-            println("get's past task.resume")
+            //println("get's past task.resume")
     }
     
     private func HTTPGetStatus(url: String, jsonObj: AnyObject, callback: (Dictionary<String, Int>, String?) -> Void)
@@ -62,24 +62,23 @@ class ServerUser
         
         let jsonString = JSONStringify(jsonObj)
         let data: NSData = jsonString.dataUsingEncoding(NSUTF8StringEncoding)!
-
         request.HTTPBody = data
         
         //2)
         HTTPsendRequest(request)
         {
             (data: String, error: String?) -> Void in
-            println("Gets into HTTPGetJsonCallBack")
+            //println("Gets into HTTPGetJsonCallBack")
             if (error != nil)
             {
-                println("if")
-                println(data)
+                //println("if")
+                //println(data)
                 callback(Dictionary<String, Int>(), error)
             }
             else
             {
                 var jsonObj = self.JSONParseDict(data)
-                println("else")
+                //println("else")
                 callback(jsonObj, nil)
             }
         }
@@ -100,7 +99,7 @@ class ServerUser
     
     //HTTP Get request - in case we need it later
     private func HTTPGet(url: String, callback: (String, String?) -> Void) {
-        println("HTTPGet request")
+        //println("HTTPGet request")
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
         HTTPsendRequest(request, callback: callback)
     }
@@ -188,9 +187,8 @@ class ServerUser
     }
     
     //Getting the status of otherPerson
-    func getStatusOfOtherUsers(otherPeople: [Contacts], callback: ([Int], [Contacts]) -> Void)
+    func getStatusOfOtherUsers(otherPeople: [Contacts])
     {
-        println("gets inside getStatusOfAnotherUser")
         var otherPeoplePhoneNumbers = [String]()
         var phoneToContactDict: [String: Contacts] = [String: Contacts]()
         
@@ -199,30 +197,30 @@ class ServerUser
             otherPeoplePhoneNumbers.append(contact.phoneNumber)
         }
         let jsonObject:[String:[AnyObject]] = ["phonenumbers": otherPeoplePhoneNumbers]
-        println(jsonObject)
+        //println(jsonObject)
         
         //This call back function is called within the HTTPGetJSON //3)
         HTTPGetStatus(databaseURL + "/db/getStatus/\(yourPhoneNumber)", jsonObj: jsonObject,
         callback: {
             (data: Dictionary<String, Int>, error: String?) -> Void in
-            println("In the callback for HTTPGetStatus")
+            //println("In the callback for HTTPGetStatus")
             if (error != nil) {
                 println(error)
             } else {
                 for (phonenumber, status) in data
                 {
-                    println(phonenumber)
-                    println(phoneToContactDict[phonenumber]!.status)
+                    //println(phonenumber)
+                    //println(phoneToContactDict[phonenumber]!.status)
                     phoneToContactDict[phonenumber]!.status = status
                     
                 }
                 
-                for (phonenumber, status) in data
+                /*for (phonenumber, status) in data
                 {
                     println(phonenumber)
                     println(phoneToContactDict[phonenumber]!.status)
                     
-                }
+                }*/
             }
         })
     }
