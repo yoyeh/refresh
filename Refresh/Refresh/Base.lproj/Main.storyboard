@@ -59,7 +59,7 @@
                             <constraint firstItem="UIC-qh-vXD" firstAttribute="top" secondItem="6Qk-he-TCj" secondAttribute="bottom" constant="23" id="PiX-i8-PEP"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Qqx-Ud-HHg"/>
                             <constraint firstAttribute="centerX" secondItem="6Qk-he-TCj" secondAttribute="centerX" id="W5y-iz-bIr"/>
-                            <constraint firstItem="DGa-tv-Y74" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="157" id="Ykr-4o-9Xy"/>
+                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="46" id="dXM-I0-4GX"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kbZ-u2-9IO"/>
                         </constraints>
                     </view>

@@ -42,7 +42,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         if var first = ABRecordCopyValue(person, kABPersonFirstNameProperty)?.takeRetainedValue() as? String {
             newContact.firstName = first
         }
-        if var last = ABRecordCopyValue(person, kABPersonFirstNameProperty)?.takeRetainedValue() as? String {
+        if var last = ABRecordCopyValue(person, kABPersonLastNameProperty)?.takeRetainedValue() as? String {
             newContact.lastName = last
         }
         
