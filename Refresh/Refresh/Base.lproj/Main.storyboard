@@ -203,13 +203,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call every" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQb-yQ-wnr">
                                 <rect key="frame" x="16" y="97" width="76" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3G-hT-QSN">
                                 <rect key="frame" x="16" y="126" width="45" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kJY-Ur-LSg">
@@ -221,7 +221,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lza-kd-I5S">
                                 <rect key="frame" x="16" y="168" width="45" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -306,50 +306,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Your Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erl-pz-OZn">
-                                <rect key="frame" x="16" y="189" width="568" height="21"/>
+                                <rect key="frame" x="16" y="164" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6M-7s-HaV">
-                                <rect key="frame" x="281" y="335" width="38" height="30"/>
-                                <state key="normal" title="Verify">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickedVerifyButton:" destination="NK8-IV-A3M" eventType="touchUpInside" id="KSI-2l-M4U"/>
-                                    <segue destination="d3M-Ik-DT3" kind="show" id="koY-WC-bo8"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="96U-lA-dSX">
-                                <rect key="frame" x="239" y="260" width="123" height="30"/>
+                                <rect key="frame" x="239" y="235" width="123" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="123" id="LsK-2w-tXC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFM-3a-0oN">
+                                <rect key="frame" x="16" y="513" width="118" height="30"/>
+                                <state key="normal" title="Send Notification">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendNotification:" destination="NK8-IV-A3M" eventType="touchUpInside" id="r3c-Ne-sOM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6M-7s-HaV">
+                                <rect key="frame" x="281" y="300" width="38" height="30"/>
+                                <state key="normal" title="Verify">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedVerifyButton:" destination="NK8-IV-A3M" eventType="touchUpInside" id="KSI-2l-M4U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="d6M-7s-HaV" secondAttribute="centerX" id="ALK-mb-gPu"/>
+                            <constraint firstItem="EmH-No-73o" firstAttribute="top" secondItem="pFM-3a-0oN" secondAttribute="bottom" constant="8" id="L4G-En-aH5"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="centerX" secondItem="erl-pz-OZn" secondAttribute="centerX" id="R7H-YC-UrQ"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="leading" secondItem="hhB-U8-nOc" secondAttribute="leadingMargin" id="SxQ-pX-Duc"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="trailing" secondItem="hhB-U8-nOc" secondAttribute="trailingMargin" id="bod-ba-IiW"/>
-                            <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="96U-lA-dSX" secondAttribute="bottom" constant="45" id="gsP-YV-CoH"/>
-                            <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="169" id="iAW-Lj-4Nc"/>
-                            <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="125" id="jJz-x0-zND"/>
+                            <constraint firstItem="pFM-3a-0oN" firstAttribute="leading" secondItem="hhB-U8-nOc" secondAttribute="leadingMargin" id="edG-Zx-0VD"/>
+                            <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="96U-lA-dSX" secondAttribute="bottom" constant="35" id="gsP-YV-CoH"/>
+                            <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="144" id="iAW-Lj-4Nc"/>
+                            <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="115" id="jJz-x0-zND"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" image="status_icon.png" id="Bvh-IC-Zdu"/>
                     <connections>
+                        <outlet property="notificationButton" destination="pFM-3a-0oN" id="vQZ-Wd-rzo"/>
                         <outlet property="phoneNumberInput" destination="96U-lA-dSX" id="bYv-Ib-UCZ"/>
                         <outlet property="verifyButton" destination="d6M-7s-HaV" id="WuZ-80-yNJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yza-GF-GEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-172" y="851"/>
+            <point key="canvasLocation" x="-204" y="633"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HiB-BS-7w8">

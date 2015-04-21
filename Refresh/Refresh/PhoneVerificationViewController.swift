@@ -28,13 +28,13 @@ class PhoneVerificationViewController: UIViewController, MFMessageComposeViewCon
             
             // text message
             if (MFMessageComposeViewController.canSendText()) {
-            var messageVC = MFMessageComposeViewController()
+                var messageVC = MFMessageComposeViewController()
             
-            messageVC.body = "Click send to verify your phone number. [RANDOMCODE]"
-            messageVC.recipients = ["9172825940"] // replace with custom phone number
-            messageVC.messageComposeDelegate = self
+                messageVC.body = "Click send to verify your phone number. [RANDOMCODE]"
+                messageVC.recipients = ["9172825940"] // replace with custom phone number
+                messageVC.messageComposeDelegate = self
             
-            self.presentViewController(messageVC, animated: true, completion: nil)
+                self.presentViewController(messageVC, animated: true, completion: nil)
             }
         }
         else {
@@ -77,4 +77,15 @@ class PhoneVerificationViewController: UIViewController, MFMessageComposeViewCon
         }
     }
     
+    // test local notifications
+    @IBOutlet weak var notificationButton: UIButton!
+    @IBAction func sendNotification(sender: AnyObject) {
+        var localNotification = UILocalNotification()
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        localNotification.alertBody = "Paul Chang just came online"
+        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
 }

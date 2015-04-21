@@ -11,18 +11,22 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    private var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        var types: UIUserNotificationType = UIUserNotificationType.Badge |
-//            UIUserNotificationType.Alert |
-//            UIUserNotificationType.Sound
-//        
-//        var settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
-//        
-//        application.registerUserNotificationSettings( settings )
+        var types: UIUserNotificationType = UIUserNotificationType.Badge |
+            UIUserNotificationType.Alert |
+            UIUserNotificationType.Sound
+        
+        var settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
+        
+        application.registerUserNotificationSettings( settings )
 //        application.registerForRemoteNotifications()
         
+//        if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:"))) {
+//            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Alert | .Badge, categories: nil))
+//        }
+//        
         let defaults = NSUserDefaults.standardUserDefaults()
         
         if defaults.boolForKey("firstLaunch") {
@@ -61,6 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    // If the app is running while the notification is delivered, there is no alert displayed on screen.
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        application.applicationIconBadgeNumber = 0
     }
     
     func application( application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData ) {
