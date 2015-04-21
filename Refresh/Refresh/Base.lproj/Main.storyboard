@@ -311,6 +311,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6M-7s-HaV">
+                                <rect key="frame" x="281" y="300" width="38" height="30"/>
+                                <state key="normal" title="Verify">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedVerifyButton:" destination="NK8-IV-A3M" eventType="touchUpInside" id="KSI-2l-M4U"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="96U-lA-dSX">
                                 <rect key="frame" x="239" y="235" width="123" height="30"/>
                                 <constraints>
@@ -328,22 +337,24 @@
                                     <action selector="sendNotification:" destination="NK8-IV-A3M" eventType="touchUpInside" id="r3c-Ne-sOM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6M-7s-HaV">
-                                <rect key="frame" x="281" y="300" width="38" height="30"/>
-                                <state key="normal" title="Verify">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03y-9D-p9u">
+                                <rect key="frame" x="533" y="513" width="51" height="30"/>
+                                <state key="normal" title="Escape">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="clickedVerifyButton:" destination="NK8-IV-A3M" eventType="touchUpInside" id="KSI-2l-M4U"/>
+                                    <segue destination="d3M-Ik-DT3" kind="show" id="Ut7-Wh-3G1"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="EmH-No-73o" firstAttribute="top" secondItem="03y-9D-p9u" secondAttribute="bottom" constant="8" id="3aG-Vv-Gvu"/>
                             <constraint firstAttribute="centerX" secondItem="d6M-7s-HaV" secondAttribute="centerX" id="ALK-mb-gPu"/>
                             <constraint firstItem="EmH-No-73o" firstAttribute="top" secondItem="pFM-3a-0oN" secondAttribute="bottom" constant="8" id="L4G-En-aH5"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="centerX" secondItem="erl-pz-OZn" secondAttribute="centerX" id="R7H-YC-UrQ"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="leading" secondItem="hhB-U8-nOc" secondAttribute="leadingMargin" id="SxQ-pX-Duc"/>
+                            <constraint firstItem="03y-9D-p9u" firstAttribute="trailing" secondItem="hhB-U8-nOc" secondAttribute="trailingMargin" id="X4C-Fr-6Lw"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="trailing" secondItem="hhB-U8-nOc" secondAttribute="trailingMargin" id="bod-ba-IiW"/>
                             <constraint firstItem="pFM-3a-0oN" firstAttribute="leading" secondItem="hhB-U8-nOc" secondAttribute="leadingMargin" id="edG-Zx-0VD"/>
                             <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="96U-lA-dSX" secondAttribute="bottom" constant="35" id="gsP-YV-CoH"/>
@@ -360,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yza-GF-GEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="633"/>
+            <point key="canvasLocation" x="-200" y="615"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HiB-BS-7w8">

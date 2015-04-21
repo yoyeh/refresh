@@ -11,7 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private var window: UIWindow?
+    var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         var types: UIUserNotificationType = UIUserNotificationType.Badge |
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        if defaults.boolForKey("firstLaunch") {
+        if defaults.boolForKey("hasBeenLaunched") {
             // not first launch
             let verStatus = defaults.integerForKey("verificationStatus")
             if verStatus == 0 {
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else {
             // first launch
-            defaults.setBool(true, forKey: "firstLaunch")
+            defaults.setBool(true, forKey: "hasBeenLaunched")
             defaults.setInteger(0, forKey: "verificationStatus")
             // verification status
             // [0] has not entered phone number
