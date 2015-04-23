@@ -13,13 +13,12 @@ var yourContactInformation = Contacts(firstname: "Main", lastname: "User", callf
 
 
 class NowViewController: UITableViewController {
-    var contacts:[Contacts] = []
-    var localdatabase = LocalDatabase()
-    //var displayCell:[Int] = []
-    var availableImage = UIImage(named: "available.png")
-    var notAvailableImage = UIImage(named: "unavailable.png")
-    var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
-    var statusUpdateTime:Double = 1
+    private var contacts:[Contacts] = []
+    private var localdatabase = LocalDatabase()
+    private var availableImage = UIImage(named: "available.png")
+    private var notAvailableImage = UIImage(named: "unavailable.png")
+    private var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+    private var statusUpdateTime:Double = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +101,7 @@ class NowViewController: UITableViewController {
         }
     }
     // save date and info after phone call
-    func afterPhoneCall(contact : Contacts, startTime : NSTimeInterval)
+    private func afterPhoneCall(contact : Contacts, startTime : NSTimeInterval)
     {
         sleep(3)
         let alertController: UIAlertController = UIAlertController(title: "Returning to Refresh!", message: "", preferredStyle: .Alert)
@@ -117,7 +116,7 @@ class NowViewController: UITableViewController {
         self.presentViewController(alertController, animated : true, completion: nil)
     }
     
-    func saveInfo(contact : Contacts)
+    private func saveInfo(contact : Contacts)
     {
         var localdatabase = LocalDatabase()
         localdatabase.initializeDatabase()

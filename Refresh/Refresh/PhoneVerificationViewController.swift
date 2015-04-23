@@ -58,7 +58,7 @@ class PhoneVerificationViewController: UIViewController, MFMessageComposeViewCon
         
     }
     
-    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+    private func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     

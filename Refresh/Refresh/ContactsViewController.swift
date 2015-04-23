@@ -11,10 +11,10 @@ import UIKit
 import AddressBookUI
 
 class ContactsViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate {
-    var contacts:[Contacts] = []
-    var localdatabase = LocalDatabase()
-    let personPicker: ABPeoplePickerNavigationController
-    var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+    private var contacts:[Contacts] = []
+    private var localdatabase = LocalDatabase()
+    private var personPicker: ABPeoplePickerNavigationController
+    private var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
 
     required init(coder aDecoder: NSCoder) {
         personPicker = ABPeoplePickerNavigationController()
