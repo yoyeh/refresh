@@ -14,6 +14,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     var contacts:[Contacts] = []
     var localdatabase = LocalDatabase()
     let personPicker: ABPeoplePickerNavigationController
+    var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
 
     required init(coder aDecoder: NSCoder) {
         personPicker = ABPeoplePickerNavigationController()
@@ -61,7 +62,6 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         
         self.tableView.reloadData()
         
-        var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         serveruser.putContactToServer(contacts, status: 0)
 
 //        var serveruser2 = ServerUser(yourContactInfo: newContact, serverConnection: true)
@@ -120,6 +120,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
             let contactToDelete = contacts[indexPath.row] as Contacts
             contacts.removeAtIndex(indexPath.row)
             localdatabase.deleteContact(contactToDelete)
+            serveruser.changeContactsOnServer(contacts)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }

@@ -24,7 +24,8 @@ class PhoneVerificationViewController: UIViewController, MFMessageComposeViewCon
             defaults.setInteger(2, forKey: "verificationStatus") // set to verified
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
             
-            // TODO set or update main user contact information. Create contact here or in RefreshNetwork method?
+            // TODO set or update main user contact information. 
+            // Create contact here or in RefreshNetwork method?
             
             // text message
             if (MFMessageComposeViewController.canSendText()) {
