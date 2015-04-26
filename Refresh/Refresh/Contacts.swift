@@ -15,6 +15,7 @@ class Contacts {
     var lastCallDate = "null"
     var lastCallInfo = "null"
     var specialDates = "null"
+    var lastDateFormatted = NSDate()
     
     var status = 1 // status: [0] unavailable [1] unknown [2] available
     var phoneNumber = "null"
@@ -45,5 +46,22 @@ class Contacts {
     
     init() {}
     
-    
+    func sortLastDate(contact : Contacts) -> Int
+    {
+        let date = contact.lastDateFormatted
+        let frequency = contact.callFrequency * 7
+        var days : Int
+        
+        if contact.lastCallDate == "null"
+        {
+            days = 0
+        }
+        else
+        {
+            let timeElapsed = Int(NSDate().timeIntervalSinceDate(date))
+            days = frequency - timeElapsed/1440
+        }
+        println(days)
+        return days
+    }
 }

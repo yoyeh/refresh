@@ -50,13 +50,9 @@ class NowViewController: UITableViewController {
     
     // Sort contacts
     func sortContacts() {
-        // Sort the contacts array by callFrequency
-        contacts.sort { $0.callFrequency > $1.callFrequency }
-        
-        let df1 = NSDateFormatter()
-        let df2 = NSDateFormatter()
-        // sort the contacts by last date called
-        
+        // Sort the contacts array by time since last call
+        contacts.sort { $0.sortLastDate($0) < $1.sortLastDate($1) }
+
         // Sort the contacts array by status
         contacts.sort { $0.status > $1.status }
     }
@@ -123,6 +119,7 @@ class NowViewController: UITableViewController {
         var dateformatter = NSDateFormatter()
         dateformatter.dateStyle = .ShortStyle
         
+        contact.lastDateFormatted = date
         contact.lastCallDate = dateformatter.stringFromDate(date)
         localdatabase.editContact(contact)
         
