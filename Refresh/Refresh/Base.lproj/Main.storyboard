@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d3M-Ik-DT3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d3M-Ik-DT3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -318,6 +318,7 @@
                                 </state>
                                 <connections>
                                     <action selector="clickedVerifyButton:" destination="NK8-IV-A3M" eventType="touchUpInside" id="KSI-2l-M4U"/>
+                                    <segue destination="CMS-WW-HfT" kind="show" id="Pfa-MZ-H7V"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="96U-lA-dSX">
@@ -344,7 +345,6 @@
                                 </state>
                                 <connections>
                                     <action selector="pressedEscape:" destination="NK8-IV-A3M" eventType="touchUpInside" id="PPX-R8-wEh"/>
-                                    <segue destination="d3M-Ik-DT3" kind="show" id="Ut7-Wh-3G1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -373,7 +373,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yza-GF-GEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-200" y="615"/>
+            <point key="canvasLocation" x="-128" y="909"/>
+        </scene>
+        <!--Phone Confirmation View Controller-->
+        <scene sceneID="m41-MR-511">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmPhoneStoryboardID" id="CMS-WW-HfT" customClass="PhoneConfirmationViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dhc-bM-Bpf"/>
+                        <viewControllerLayoutGuide type="bottom" id="346-l4-JIm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="djW-1m-Gdc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ilQ-xR-yti">
+                                <rect key="frame" x="239" y="318" width="123" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="ZBZ-6v-ufB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type in your Confirmation Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bey-a4-cDy">
+                                <rect key="frame" x="185" y="240" width="243" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TqA-jU-lNk">
+                                <rect key="frame" x="273" y="403" width="55" height="30"/>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedConfirmButton:" destination="CMS-WW-HfT" eventType="touchUpInside" id="Ivt-oU-DdB"/>
+                                    <action selector="clickedVerifyButton:" destination="NK8-IV-A3M" eventType="touchUpInside" id="XUf-Tu-2DI"/>
+                                    <segue destination="d3M-Ik-DT3" kind="show" id="Lkv-db-8Ai"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Bey-a4-cDy" secondAttribute="centerX" constant="-6.5" id="1TN-Od-zpS"/>
+                            <constraint firstItem="TqA-jU-lNk" firstAttribute="top" secondItem="ilQ-xR-yti" secondAttribute="bottom" constant="55" id="9FD-O0-710"/>
+                            <constraint firstAttribute="centerX" secondItem="Bey-a4-cDy" secondAttribute="centerX" constant="-6.5" id="Em2-eK-lNP"/>
+                            <constraint firstAttribute="centerY" secondItem="ilQ-xR-yti" secondAttribute="centerY" constant="-33" id="L8R-ay-HVf"/>
+                            <constraint firstAttribute="centerX" secondItem="ilQ-xR-yti" secondAttribute="centerX" id="UJu-zv-GvO"/>
+                            <constraint firstAttribute="centerX" secondItem="TqA-jU-lNk" secondAttribute="centerX" id="gqi-kJ-qL1"/>
+                            <constraint firstItem="ilQ-xR-yti" firstAttribute="top" secondItem="Bey-a4-cDy" secondAttribute="bottom" constant="57" id="yLb-Ck-Nf4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="TqA-jU-lNk" id="Gjn-Ii-J3P"/>
+                        <outlet property="confirmationCodeInput" destination="ilQ-xR-yti" id="LPS-Ls-pRl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGF-83-9Im" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="687" y="909"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HiB-BS-7w8">
