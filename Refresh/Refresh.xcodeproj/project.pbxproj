@@ -26,6 +26,7 @@
 		0790681C1AD3803600612C53 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 079068141AD3803600612C53 /* FMDatabasePool.m */; };
 		0790681D1AD3803600612C53 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 079068161AD3803600612C53 /* FMDatabaseQueue.m */; };
 		0790681E1AD3803600612C53 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 079068191AD3803600612C53 /* FMResultSet.m */; };
+		07B53BD81AEC9E65000C132E /* PhoneConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B53BD71AEC9E64000C132E /* PhoneConfirmationViewController.swift */; };
 		07C4F3FB1AC3855E0071A762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */; };
 		07C4F4001AC3855E0071A762 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C4F3FE1AC3855E0071A762 /* Main.storyboard */; };
 		07C4F4021AC3855E0071A762 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07C4F4011AC3855E0071A762 /* Images.xcassets */; };
@@ -74,6 +75,7 @@
 		079068171AD3803600612C53 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = fmdb/FMDB.h; sourceTree = "<group>"; };
 		079068181AD3803600612C53 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = fmdb/FMResultSet.h; sourceTree = "<group>"; };
 		079068191AD3803600612C53 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		07B53BD71AEC9E64000C132E /* PhoneConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneConfirmationViewController.swift; sourceTree = "<group>"; };
 		07C4F3F51AC3855E0071A762 /* Refresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Refresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C4F3F91AC3855E0071A762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				0735D6FC1AC4952D00DAB825 /* ContactsViewController.swift */,
 				073F86DE1ACDE20000814584 /* ContactsDetailViewController.swift */,
 				07CED34B1AE4BC7300DEC805 /* PhoneVerificationViewController.swift */,
+				07B53BD71AEC9E64000C132E /* PhoneConfirmationViewController.swift */,
 				07C4F3FE1AC3855E0071A762 /* Main.storyboard */,
 				07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */,
 				07C4F4011AC3855E0071A762 /* Images.xcassets */,
@@ -313,6 +316,7 @@
 			files = (
 				0735D6FB1AC4940400DAB825 /* NowViewController.swift in Sources */,
 				07CED34C1AE4BC7300DEC805 /* PhoneVerificationViewController.swift in Sources */,
+				07B53BD81AEC9E65000C132E /* PhoneConfirmationViewController.swift in Sources */,
 				0790681A1AD3803600612C53 /* FMDatabase.m in Sources */,
 				0735D6FD1AC4952D00DAB825 /* ContactsViewController.swift in Sources */,
 				07C4F44B1AC48D0E0071A762 /* ViewController.swift in Sources */,

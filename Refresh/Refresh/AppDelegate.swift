@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // resend text option
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                var initialViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("VerifyPhoneStoryboardID") as! UIViewController
+                var initialViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ConfirmPhoneStoryboardID") as! UIViewController
                 
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
