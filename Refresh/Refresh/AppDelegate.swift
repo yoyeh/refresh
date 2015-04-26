@@ -25,34 +25,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if defaults.boolForKey("hasBeenLaunched") {
             // not first launch
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            
             let verStatus = defaults.integerForKey("verificationStatus")
             if verStatus == 0 {
                 // show screen to enter phone number
-                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 var initialViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("VerifyPhoneStoryboardID") as! UIViewController
-                
                 self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
             }
             else if verStatus == 1 {
                 // resend text option
-                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 var initialViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ConfirmPhoneStoryboardID") as! UIViewController
-                
                 self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
             }
             else {
                 // open normal app view, no verification process
-                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 var initialViewController: UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("TabBarStoryboardID") as! UITabBarController
-                
                 self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
             }
+            self.window?.makeKeyAndVisible()
         }
         else {
             // first launch
@@ -99,8 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         println("applicationDidEnterBackground")
         
-        let secondsPerDay = 86400
-        // TODO: magic numbers
+        // let secondsPerDay = 86400
         var oneDayNotification = UILocalNotification()
         oneDayNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
         oneDayNotification.alertBody = "Your friends miss you! Who will you call next using Refresh?"
