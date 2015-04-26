@@ -11,8 +11,6 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var currentStatus: UILabel!
-    
-    
     @IBOutlet weak var availableButton: UIButton!
     @IBOutlet weak var unavailableButton: UIButton!
     

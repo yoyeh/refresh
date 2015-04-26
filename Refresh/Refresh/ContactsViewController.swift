@@ -11,9 +11,10 @@ import UIKit
 import AddressBookUI
 
 class ContactsViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate {
-    var contacts:[Contacts] = []
-    var localdatabase = LocalDatabase()
-    let personPicker: ABPeoplePickerNavigationController
+    private var contacts:[Contacts] = []
+    private var localdatabase = LocalDatabase()
+    private var personPicker: ABPeoplePickerNavigationController
+    private var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
 
     required init(coder aDecoder: NSCoder) {
         personPicker = ABPeoplePickerNavigationController()
@@ -42,7 +43,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         if var first = ABRecordCopyValue(person, kABPersonFirstNameProperty)?.takeRetainedValue() as? String {
             newContact.firstName = first
         }
-        if var last = ABRecordCopyValue(person, kABPersonFirstNameProperty)?.takeRetainedValue() as? String {
+        if var last = ABRecordCopyValue(person, kABPersonLastNameProperty)?.takeRetainedValue() as? String {
             newContact.lastName = last
         }
         
@@ -61,7 +62,6 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         
         self.tableView.reloadData()
         
-        var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         serveruser.putContactToServer(contacts, status: 0)
 
 //        var serveruser2 = ServerUser(yourContactInfo: newContact, serverConnection: true)
@@ -120,6 +120,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
             let contactToDelete = contacts[indexPath.row] as Contacts
             contacts.removeAtIndex(indexPath.row)
             localdatabase.deleteContact(contactToDelete)
+            serveruser.changeContactsOnServer(contacts)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }

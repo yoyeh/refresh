@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class ContactsDetailViewController: UIViewController {
-    var localdatabase = LocalDatabase()
-    var updatedContact = Contacts()
+    private var localdatabase = LocalDatabase()
+    private var updatedContact = Contacts()
     
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -70,10 +70,6 @@ class ContactsDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-//        localdatabase.accessContact(<#contact: Contacts#>)
     }
-    
-//    @IBAction func editContactInfo(sender: AnyObject) {
-//        lastCallInfoText.editable = true
-//    }
+
 }
