@@ -39,8 +39,6 @@ class NowViewController: UITableViewController {
         updateStatus()
         
         var statusUpdate = NSTimer.scheduledTimerWithTimeInterval(statusUpdateTime, target: self, selector: Selector("updateStatus"), userInfo: nil, repeats: true)
-        
-        
     }
     
     func updateStatus()

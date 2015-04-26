@@ -8,10 +8,9 @@
 
 import Foundation
 import UIKit
-import MessageUI
 
-class PhoneVerificationViewController: UIViewController, MFMessageComposeViewControllerDelegate {
-    
+class PhoneVerificationViewController: UIViewController {
+
     @IBOutlet weak var verifyButton: UIButton!
     @IBOutlet weak var phoneNumberInput: UITextField!
     
@@ -21,22 +20,8 @@ class PhoneVerificationViewController: UIViewController, MFMessageComposeViewCon
             phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
             
             let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setInteger(2, forKey: "verificationStatus") // set to verified
+            defaults.setInteger(1, forKey: "verificationStatus") // Set to phone number entered
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
-            
-            // TODO set or update main user contact information. 
-            // Create contact here or in RefreshNetwork method?
-            
-            // text message
-            if (MFMessageComposeViewController.canSendText()) {
-                var messageVC = MFMessageComposeViewController()
-            
-                messageVC.body = "Click send to verify your phone number. [RANDOMCODE]"
-                messageVC.recipients = ["9172825940"] // replace with custom phone number
-                messageVC.messageComposeDelegate = self
-            
-                self.presentViewController(messageVC, animated: true, completion: nil)
-            }
         }
         else {
             // prompt user with alert to enter valid phone number
@@ -55,27 +40,10 @@ class PhoneVerificationViewController: UIViewController, MFMessageComposeViewCon
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         tapRecognizer.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapRecognizer)
-        
     }
     
-    private func handleSingleTap(recognizer: UITapGestureRecognizer) {
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
-    }
-    
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
-        switch (result.value) {
-        case MessageComposeResultCancelled.value:
-            println("Message was cancelled")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case MessageComposeResultFailed.value:
-            println("Message failed")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case MessageComposeResultSent.value:
-            println("Message was sent")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        default:
-            break;
-        }
     }
     
     // test local notifications
@@ -88,5 +56,15 @@ class PhoneVerificationViewController: UIViewController, MFMessageComposeViewCon
         localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
+    // for testing only
+    @IBOutlet weak var escape: UIButton!
+    @IBAction func pressedEscape(sender: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let phone = defaults.integerForKey("mainUserPhoneNumber")
+        let verStatus = defaults.integerForKey("verificationStatus")
+        println("Phone Number: " + String(phone))
+        println("Verification status: " + String(verStatus))
     }
 }
