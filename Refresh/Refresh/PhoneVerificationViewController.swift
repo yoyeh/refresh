@@ -11,6 +11,8 @@ import UIKit
 
 class PhoneVerificationViewController: UIViewController {
 
+    private var defaults = NSUserDefaults.standardUserDefaults()
+    
     @IBOutlet weak var verifyButton: UIButton!
     @IBOutlet weak var phoneNumberInput: UITextField!
     
@@ -18,8 +20,7 @@ class PhoneVerificationViewController: UIViewController {
         if (!phoneNumberInput.text.isEmpty) {
             var phoneNumber = phoneNumberInput.text
             phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
-            
-            let defaults = NSUserDefaults.standardUserDefaults()
+
             defaults.setInteger(1, forKey: "verificationStatus") // Set to phone number entered
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
         }
@@ -31,7 +32,6 @@ class PhoneVerificationViewController: UIViewController {
             alert.addButtonWithTitle("Ok")
             alert.show()
         }
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -42,6 +42,7 @@ class PhoneVerificationViewController: UIViewController {
         self.view.addGestureRecognizer(tapRecognizer)
     }
     
+    // Hide keyboard when user taps anywhere outside keyboard
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
@@ -61,7 +62,6 @@ class PhoneVerificationViewController: UIViewController {
     // for testing only
     @IBOutlet weak var escape: UIButton!
     @IBAction func pressedEscape(sender: AnyObject) {
-        let defaults = NSUserDefaults.standardUserDefaults()
         let phone = defaults.integerForKey("mainUserPhoneNumber")
         let verStatus = defaults.integerForKey("verificationStatus")
         println("Phone Number: " + String(phone))

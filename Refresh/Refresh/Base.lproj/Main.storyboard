@@ -483,7 +483,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TqA-jU-lNk">
-                                <rect key="frame" x="273" y="403" width="55" height="30"/>
+                                <rect key="frame" x="273" y="372" width="55" height="30"/>
                                 <state key="normal" title="Confirm">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -493,21 +493,43 @@
                                     <segue destination="d3M-Ik-DT3" kind="show" id="Lkv-db-8Ai"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pj-oA-iJ4">
+                                <rect key="frame" x="176" y="416" width="250" height="30"/>
+                                <state key="normal" title="I want to re-enter my phone number.">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedChangeNumberButton:" destination="CMS-WW-HfT" eventType="touchUpInside" id="GdK-kh-LmC"/>
+                                    <segue destination="NK8-IV-A3M" kind="show" id="z0N-7X-EWz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0w-vR-gic">
+                                <rect key="frame" x="231" y="284" width="138" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Bey-a4-cDy" secondAttribute="centerX" constant="-6.5" id="1TN-Od-zpS"/>
-                            <constraint firstItem="TqA-jU-lNk" firstAttribute="top" secondItem="ilQ-xR-yti" secondAttribute="bottom" constant="55" id="9FD-O0-710"/>
+                            <constraint firstItem="TqA-jU-lNk" firstAttribute="top" secondItem="ilQ-xR-yti" secondAttribute="bottom" constant="24" id="9FD-O0-710"/>
                             <constraint firstAttribute="centerX" secondItem="Bey-a4-cDy" secondAttribute="centerX" constant="-6.5" id="Em2-eK-lNP"/>
                             <constraint firstAttribute="centerY" secondItem="ilQ-xR-yti" secondAttribute="centerY" constant="-33" id="L8R-ay-HVf"/>
                             <constraint firstAttribute="centerX" secondItem="ilQ-xR-yti" secondAttribute="centerX" id="UJu-zv-GvO"/>
+                            <constraint firstAttribute="centerX" secondItem="z0w-vR-gic" secondAttribute="centerX" id="YSc-Bk-1KN"/>
+                            <constraint firstItem="z0w-vR-gic" firstAttribute="top" secondItem="Bey-a4-cDy" secondAttribute="bottom" constant="23" id="bf3-dK-H6i"/>
                             <constraint firstAttribute="centerX" secondItem="TqA-jU-lNk" secondAttribute="centerX" id="gqi-kJ-qL1"/>
+                            <constraint firstItem="1Pj-oA-iJ4" firstAttribute="top" secondItem="TqA-jU-lNk" secondAttribute="bottom" constant="14" id="yLN-n3-aMa"/>
                             <constraint firstItem="ilQ-xR-yti" firstAttribute="top" secondItem="Bey-a4-cDy" secondAttribute="bottom" constant="57" id="yLb-Ck-Nf4"/>
+                            <constraint firstAttribute="centerX" secondItem="1Pj-oA-iJ4" secondAttribute="centerX" constant="-1" id="zaG-Wf-PBp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changeNumberButton" destination="1Pj-oA-iJ4" id="bcu-lT-C9P"/>
                         <outlet property="confirmButton" destination="TqA-jU-lNk" id="Gjn-Ii-J3P"/>
                         <outlet property="confirmationCodeInput" destination="ilQ-xR-yti" id="LPS-Ls-pRl"/>
+                        <outlet property="phoneNumberLabel" destination="z0w-vR-gic" id="R8h-zL-8mt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGF-83-9Im" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -540,4 +562,7 @@
         <image name="now_icon.png" width="60" height="60"/>
         <image name="status_icon.png" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="z0N-7X-EWz"/>
+    </inferredMetricsTieBreakers>
 </document>

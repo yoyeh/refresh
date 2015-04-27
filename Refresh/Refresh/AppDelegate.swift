@@ -94,15 +94,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // let secondsPerDay = 86400
         var oneDayNotification = UILocalNotification()
         oneDayNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
-        oneDayNotification.alertBody = "Your friends miss you! Who will you call next using Refresh?"
+        oneDayNotification.alertBody = "Your friends miss you. Who will you call next?"
         oneDayNotification.timeZone = NSTimeZone.defaultTimeZone()
         oneDayNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         UIApplication.sharedApplication().scheduleLocalNotification(oneDayNotification)
         
         
         var threeDayNotification = UILocalNotification()
-        threeDayNotification.fireDate = NSDate(timeIntervalSinceNow: 15)
-        threeDayNotification.alertBody = "It's been three days!"
+        threeDayNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+        threeDayNotification.alertBody = "It's been a while since your friends have heard from you."
         threeDayNotification.timeZone = NSTimeZone.defaultTimeZone()
         threeDayNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         UIApplication.sharedApplication().scheduleLocalNotification(threeDayNotification)
