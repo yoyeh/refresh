@@ -14,8 +14,7 @@ class Contacts {
     var callFrequency = 0
     var lastCallDate = "null"
     var lastCallInfo = "null"
-    var specialDates = "null"
-    var lastDateFormatted = NSDate()
+    var specialDates = ""
     
     var status = 1 // status: [0] unavailable [1] unknown [2] available
     var phoneNumber = "null"
@@ -48,7 +47,20 @@ class Contacts {
     
     func sortLastDate(contact : Contacts) -> Int
     {
-        let date = contact.lastDateFormatted
+        let dateformatter = NSDateFormatter()
+        dateformatter.dateStyle = .ShortStyle
+        dateformatter.timeStyle = .ShortStyle
+        let date2 = dateformatter.dateFromString(contact.lastCallDate)
+        println(date2)
+        
+        let last = date2?.timeIntervalSince1970
+        let df2 = NSDateFormatter()
+        df2.dateStyle = .ShortStyle
+        df2.timeStyle = .ShortStyle
+        let date3 = df2.stringFromDate(NSDate())
+        let date4 = df2.dateFromString(date3)
+        let current = date4?.timeIntervalSince1970
+        
         let frequency = contact.callFrequency * 7
         var days : Int
         
@@ -58,10 +70,35 @@ class Contacts {
         }
         else
         {
-            let timeElapsed = Int(NSDate().timeIntervalSinceDate(date))
+            let timeElapsed = Int(current! - last!)
             days = frequency - timeElapsed/1440
         }
         println(days)
         return days
+    }
+    
+    func removeOldDates(contact : Contacts) -> String
+    {
+        var dateformat = NSDateFormatter()
+        dateformat.dateStyle = .ShortStyle
+        dateformat.timeStyle = .ShortStyle
+        var newDates : String = ""
+        let allDates = contact.specialDates.componentsSeparatedByString("\n")
+        for dateString in allDates
+        {
+           let date = dateformat.dateFromString(dateString)
+            if date?.earlierDate(NSDate()) != date {
+                println("yes")
+                if newDates == "" {
+                    newDates = dateString
+                }
+                else
+                {
+                    newDates = "\(newDates)\n\(dateString)"
+                }
+            }
+            else { println("no")}
+        }
+        return newDates
     }
 }

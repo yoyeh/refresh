@@ -206,7 +206,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12a-DR-id5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5d8-MT-pOc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3621" y="-620"/>
+            <point key="canvasLocation" x="3777" y="-620"/>
         </scene>
         <!--Now-->
         <scene sceneID="9jl-I5-ipZ">
@@ -410,7 +410,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFM-3a-0oN">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFM-3a-0oN">
                                 <rect key="frame" x="16" y="513" width="118" height="30"/>
                                 <state key="normal" title="Send Notification">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -419,7 +419,7 @@
                                     <action selector="sendNotification:" destination="NK8-IV-A3M" eventType="touchUpInside" id="r3c-Ne-sOM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03y-9D-p9u">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03y-9D-p9u">
                                 <rect key="frame" x="533" y="513" width="51" height="30"/>
                                 <state key="normal" title="Escape">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -539,7 +539,6 @@
         <!--Navigation Controller-->
         <scene sceneID="HiB-BS-7w8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FGl-78-0sS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QW8-IU-hRe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uox-Ax-351">
@@ -551,6 +550,7 @@
                         <segue destination="fsf-AB-ms8" kind="relationship" relationship="rootViewController" id="s4z-CR-KPP"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FGl-78-0sS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3546" y="202"/>
         </scene>

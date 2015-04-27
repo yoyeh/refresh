@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-var yourContactInformation = Contacts(firstname: "Main", lastname: "User", callfrequency: 5, lastcalldate: "null", lastcallinfo: "null", specialdates: "null", Status: 0, phonenumber: "1112223333")
+var yourContactInformation = Contacts(firstname: "Main", lastname: "User", callfrequency: 5, lastcalldate: "null", lastcallinfo: "null", specialdates: "", Status: 0, phonenumber: "1112223333")
 
 
 class NowViewController: UITableViewController {
@@ -108,8 +108,8 @@ class NowViewController: UITableViewController {
             var date = NSDate()
             var dateformatter = NSDateFormatter()
             dateformatter.dateStyle = .ShortStyle
+            dateformatter.timeStyle = .ShortStyle
             
-            newContact.lastDateFormatted = date
             newContact.lastCallDate = dateformatter.stringFromDate(date)
             
         } 
@@ -130,8 +130,8 @@ class NowViewController: UITableViewController {
                 var date = NSDate()
                 var dateformatter = NSDateFormatter()
                 dateformatter.dateStyle = .ShortStyle
+                dateformatter.timeStyle = .ShortStyle
                 
-                newContact.lastDateFormatted = date
                 newContact.lastCallDate = dateformatter.stringFromDate(date)
 
             }
@@ -139,8 +139,16 @@ class NowViewController: UITableViewController {
             newContact.lastCallInfo = saveinfoviewcontroller.calltext
             var dateformat = NSDateFormatter()
             dateformat.dateStyle = .ShortStyle
+            dateformat.timeStyle = .ShortStyle
             var special = dateformat.stringFromDate(saveinfoviewcontroller.specialDate)
-            newContact.specialDates = special
+            if (newContact.specialDates == "")
+            {
+                newContact.specialDates = special
+            }
+            else
+            {
+            newContact.specialDates = "\(newContact.specialDates)\n\(special)"
+            }
             localdatabase.editContact(newContact)
         }
     
