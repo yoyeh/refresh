@@ -66,6 +66,7 @@ class NowViewController: UITableViewController {
         return contacts.count
     }
     
+    private var newContact : Contacts = Contacts()
     // Display all contacts
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
@@ -83,6 +84,7 @@ class NowViewController: UITableViewController {
         return cell
     }
     
+    private var startTime : NSTimeInterval = 0.0
     // Call contact on click
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let contact = contacts[indexPath.row] as Contacts
@@ -90,57 +92,58 @@ class NowViewController: UITableViewController {
         
         if let url = NSURL(string: "tel://\(phoneNumber)") {
             UIApplication.sharedApplication().openURL(url)
-            var startTime = NSDate.timeIntervalSinceReferenceDate()
-            afterPhoneCall(contact, startTime: startTime)
+            startTime = NSDate.timeIntervalSinceReferenceDate()
+            newContact = contact
         }
-    }
-    // save date and info after phone call
-    private func afterPhoneCall(contact : Contacts, startTime : NSTimeInterval)
-    {
-        sleep(3)
-        let alertController: UIAlertController = UIAlertController(title: "Returning to Refresh!", message: "", preferredStyle: .Alert)
-        let OKAction : UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
-        var currentTime = NSDate.timeIntervalSinceReferenceDate()
-        var elapsed = currentTime - startTime
-            if elapsed >= 90 {
-                self.saveInfo(contact)
-            }
-        }
-        alertController.addAction(OKAction)
-        self.presentViewController(alertController, animated : true, completion: nil)
     }
     
-    private func saveInfo(contact : Contacts)
+    @IBAction func cancelToNowViewController(segue : UIStoryboardSegue)
     {
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        var elapsed = currentTime - startTime
         var localdatabase = LocalDatabase()
         localdatabase.initializeDatabase()
+        if elapsed >= 10 {
+            
+            var date = NSDate()
+            var dateformatter = NSDateFormatter()
+            dateformatter.dateStyle = .ShortStyle
+            
+            newContact.lastDateFormatted = date
+            newContact.lastCallDate = dateformatter.stringFromDate(date)
+            
+        } 
         
-        var date = NSDate()
-        var dateformatter = NSDateFormatter()
-        dateformatter.dateStyle = .ShortStyle
-        
-        contact.lastDateFormatted = date
-        contact.lastCallDate = dateformatter.stringFromDate(date)
-        localdatabase.editContact(contact)
-        
-        var inputText : UITextField?
-        let actionSheetController: UIAlertController = UIAlertController(title: "Call Info", message: "What did you talk about?", preferredStyle: .Alert)
-        
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+    }
+    
+    @IBAction func saveContactInfo(segue : UIStoryboardSegue)
+    {
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        var elapsed = currentTime - startTime
+ 
+        if let saveinfoviewcontroller = segue.sourceViewController as? SaveInfoController {
+           
+            var localdatabase = LocalDatabase()
+            localdatabase.initializeDatabase()
+            if elapsed >= 10 {
+                
+                var date = NSDate()
+                var dateformatter = NSDateFormatter()
+                dateformatter.dateStyle = .ShortStyle
+                
+                newContact.lastDateFormatted = date
+                newContact.lastCallDate = dateformatter.stringFromDate(date)
+
             }
-        
-        actionSheetController.addAction(cancelAction)
-        
-        actionSheetController.addTextFieldWithConfigurationHandler { (textField) in
-            //TextField configuration
-            inputText = textField
+            
+            newContact.lastCallInfo = saveinfoviewcontroller.calltext
+            var dateformat = NSDateFormatter()
+            dateformat.dateStyle = .ShortStyle
+            var special = dateformat.stringFromDate(saveinfoviewcontroller.specialDate)
+            newContact.specialDates = special
+            localdatabase.editContact(newContact)
         }
-        let OKAction = UIAlertAction(title: "Save", style: .Default) { (action) in
-            contact.lastCallInfo = inputText!.text
-            localdatabase.editContact(contact)
-        }
-        actionSheetController.addAction(OKAction)
-        
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
-        }
+    
+    }
+    
 }
