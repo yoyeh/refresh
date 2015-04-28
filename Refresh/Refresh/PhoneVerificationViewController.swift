@@ -22,6 +22,10 @@ class PhoneVerificationViewController: UIViewController {
             let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setInteger(1, forKey: "verificationStatus") // Set to phone number entered
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
+            
+            //Sending the phonenumber over to the server
+            var tempUser = ServerUser(phoneNumber: phoneNumber, serverConnection: true)
+            tempUser.sendVerificationRequest()
         }
         else {
             // prompt user with alert to enter valid phone number

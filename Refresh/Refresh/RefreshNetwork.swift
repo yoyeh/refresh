@@ -14,8 +14,18 @@ class ServerUser
     private var yourPhoneNumber:String
     private var databaseURL = "http://localhost:5000"
     
+    //Initialize server using a Contacts object
     init(yourContactInfo: Contacts, serverConnection: Bool) {
         yourPhoneNumber = yourContactInfo.phoneNumber
+        if serverConnection {
+            databaseURL = "https://re-fresh.herokuapp.com"
+        }
+    }
+    
+    //Initialize server user using only a phonenumber
+    init (phoneNumber: String, serverConnection: Bool)
+    {
+        yourPhoneNumber = phoneNumber
         if serverConnection {
             databaseURL = "https://re-fresh.herokuapp.com"
         }
@@ -186,6 +196,12 @@ class ServerUser
         HTTPDelete(databaseURL + "/db/\(yourPhoneNumber)", callback: regCallBack)
     }
     
+    //Sends a verification request to the server, asking to verify yourPhoneNumber
+    func sendVerificationRequest()
+    {
+        HTTPGet(databaseURL + "/preverify/\(yourPhoneNumber)", callback: regCallBack)
+    }
+    
     //Getting the status of otherPerson
     func getStatusOfOtherUsers(otherPeople: [Contacts])
     {
@@ -214,13 +230,6 @@ class ServerUser
                     phoneToContactDict[phonenumber]!.status = status
                     
                 }
-                
-                /*for (phonenumber, status) in data
-                {
-                    println(phonenumber)
-                    println(phoneToContactDict[phonenumber]!.status)
-                    
-                }*/
             }
         })
     }
