@@ -18,13 +18,24 @@ class PhoneConfirmationViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBAction func clickedConfirmButton(sender: AnyObject) {
-        // Verify random code here
         
-        // If matches server code, then segue to UITabBarController
-        // defaults.setInteger(2, forKey: "verificationStatus") // verified status
+        // Instead of text is not empty, verify confirmation code
         
-        // Otherwise alert
-        
+        if (!confirmationCodeInput.text.isEmpty) {
+            // valid code
+            var confirmationCode = confirmationCodeInput.text
+            
+            defaults.setInteger(2, forKey: "verificationStatus") // verified status
+            self.performSegueWithIdentifier("SuccessfulConfirmationSegue", sender: self)
+        }
+        else {
+            // invalid phone number - prompt user with alert to enter valid phone number
+            let alert = UIAlertView()
+            alert.title = "Invalid Confirmation Code"
+            alert.message = "Please re-enter the confirmation code or re-enter your phone number."
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+        }
     }
     
     @IBOutlet weak var changeNumberButton: UIButton!

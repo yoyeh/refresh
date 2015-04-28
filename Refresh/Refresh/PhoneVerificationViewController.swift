@@ -24,6 +24,8 @@ class PhoneVerificationViewController: UIViewController {
 
             defaults.setInteger(1, forKey: "verificationStatus") // Set to phone number entered
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
+            
+            self.performSegueWithIdentifier("VerificationToConfirmationSegue", sender: self)
         }
         else {
             // invalid phone number - prompt user with alert to enter valid phone number
