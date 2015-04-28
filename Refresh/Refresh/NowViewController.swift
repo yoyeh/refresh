@@ -111,6 +111,7 @@ class NowViewController: UITableViewController {
             //dateformatter.timeStyle = .ShortStyle
             
             newContact.lastCallDate = dateformatter.stringFromDate(date)
+            localdatabase.editContact(newContact)
             
         } 
         
