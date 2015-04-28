@@ -39,12 +39,14 @@ class PhoneConfirmationViewController: UIViewController,UITextFieldDelegate {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         tapRecognizer.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapRecognizer)
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        defaults = NSUserDefaults.standardUserDefaults()
         let phone = defaults.integerForKey("mainUserPhoneNumber")
         phoneNumberLabel.text = "Phone number entered: " + String(phone)
     }
-    
+
     // Hide keyboard when user taps anywhere outside keyboard
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
