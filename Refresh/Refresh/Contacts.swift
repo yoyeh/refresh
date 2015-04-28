@@ -49,18 +49,14 @@ class Contacts {
     {
         let dateformatter = NSDateFormatter()
         dateformatter.dateStyle = .ShortStyle
-        dateformatter.timeStyle = .ShortStyle
+        //dateformatter.timeStyle = .ShortStyle
         let date2 = dateformatter.dateFromString(contact.lastCallDate)
         println(date2)
         
         let last = date2?.timeIntervalSince1970
-        let df2 = NSDateFormatter()
-        df2.dateStyle = .ShortStyle
-        df2.timeStyle = .ShortStyle
-        let date3 = df2.stringFromDate(NSDate())
-        let date4 = df2.dateFromString(date3)
-        let current = date4?.timeIntervalSince1970
-        
+        println(last)
+        let current = NSDate().timeIntervalSince1970
+        println(current)
         let frequency = contact.callFrequency * 7
         var days : Int
         
@@ -70,8 +66,24 @@ class Contacts {
         }
         else
         {
-            let timeElapsed = Int(current! - last!)
-            days = frequency - timeElapsed/1440
+            var dateformat = NSDateFormatter()
+            dateformat.dateStyle = .ShortStyle
+            //dateformat.timeStyle = .ShortStyle
+            let calendar = NSCalendar.currentCalendar()
+            
+            let allDates = contact.specialDates.componentsSeparatedByString("\n")
+            for dateString in allDates
+            {
+                let date = dateformat.dateFromString(dateString)
+                
+                if (calendar.isDate(date!, inSameDayAsDate: NSDate())) {
+                    days = Int.min
+                    return days
+                }
+            }
+            
+            let timeElapsed = Int(current - last!)
+            days = frequency - timeElapsed/86460
         }
         println(days)
         return days
@@ -81,7 +93,7 @@ class Contacts {
     {
         var dateformat = NSDateFormatter()
         dateformat.dateStyle = .ShortStyle
-        dateformat.timeStyle = .ShortStyle
+        //dateformat.timeStyle = .ShortStyle
         var newDates : String = ""
         let allDates = contact.specialDates.componentsSeparatedByString("\n")
         for dateString in allDates

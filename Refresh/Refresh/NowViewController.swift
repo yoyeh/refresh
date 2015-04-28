@@ -108,7 +108,7 @@ class NowViewController: UITableViewController {
             var date = NSDate()
             var dateformatter = NSDateFormatter()
             dateformatter.dateStyle = .ShortStyle
-            dateformatter.timeStyle = .ShortStyle
+            //dateformatter.timeStyle = .ShortStyle
             
             newContact.lastCallDate = dateformatter.stringFromDate(date)
             
@@ -130,7 +130,7 @@ class NowViewController: UITableViewController {
                 var date = NSDate()
                 var dateformatter = NSDateFormatter()
                 dateformatter.dateStyle = .ShortStyle
-                dateformatter.timeStyle = .ShortStyle
+                //dateformatter.timeStyle = .ShortStyle
                 
                 newContact.lastCallDate = dateformatter.stringFromDate(date)
 
@@ -139,7 +139,7 @@ class NowViewController: UITableViewController {
             newContact.lastCallInfo = saveinfoviewcontroller.calltext
             var dateformat = NSDateFormatter()
             dateformat.dateStyle = .ShortStyle
-            dateformat.timeStyle = .ShortStyle
+            //dateformat.timeStyle = .ShortStyle
             var special = dateformat.stringFromDate(saveinfoviewcontroller.specialDate)
             if (newContact.specialDates == "")
             {
