@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d3M-Ik-DT3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d3M-Ik-DT3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -24,22 +24,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGa-tv-Y74">
-                                <rect key="frame" x="16" y="214" width="568" height="23"/>
+                                <rect key="frame" x="16" y="87" width="568" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qk-he-TCj">
-                                <rect key="frame" x="215" y="283" width="170" height="35"/>
-                                <state key="normal" image="AvailableButton.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickedAvailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="emZ-5h-mXO"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIC-qh-vXD">
-                                <rect key="frame" x="215" y="341" width="170" height="35"/>
+                                <rect key="frame" x="215" y="481" width="170" height="35"/>
                                 <state key="normal" image="UnavailableButton.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -47,26 +38,71 @@
                                     <action selector="clickedUnavailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rXP-8p-AKJ"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9jt-RF-Fbo">
+                                <rect key="frame" x="0.0" y="238" width="600" height="162"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Availability:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INz-TV-hzY">
+                                <rect key="frame" x="225" y="227" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYb-v3-Fdg">
+                                <rect key="frame" x="383" y="223" width="30" height="30"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkd-AL-Ggh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qk-he-TCj">
+                                <rect key="frame" x="215" y="426" width="170" height="35"/>
+                                <state key="normal" image="AvailableButton.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedAvailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="emZ-5h-mXO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbV-2C-1LZ">
+                                <rect key="frame" x="264" y="178" width="72" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1eU-dY-5pm"/>
-                            <constraint firstAttribute="centerY" secondItem="6Qk-he-TCj" secondAttribute="centerY" id="4Jb-Di-TQR"/>
+                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="centerX" secondItem="INz-TV-hzY" secondAttribute="centerX" id="2nI-Yc-ouX"/>
+                            <constraint firstAttribute="centerY" secondItem="6Qk-he-TCj" secondAttribute="centerY" constant="-143.5" id="4Jb-Di-TQR"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5Wj-gT-4Z9"/>
+                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="9jt-RF-Fbo" secondAttribute="bottom" constant="26" id="7HT-Po-TeR"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DK5-7T-EZT"/>
                             <constraint firstItem="DGa-tv-Y74" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Exu-i3-QCW"/>
+                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GMj-h1-Rvp"/>
+                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="top" secondItem="AbV-2C-1LZ" secondAttribute="bottom" constant="24" id="K3h-Rk-EQR"/>
                             <constraint firstAttribute="centerX" secondItem="UIC-qh-vXD" secondAttribute="centerX" id="LGM-p1-Zcw"/>
-                            <constraint firstItem="UIC-qh-vXD" firstAttribute="top" secondItem="6Qk-he-TCj" secondAttribute="bottom" constant="23" id="PiX-i8-PEP"/>
+                            <constraint firstItem="AbV-2C-1LZ" firstAttribute="leading" secondItem="6Qk-he-TCj" secondAttribute="trailing" constant="-121" id="Phd-mW-geG"/>
+                            <constraint firstItem="UIC-qh-vXD" firstAttribute="top" secondItem="6Qk-he-TCj" secondAttribute="bottom" constant="20" id="PiX-i8-PEP"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Qqx-Ud-HHg"/>
                             <constraint firstAttribute="centerX" secondItem="6Qk-he-TCj" secondAttribute="centerX" id="W5y-iz-bIr"/>
-                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="46" id="dXM-I0-4GX"/>
+                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="INz-TV-hzY" secondAttribute="bottom" constant="178" id="cVe-x9-dUc"/>
+                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="316" id="dXM-I0-4GX"/>
+                            <constraint firstItem="INz-TV-hzY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="227" id="fms-7R-tHt"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kbZ-u2-9IO"/>
+                            <constraint firstItem="jYb-v3-Fdg" firstAttribute="leading" secondItem="6Qk-he-TCj" secondAttribute="trailing" constant="-2" id="oeU-Ux-Wae"/>
+                            <constraint firstItem="jYb-v3-Fdg" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="166" id="qmH-Ci-s0D"/>
+                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="centerX" secondItem="6Qk-he-TCj" secondAttribute="centerX" id="s1U-Bh-dO9"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Status" image="status_icon.png" id="4YM-Pm-aZa"/>
                     <connections>
+                        <outlet property="amountAvailable" destination="9jt-RF-Fbo" id="Qr1-MU-IUq"/>
                         <outlet property="availableButton" destination="6Qk-he-TCj" id="Ut0-9Z-3ie"/>
                         <outlet property="currentStatus" destination="DGa-tv-Y74" id="kH8-MB-lRY"/>
+                        <outlet property="timer" destination="AbV-2C-1LZ" id="5ju-Kp-1iX"/>
                         <outlet property="unavailableButton" destination="UIC-qh-vXD" id="kYy-Lu-nn6"/>
                     </connections>
                 </viewController>
@@ -143,7 +179,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What was your phone call about?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUI-As-dSx">
                                 <rect key="frame" x="16" y="107" width="257" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ark-f9-Bhe">
@@ -154,7 +190,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any special date to remember for next time?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkD-8s-hy3">
                                 <rect key="frame" x="16" y="214" width="341" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CP2-xG-8wB">
@@ -505,7 +541,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0w-vR-gic">
                                 <rect key="frame" x="231" y="284" width="138" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
