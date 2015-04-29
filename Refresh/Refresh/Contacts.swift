@@ -103,7 +103,7 @@ class Contacts {
             let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
             let newDate = cal!.startOfDayForDate(otherdate)
             //println(newDate)
-            if newDate.earlierDate(date!) != date || newDate.isEqualToDate(date!) {
+            if date != nil && (newDate.earlierDate(date!) != date || newDate.isEqualToDate(date!)) {
                 //println("yes")
                 if newDates == "" {
                     newDates = dateString
