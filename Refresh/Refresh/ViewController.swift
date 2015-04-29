@@ -17,9 +17,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var amountAvailable: UIPickerView!
     @IBOutlet weak var timer: UILabel!
     
-    var startTime = NSTimeInterval()
-    var theTimer = NSTimer()
-    var totalTime : Double = 0
+    private var startTime = NSTimeInterval()
+    private var theTimer = NSTimer()
+    private var totalTime : Double = 0
     
     @IBAction func clickedAvailableButton(sender: AnyObject) {
         currentStatus.text = "Available"
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         let aSelector : Selector = "updateTime"
         theTimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
         startTime = NSDate.timeIntervalSinceReferenceDate()
-        println(amountAvailable.selectedRowInComponent(0))
+        //println(amountAvailable.selectedRowInComponent(0))
         
     }
     
@@ -71,24 +71,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         var elapsedTime = currentTime - startTime
         var timeLeft : NSTimeInterval
         
-        if amountAvailable.selectedRowInComponent(0) == 0 {
-            timeLeft = totalTime - elapsedTime
-        }
-        else if amountAvailable.selectedRowInComponent(0) == 1 {
-            timeLeft = totalTime - elapsedTime
-        }
-        else if amountAvailable.selectedRowInComponent(0) == 2 {
-            timeLeft = totalTime - elapsedTime
-        }
-        else
-        {
-            timeLeft = totalTime - elapsedTime
-        }
+    
+        timeLeft = totalTime - elapsedTime
         
         if timeLeft <= 0 {
             
             theTimer.invalidate()
-            //theTimer = nil
+            
             timer.text = ""
             currentStatus.text = "Unavailable"
             var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
@@ -106,7 +95,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         timeLeft -= NSTimeInterval(seconds)
         
         
-        //add the leading zero for minutes, seconds and millseconds and store them as string constants
+        //add the leading zero for minutes and seconds and store them as string constants
         let strMinutes = minutes > 9 ? String(minutes):"0" + String(minutes)
         let strSeconds = seconds > 9 ? String(seconds):"0" + String(seconds)
         
