@@ -45,6 +45,7 @@ class Contacts {
     
     init() {}
     
+    // sort the contacts by the last date they were called (for sorting in the Now view)
     func sortLastDate(contact : Contacts) -> Int
     {
         let dateformatter = NSDateFormatter()
@@ -89,6 +90,7 @@ class Contacts {
         return days
     }
     
+    // remove dates that have already passed from the special dates part of the contact (don't remove days that are today)
     func removeOldDates(contact : Contacts) -> String
     {
         var dateformat = NSDateFormatter()

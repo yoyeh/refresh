@@ -21,6 +21,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     private var theTimer = NSTimer()
     private var totalTime : Double = 0
     
+    // the available button
     @IBAction func clickedAvailableButton(sender: AnyObject) {
         currentStatus.text = "Available"
         theTimer.invalidate()
@@ -29,6 +30,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         serveruser.changeStatus(0)
     }
 
+    // the unavailable button
     @IBAction func clickedUnavailableButton(sender: AnyObject) {
         currentStatus.text = "Unavailable"
         theTimer.invalidate()
@@ -37,6 +39,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         serveruser.changeStatus(2)
     }
     
+    // the button for the availability timer
     @IBAction func startTimer(sender: AnyObject) {
         theTimer.invalidate()
         currentStatus.text = "Available for"
@@ -66,6 +69,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
     }
     
+    // update and print the amount of time left for the availability timer
     func updateTime() {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
         
@@ -105,7 +109,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
     }
     
+    // the picker view
     let pickerData = ["15 Minutes", "30 Minutes", "45 Minutes", "1 Hour"]
+    
+    // load once, the first time
     override func viewDidLoad() {
       super.viewDidLoad()
         timer.text = ""
@@ -113,12 +120,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.amountAvailable.delegate = self
         // Do any additional setup after loading the view, typically from a nib
    }
+    // necessary for the UIPickerView
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    // necessary for the UIPickerView
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
+    // displays names in the picker view
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return pickerData[row]
     }
