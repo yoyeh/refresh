@@ -73,7 +73,18 @@ class NowViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as! NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
+        if contact.firstName == "null"
+        {
+            cell.nameLabel.text = contact.lastName
+        }
+        else if contact.lastName == "null"
+        {
+            cell.nameLabel.text = contact.firstName
+        }
+        else {
         cell.nameLabel.text = contact.firstName + " " + contact.lastName
+        }
+        
         if contact.status == 2 {
             cell.statusImageView.image = availableImage
         }
