@@ -23,6 +23,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func clickedAvailableButton(sender: AnyObject) {
         currentStatus.text = "Available"
+        theTimer.invalidate()
+        timer.text = ""
         var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
         serveruser.changeStatus(0)
     }
