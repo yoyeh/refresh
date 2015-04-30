@@ -66,7 +66,6 @@ class NowViewController: UITableViewController {
         return contacts.count
     }
     
-    private var newContact : Contacts = Contacts()
     // Display all contacts
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
@@ -94,7 +93,10 @@ class NowViewController: UITableViewController {
 
         return cell
     }
-    
+
+    // store the contact information
+    private var newContact : Contacts = Contacts()
+    // checking the length of the phone call
     private var startTime : NSTimeInterval = 0.0
     // Call contact on click
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -108,6 +110,7 @@ class NowViewController: UITableViewController {
         }
     }
     
+    // cancel button for saving call info
     @IBAction func cancelToNowViewController(segue : UIStoryboardSegue)
     {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
@@ -128,6 +131,7 @@ class NowViewController: UITableViewController {
         
     }
     
+    // save button for saving call info
     @IBAction func saveContactInfo(segue : UIStoryboardSegue)
     {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
@@ -137,6 +141,8 @@ class NowViewController: UITableViewController {
            
             var localdatabase = LocalDatabase()
             localdatabase.initializeDatabase()
+            
+            // check how long the phone call was 
             if elapsed >= 10 {
                 
                 var date = NSDate()
