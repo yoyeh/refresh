@@ -107,7 +107,32 @@ class ServerUser
         return ""
     }
     
-    //HTTP Get request - in case we need it later
+    //HTTP Get request for verifciation - in case we need it later
+    private func HTTPGetVerification(url: String, callback: (Bool, String?) -> Void) {
+        //println("HTTPGet request")
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        HTTPsendRequest(request)
+        {
+            (data: String, error: String?) -> Void in
+            //println("Gets into HTTPGetJsonCallBack")
+            if (error != nil)
+            {
+                //println("if")
+                //println(data)
+                callback(false , error)
+            }
+            else
+            {
+                println(data)
+                if (data == "false") {callback(false, nil)}
+                if (data == "true") {callback(false, nil)}
+                print("gets past the function callbacks")
+            }
+        }
+    }
+
+    
+    //HTTP Get request
     private func HTTPGet(url: String, callback: (String, String?) -> Void) {
         //println("HTTPGet request")
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
@@ -200,6 +225,22 @@ class ServerUser
     func sendVerificationRequest()
     {
         HTTPGet(databaseURL + "/preverify/\(yourPhoneNumber)", callback: regCallBack)
+    }
+    
+    
+    //confirms if the code matches the phonenumber that you entered
+    func confirmVerificationCode(code: String, inout verified: Bool)
+    {
+        HTTPGetVerification(databaseURL + "/verify/\(yourPhoneNumber)/\(code)",
+            callback: {
+                (data: Bool, error: String?) -> Void in
+                if (error != nil) {
+                    println(error)
+                } else {
+                    verified = data
+                    println("verified: \(verified)")
+                }
+            })
     }
     
     //Getting the status of otherPerson

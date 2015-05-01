@@ -25,7 +25,7 @@ class PhoneVerificationViewController: UIViewController {
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
             
             //Sending the phonenumber over to the server
-            var tempUser = ServerUser(phoneNumber: phoneNumber, serverConnection: true)
+            var tempUser = ServerUser(phoneNumber: phoneNumber, serverConnection: false)
             tempUser.sendVerificationRequest()
         }
         else {

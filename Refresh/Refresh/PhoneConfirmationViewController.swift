@@ -19,7 +19,17 @@ class PhoneConfirmationViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBAction func clickedConfirmButton(sender: AnyObject) {
         // Verify random code here
+        var code = confirmationCodeInput.text
+        let phone = defaults.integerForKey("mainUserPhoneNumber")
+        var verified = false
+        println("printing verified before the request is sent \(verified)")
+        println("phonenumber entered:\(phone)")
         
+        var verifyingServerUser = ServerUser(phoneNumber: String(phone), serverConnection: false)
+        verifyingServerUser.confirmVerificationCode(code, verified: &verified)
+        
+        sleep(5)
+        println("printing verified after the request is processed \(verified)")
         // If matches server code, then segue to UITabBarController
         // defaults.setInteger(2, forKey: "verificationStatus") // verified status
         
