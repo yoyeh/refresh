@@ -140,5 +140,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 //        // Dispose of any resources that can be recreated.
 //    }
 
+    private func timerSelectedView() {
+        
+    }
+    
+    private func timerNotSelectedView() {
+        
+    }
+    
 }
 
