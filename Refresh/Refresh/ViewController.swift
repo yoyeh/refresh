@@ -28,7 +28,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         theTimer.invalidate()
         timer.text = ""
         var serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
-        serveruser.changeStatus(0)
+        serveruser.changeStatus(2)
     }
 
     // the unavailable button
@@ -37,7 +37,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         theTimer.invalidate()
         timer.text = ""
         var serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
-        serveruser.changeStatus(2)
+        serveruser.changeStatus(0)
     }
     
     // the button for the availability timer

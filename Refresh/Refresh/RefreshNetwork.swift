@@ -129,7 +129,7 @@ class ServerUser
             }
             else
             {
-                println(data)
+//                println(data)
                 if (data == "false") {callback(false, nil)}
                 if (data == "true") {callback(true, nil)}
 //                if (data == "false") {verified = false}
@@ -291,7 +291,7 @@ class ServerUser
 //                    println(roundedActiveMinutes)
                     phoneToContactDict[phonenumber]!.activeSince = roundedActiveMinutes
 //                    println(phoneToContactDict[phonenumber]!.status)
-                    println("Active Since: \(phoneToContactDict[phonenumber]!.activeSince)")
+//                    println("Active Since: \(phoneToContactDict[phonenumber]!.activeSince)")
                 }
             }
         })
