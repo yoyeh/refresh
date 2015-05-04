@@ -15,6 +15,7 @@ class Contacts {
     var lastCallDate = "null"
     var lastCallInfo = "null"
     var specialDates = ""
+    var activeSince = -1
     
     var status = 1 // status: [0] unavailable [1] unknown [2] available
     var phoneNumber = "null"
@@ -45,18 +46,19 @@ class Contacts {
     
     init() {}
     
+    // sort the contacts by the last date they were called (for sorting in the Now view)
     func sortLastDate(contact : Contacts) -> Int
     {
         let dateformatter = NSDateFormatter()
         dateformatter.dateStyle = .ShortStyle
         //dateformatter.timeStyle = .ShortStyle
         let date2 = dateformatter.dateFromString(contact.lastCallDate)
-        println(date2)
+        //println(date2)
         
         let last = date2?.timeIntervalSince1970
-        println(last)
+        //println(last)
         let current = NSDate().timeIntervalSince1970
-        println(current)
+        //println(current)
         let frequency = contact.callFrequency * 7
         var days : Int
         
@@ -85,10 +87,11 @@ class Contacts {
             let timeElapsed = Int(current - last!)
             days = frequency - timeElapsed/86460
         }
-        println(days)
+        //println(days)
         return days
     }
     
+    // remove dates that have already passed from the special dates part of the contact (don't remove days that are today)
     func removeOldDates(contact : Contacts) -> String
     {
         var dateformat = NSDateFormatter()
@@ -98,9 +101,13 @@ class Contacts {
         let allDates = contact.specialDates.componentsSeparatedByString("\n")
         for dateString in allDates
         {
-           let date = dateformat.dateFromString(dateString)
-            if date?.earlierDate(NSDate()) != date {
-                println("yes")
+            let date = dateformat.dateFromString(dateString)
+            let otherdate = NSDate()
+            let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+            let newDate = cal!.startOfDayForDate(otherdate)
+            //println(newDate)
+            if date != nil && (newDate.earlierDate(date!) != date || newDate.isEqualToDate(date!)) {
+                //println("yes")
                 if newDates == "" {
                     newDates = dateString
                 }
@@ -109,7 +116,7 @@ class Contacts {
                     newDates = "\(newDates)\n\(dateString)"
                 }
             }
-            else { println("no")}
+           // else { println("no")}
         }
         return newDates
     }

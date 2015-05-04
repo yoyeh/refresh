@@ -18,18 +18,27 @@ class PhoneVerificationViewController: UIViewController {
     
     @IBAction func clickedVerifyButton(sender: AnyObject) {
         if (!phoneNumberInput.text.isEmpty) {
+            // valid phone number
             var phoneNumber = phoneNumberInput.text
             phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
 
             defaults.setInteger(1, forKey: "verificationStatus") // Set to phone number entered
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
             
+            println("phone \(phoneNumber)")
+            
+            let phone = defaults.stringForKey("mainUserPhoneNumber")
+            
+            println("phone number in verify button: \(phone)")
+
             //Sending the phonenumber over to the server
-            var tempUser = ServerUser(phoneNumber: phoneNumber, serverConnection: false)
+            var tempUser = ServerUser(phoneNumber: phoneNumber, serverConnection: true)
             tempUser.sendVerificationRequest()
+
+            self.performSegueWithIdentifier("VerificationToConfirmationSegue", sender: self)
         }
         else {
-            // prompt user with alert to enter valid phone number
+            // invalid phone number - prompt user with alert to enter valid phone number
             let alert = UIAlertView()
             alert.title = "Invalid Phone Number"
             alert.message = "Please Enter a valid phone number."

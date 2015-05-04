@@ -14,7 +14,8 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     private var contacts:[Contacts] = []
     private var localdatabase = LocalDatabase()
     private var personPicker: ABPeoplePickerNavigationController
-    private var serveruser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
+    private var defaults = NSUserDefaults.standardUserDefaults()
+    private var serveruser:ServerUser = ServerUser()
 
     required init(coder aDecoder: NSCoder) {
         personPicker = ABPeoplePickerNavigationController()
@@ -62,12 +63,9 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         
         self.tableView.reloadData()
         
+        serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
         serveruser.putContactToServer(contacts, status: 0)
 
-//        var serveruser2 = ServerUser(yourContactInfo: newContact, serverConnection: true)
-//        var contacts2:[Contacts] = []
-//        contacts2.append(yourContactInformation)
-//        serveruser2.putContactToServer(contacts2, status: 2)
     }
     
     // Called only once, the first time the view loads
@@ -111,7 +109,17 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as! UITableViewCell
         let contact = contacts[indexPath.row] as Contacts
+        if contact.firstName == "null"
+        {
+            cell.textLabel?.text = contact.lastName
+        }
+        else if contact.lastName == "null"
+        {
+            cell.textLabel?.text = contact.firstName
+        }
+        else {
         cell.textLabel?.text = contact.firstName + " " + contact.lastName
+        }
         
         return cell
     }
@@ -122,6 +130,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
             let contactToDelete = contacts[indexPath.row] as Contacts
             contacts.removeAtIndex(indexPath.row)
             localdatabase.deleteContact(contactToDelete)
+            serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
             serveruser.changeContactsOnServer(contacts)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }

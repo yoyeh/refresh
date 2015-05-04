@@ -31,6 +31,12 @@ class ServerUser
         }
     }
     
+    //Just empty Initializer
+    init ()
+    {
+        yourPhoneNumber = "NONE"
+    }
+    
     //Underlying function that is responsible for communicating with the server
     //callback function is the code that gets executed after the HTTP request is completed
     //This either means that it will be called during the error or it will called after a succesful
@@ -63,7 +69,7 @@ class ServerUser
             //println("get's past task.resume")
     }
     
-    private func HTTPGetStatus(url: String, jsonObj: AnyObject, callback: (Dictionary<String, Int>, String?) -> Void)
+    private func HTTPGetStatus(url: String, jsonObj: AnyObject, callback: (Dictionary<String, [AnyObject]>, String?) -> Void)
     {
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
         request.HTTPMethod = "POST"
@@ -83,12 +89,12 @@ class ServerUser
             {
                 //println("if")
                 //println(data)
-                callback(Dictionary<String, Int>(), error)
+                callback(Dictionary<String, [AnyObject]>(), error)
             }
             else
             {
                 var jsonObj = self.JSONParseDict(data)
-                //println("else")
+                println(jsonObj)
                 callback(jsonObj, nil)
             }
         }
@@ -125,8 +131,11 @@ class ServerUser
             {
                 println(data)
                 if (data == "false") {callback(false, nil)}
-                if (data == "true") {callback(false, nil)}
-                print("gets past the function callbacks")
+                if (data == "true") {callback(true, nil)}
+//                if (data == "false") {verified = false}
+//                if (data == "true") {verified = true}
+
+                println("gets past the function callbacks")
             }
         }
     }
@@ -172,12 +181,12 @@ class ServerUser
         
     }
     
-    private func JSONParseDict(jsonString:String) -> Dictionary<String, Int> {
+    private func JSONParseDict(jsonString:String) -> Dictionary<String, [AnyObject]> {
         var e: NSError?
         var data: NSData = jsonString.dataUsingEncoding(NSUTF8StringEncoding)!
-        var jsonObj = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &e) as! Dictionary<String, Int>
+        var jsonObj = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &e) as! Dictionary<String, [AnyObject]>
         if (e != nil) {
-            return Dictionary<String, Int>()
+            return Dictionary<String, [AnyObject]>()
         } else {
             return jsonObj
         }
@@ -229,6 +238,7 @@ class ServerUser
     
     
     //confirms if the code matches the phonenumber that you entered
+    //Q: why does 
     func confirmVerificationCode(code: String, inout verified: Bool)
     {
         HTTPGetVerification(databaseURL + "/verify/\(yourPhoneNumber)/\(code)",
@@ -238,9 +248,10 @@ class ServerUser
                     println(error)
                 } else {
                     verified = data
-                    println("verified: \(verified)")
+                    //println("verified: \(verified)")
                 }
             })
+        sleep(5)
     }
     
     //Getting the status of otherPerson
@@ -252,6 +263,7 @@ class ServerUser
         for contact in otherPeople {
             phoneToContactDict[contact.phoneNumber] = contact
             otherPeoplePhoneNumbers.append(contact.phoneNumber)
+//            println(contact.phoneNumber)
         }
         let jsonObject:[String:[AnyObject]] = ["phonenumbers": otherPeoplePhoneNumbers]
         //println(jsonObject)
@@ -259,17 +271,27 @@ class ServerUser
         //This call back function is called within the HTTPGetJSON //3)
         HTTPGetStatus(databaseURL + "/db/getStatus/\(yourPhoneNumber)", jsonObj: jsonObject,
         callback: {
-            (data: Dictionary<String, Int>, error: String?) -> Void in
-            //println("In the callback for HTTPGetStatus")
+            (data: Dictionary<String, [AnyObject]>, error: String?) -> Void in
             if (error != nil) {
                 println(error)
             } else {
-                for (phonenumber, status) in data
+                //pair = (status, x) where x = number of minutes since last active 
+                //If the other person has never been online, x = -1 
+                //If the person does not have you as their contact, x = -1
+                //If the person does not exit on the server, x = -1
+                for (phonenumber, pair) in data
                 {
                     //println(phonenumber)
-                    //println(phoneToContactDict[phonenumber]!.status)
+                    //println(phoneToContactDict[phonenumber]!.pair)
+//                    println(pair)
+//                    phoneToContactDict[phonenumber]!.status = pair[0] as! Int
+                    var status = pair[0] as! Int
                     phoneToContactDict[phonenumber]!.status = status
-                    
+                    var roundedActiveMinutes:Int = Int(round(pair[1] as! Float))
+//                    println(roundedActiveMinutes)
+                    phoneToContactDict[phonenumber]!.activeSince = roundedActiveMinutes
+//                    println(phoneToContactDict[phonenumber]!.status)
+                    println("Active Since: \(phoneToContactDict[phonenumber]!.activeSince)")
                 }
             }
         })

@@ -9,16 +9,14 @@
 import Foundation
 import UIKit
 
-var yourContactInformation = Contacts(firstname: "Main", lastname: "User", callfrequency: 5, lastcalldate: "null", lastcallinfo: "null", specialdates: "", Status: 0, phonenumber: "1112223333")
-
-
 class NowViewController: UITableViewController {
     private var contacts:[Contacts] = []
+    private var defaults = NSUserDefaults.standardUserDefaults()
     private var localdatabase = LocalDatabase()
     private var availableImage = UIImage(named: "available.png")
     private var notAvailableImage = UIImage(named: "unavailable.png")
-    private var serverUser: ServerUser = ServerUser(yourContactInfo: yourContactInformation, serverConnection: true)
     private var statusUpdateTime:Double = 1
+    var serverUser:ServerUser = ServerUser() //Empty ServerUserObject - Cannot initialize object here because 'defaults' not recognized
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +24,10 @@ class NowViewController: UITableViewController {
     
     // Called right before view appears each time
     override func viewWillAppear(animated: Bool) {
+        
+        //Initialize the server object to
+        serverUser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
+
         /*var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
         actInd.center = self.view.center
         actInd.hidesWhenStopped = true
@@ -66,14 +68,24 @@ class NowViewController: UITableViewController {
         return contacts.count
     }
     
-    private var newContact : Contacts = Contacts()
     // Display all contacts
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as! NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
+        if contact.firstName == "null"
+        {
+            cell.nameLabel.text = contact.lastName
+        }
+        else if contact.lastName == "null"
+        {
+            cell.nameLabel.text = contact.firstName
+        }
+        else {
         cell.nameLabel.text = contact.firstName + " " + contact.lastName
+        }
+        
         if contact.status == 2 {
             cell.statusImageView.image = availableImage
         }
@@ -83,7 +95,10 @@ class NowViewController: UITableViewController {
 
         return cell
     }
-    
+
+    // store the contact information
+    private var newContact : Contacts = Contacts()
+    // checking the length of the phone call
     private var startTime : NSTimeInterval = 0.0
     // Call contact on click
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -97,6 +112,7 @@ class NowViewController: UITableViewController {
         }
     }
     
+    // cancel button for saving call info
     @IBAction func cancelToNowViewController(segue : UIStoryboardSegue)
     {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
@@ -111,11 +127,13 @@ class NowViewController: UITableViewController {
             //dateformatter.timeStyle = .ShortStyle
             
             newContact.lastCallDate = dateformatter.stringFromDate(date)
+            localdatabase.editContact(newContact)
             
         } 
         
     }
     
+    // save button for saving call info
     @IBAction func saveContactInfo(segue : UIStoryboardSegue)
     {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
@@ -125,6 +143,8 @@ class NowViewController: UITableViewController {
            
             var localdatabase = LocalDatabase()
             localdatabase.initializeDatabase()
+            
+            // check how long the phone call was 
             if elapsed >= 10 {
                 
                 var date = NSDate()

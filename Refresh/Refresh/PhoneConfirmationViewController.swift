@@ -20,21 +20,39 @@ class PhoneConfirmationViewController: UIViewController,UITextFieldDelegate {
     @IBAction func clickedConfirmButton(sender: AnyObject) {
         // Verify random code here
         var code = confirmationCodeInput.text
-        let phone = defaults.integerForKey("mainUserPhoneNumber")
+        let phone = defaults.stringForKey("mainUserPhoneNumber")
         var verified = false
-        println("printing verified before the request is sent \(verified)")
+        println("printing verified before the request is sent: \(verified)")
         println("phonenumber entered:\(phone)")
         
-        var verifyingServerUser = ServerUser(phoneNumber: String(phone), serverConnection: false)
+        var verifyingServerUser = ServerUser(phoneNumber: phone!, serverConnection: true)
         verifyingServerUser.confirmVerificationCode(code, verified: &verified)
+        sleep(10)
         
-        sleep(5)
-        println("printing verified after the request is processed \(verified)")
+        println("printing verified after the request is processed: \(verified)")
         // If matches server code, then segue to UITabBarController
         // defaults.setInteger(2, forKey: "verificationStatus") // verified status
         
         // Otherwise alert
         
+        // Instead of text is not empty, verify confirmation code
+
+        
+        if (!confirmationCodeInput.text.isEmpty) {
+            // valid code
+            var confirmationCode = confirmationCodeInput.text
+            
+            defaults.setInteger(2, forKey: "verificationStatus") // verified status
+            self.performSegueWithIdentifier("SuccessfulConfirmationSegue", sender: self)
+        }
+        else {
+            // invalid phone number - prompt user with alert to enter valid phone number
+            let alert = UIAlertView()
+            alert.title = "Invalid Confirmation Code"
+            alert.message = "Please re-enter the confirmation code or re-enter your phone number."
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+        }
     }
     
     @IBOutlet weak var changeNumberButton: UIButton!
@@ -49,12 +67,14 @@ class PhoneConfirmationViewController: UIViewController,UITextFieldDelegate {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         tapRecognizer.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapRecognizer)
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let phone = defaults.integerForKey("mainUserPhoneNumber")
-        phoneNumberLabel.text = "Phone number entered: " + String(phone)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        defaults = NSUserDefaults.standardUserDefaults()
+        let phone = defaults.stringForKey("mainUserPhoneNumber")
+        phoneNumberLabel.text = "Phone number entered: " + phone!
+    }
+
     // Hide keyboard when user taps anywhere outside keyboard
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
