@@ -111,7 +111,17 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as! UITableViewCell
         let contact = contacts[indexPath.row] as Contacts
+        if contact.firstName == "null"
+        {
+            cell.textLabel?.text = contact.lastName
+        }
+        else if contact.lastName == "null"
+        {
+            cell.textLabel?.text = contact.firstName
+        }
+        else {
         cell.textLabel?.text = contact.firstName + " " + contact.lastName
+        }
         
         return cell
     }
