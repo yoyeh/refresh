@@ -17,18 +17,19 @@ class PhoneVerificationViewController: UIViewController {
     @IBOutlet weak var phoneNumberInput: UITextField!
     
     @IBAction func clickedVerifyButton(sender: AnyObject) {
-        if (!phoneNumberInput.text.isEmpty) {
+        var phoneNumber = phoneNumberInput.text
+        
+        if (!phoneNumber.isEmpty && count(phoneNumber) == 10) {
             // valid phone number
-            var phoneNumber = phoneNumberInput.text
             phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
-
+            phoneNumber = "1" + phoneNumber
+            
             defaults.setInteger(1, forKey: "verificationStatus") // Set to phone number entered
             defaults.setObject(phoneNumber, forKey: "mainUserPhoneNumber")
             
+            // test prints
             println("phone \(phoneNumber)")
-            
             let phone = defaults.stringForKey("mainUserPhoneNumber")
-            
             println("phone number in verify button: \(phone)")
 
             //Sending the phonenumber over to the server
