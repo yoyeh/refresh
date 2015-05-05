@@ -414,7 +414,7 @@
                                     <constraint firstAttribute="width" constant="198" id="Acu-Rd-pfR"/>
                                     <constraint firstAttribute="height" constant="21" id="zT8-P0-p9f"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -459,7 +459,7 @@
             </objects>
             <point key="canvasLocation" x="-121" y="918"/>
         </scene>
-        <!--Me-->
+        <!--Phone Verification View Controller-->
         <scene sceneID="cbK-09-Y9g">
             <objects>
                 <viewController storyboardIdentifier="VerifyPhoneStoryboardID" id="NK8-IV-A3M" customClass="PhoneVerificationViewController" customModule="Refresh" customModuleProvider="target" sceneMemberID="viewController">
@@ -472,27 +472,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Your Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erl-pz-OZn">
-                                <rect key="frame" x="16" y="75" width="568" height="21"/>
+                                <rect key="frame" x="16" y="95" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="96U-lA-dSX">
-                                <rect key="frame" x="239" y="136" width="123" height="30"/>
+                                <rect key="frame" x="230" y="156" width="141" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="123" id="Mm0-4V-q12"/>
+                                    <constraint firstAttribute="width" constant="141" id="Mm0-4V-q12"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGk-V0-8bM">
-                                <rect key="frame" x="211" y="140" width="20" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll send you a confirmation code via SMS." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybt-ud-VzO">
+                                <rect key="frame" x="185" y="219" width="230" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6M-7s-HaV">
-                                <rect key="frame" x="281" y="216" width="38" height="30"/>
+                                <rect key="frame" x="281" y="236" width="38" height="30"/>
                                 <state key="normal" title="Verify">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -500,16 +500,19 @@
                                     <action selector="clickedVerifyButton:" destination="NK8-IV-A3M" eventType="touchUpInside" id="KSI-2l-M4U"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll send you a confirmation code via SMS." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybt-ud-VzO">
-                                <rect key="frame" x="185" y="199" width="230" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGk-V0-8bM">
+                                <rect key="frame" x="202" y="160" width="20" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Q0j-KJ-ret"/>
+                                    <constraint firstAttribute="height" constant="21" id="qUd-jE-z0k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="96U-lA-dSX" firstAttribute="leading" secondItem="EGk-V0-8bM" secondAttribute="trailing" constant="8" symbolic="YES" id="9rW-7g-Cxq"/>
                             <constraint firstAttribute="centerX" secondItem="d6M-7s-HaV" secondAttribute="centerX" id="ALK-mb-gPu"/>
                             <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="96U-lA-dSX" secondAttribute="bottom" constant="50" id="C1B-Lr-nvc"/>
                             <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="Ybt-ud-VzO" secondAttribute="bottom" constant="-4" id="Py3-es-4WO"/>
@@ -519,11 +522,11 @@
                             <constraint firstItem="erl-pz-OZn" firstAttribute="trailing" secondItem="hhB-U8-nOc" secondAttribute="trailingMargin" id="bod-ba-IiW"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="40" id="ckP-fR-2qI"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="centerX" secondItem="erl-pz-OZn" secondAttribute="centerX" id="e91-cj-TC8"/>
-                            <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="55" id="iAW-Lj-4Nc"/>
-                            <constraint firstItem="EGk-V0-8bM" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="44" id="xQL-Xs-Zmb"/>
+                            <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="31" id="iAW-Lj-4Nc"/>
+                            <constraint firstItem="Ybt-ud-VzO" firstAttribute="top" secondItem="EGk-V0-8bM" secondAttribute="bottom" constant="38" id="j4A-b7-1nz"/>
+                            <constraint firstItem="96U-lA-dSX" firstAttribute="leading" secondItem="EGk-V0-8bM" secondAttribute="trailing" constant="8" symbolic="YES" id="uvs-VS-Z9F"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="status_icon.png" id="Bvh-IC-Zdu"/>
                     <connections>
                         <outlet property="phoneNumberInput" destination="96U-lA-dSX" id="bYv-Ib-UCZ"/>
                         <outlet property="verifyButton" destination="d6M-7s-HaV" id="WuZ-80-yNJ"/>
@@ -547,21 +550,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ilQ-xR-yti">
-                                <rect key="frame" x="239" y="169" width="123" height="30"/>
+                                <rect key="frame" x="239" y="185" width="123" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="123" id="ZBZ-6v-ufB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type in your Confirmation Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bey-a4-cDy">
-                                <rect key="frame" x="180" y="73" width="243" height="21"/>
+                                <rect key="frame" x="180" y="95" width="243" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TqA-jU-lNk">
-                                <rect key="frame" x="273" y="220" width="55" height="30"/>
+                                <rect key="frame" x="273" y="236" width="55" height="30"/>
                                 <state key="normal" title="Confirm">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -571,13 +574,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0w-vR-gic">
-                                <rect key="frame" x="231" y="115" width="138" height="18"/>
+                                <rect key="frame" x="231" y="137" width="138" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pj-oA-iJ4">
-                                <rect key="frame" x="175" y="253" width="250" height="30"/>
+                                <rect key="frame" x="175" y="269" width="250" height="30"/>
                                 <state key="normal" title="I want to re-enter my phone number.">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -589,10 +592,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ilQ-xR-yti" firstAttribute="top" secondItem="z0w-vR-gic" secondAttribute="bottom" constant="36" id="93m-wd-Qcv"/>
+                            <constraint firstItem="ilQ-xR-yti" firstAttribute="top" secondItem="z0w-vR-gic" secondAttribute="bottom" constant="30" id="93m-wd-Qcv"/>
                             <constraint firstItem="TqA-jU-lNk" firstAttribute="top" secondItem="ilQ-xR-yti" secondAttribute="bottom" constant="21" id="9FD-O0-710"/>
                             <constraint firstItem="z0w-vR-gic" firstAttribute="top" secondItem="Bey-a4-cDy" secondAttribute="bottom" constant="21" id="JO0-ip-j75"/>
-                            <constraint firstItem="Bey-a4-cDy" firstAttribute="top" secondItem="dhc-bM-Bpf" secondAttribute="bottom" constant="53" id="Thy-u9-67O"/>
+                            <constraint firstItem="Bey-a4-cDy" firstAttribute="top" secondItem="dhc-bM-Bpf" secondAttribute="bottom" constant="31" id="Thy-u9-67O"/>
                             <constraint firstAttribute="centerX" secondItem="ilQ-xR-yti" secondAttribute="centerX" id="UJu-zv-GvO"/>
                             <constraint firstAttribute="centerX" secondItem="z0w-vR-gic" secondAttribute="centerX" id="YSc-Bk-1KN"/>
                             <constraint firstAttribute="centerX" secondItem="Bey-a4-cDy" secondAttribute="centerX" constant="-1.5" id="d2p-SQ-jtP"/>
