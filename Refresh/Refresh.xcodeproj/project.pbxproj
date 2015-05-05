@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		071CD9001AF94412004705AB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071CD8FF1AF94411004705AB /* SettingsViewController.swift */; };
+		071CD9021AF94F15004705AB /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 071CD9011AF94F14004705AB /* settings_icon.png */; };
 		0720CB571AF8514F0056A2FA /* go_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB561AF8514F0056A2FA /* go_button.png */; };
 		0720CB601AF851630056A2FA /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB581AF851630056A2FA /* Icon-60@2x.png */; };
 		0720CB611AF851630056A2FA /* Icon-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB591AF851630056A2FA /* Icon-29@3x.png */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		071CD8FF1AF94411004705AB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		071CD9011AF94F14004705AB /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings_icon.png; path = Images.xcassets/settings_icon.png; sourceTree = "<group>"; };
 		0720CB561AF8514F0056A2FA /* go_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = go_button.png; path = Images.xcassets/go_button.png; sourceTree = "<group>"; };
 		0720CB581AF851630056A2FA /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-60@2x.png"; sourceTree = "<group>"; };
 		0720CB591AF851630056A2FA /* Icon-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@3x.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-29@3x.png"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				073F86D81ACDC71D00814584 /* status_icon.png */,
 				073F86DA1ACDCA2C00814584 /* contacts_icon.png */,
 				073F86DB1ACDCA2C00814584 /* now_icon.png */,
+				071CD9011AF94F14004705AB /* settings_icon.png */,
 				07C4F4031AC3855E0071A762 /* LaunchScreen.xib */,
 				07C4F3F81AC3855E0071A762 /* Supporting Files */,
 				079067EC1AD37BC700612C53 /* Refresh-Bridging-Header.h */,
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0720CB641AF851630056A2FA /* Icon-40@2x.png in Resources */,
+				071CD9021AF94F15004705AB /* settings_icon.png in Resources */,
 				07C4F4001AC3855E0071A762 /* Main.storyboard in Resources */,
 				0720CB661AF851630056A2FA /* Icon-76@2x.png in Resources */,
 				0720CB611AF851630056A2FA /* Icon-29@3x.png in Resources */,

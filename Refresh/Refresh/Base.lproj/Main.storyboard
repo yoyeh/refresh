@@ -654,7 +654,7 @@
         <scene sceneID="LSM-M3-EvQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5FM-co-Cdm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="status_icon.png" id="w3t-Yx-Sw1"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings_icon.png" id="w3t-Yx-Sw1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zZV-w1-wt7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -674,6 +674,7 @@
         <image name="contacts_icon.png" width="60" height="60"/>
         <image name="go_button.png" width="130" height="50"/>
         <image name="now_icon.png" width="60" height="60"/>
+        <image name="settings_icon.png" width="60" height="60"/>
         <image name="status_icon.png" width="60" height="60"/>
         <image name="unavailable_button.png" width="180" height="50"/>
     </resources>
