@@ -9,11 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
-    @IBOutlet weak var currentStatus: UILabel!
-    @IBOutlet weak var availableButton: UIButton!
-    @IBOutlet weak var unavailableButton: UIButton!
-    
     @IBOutlet weak var amountAvailable: UIPickerView!
     @IBOutlet weak var timer: UILabel!
     
@@ -21,10 +16,14 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     private var startTime = NSTimeInterval()
     private var theTimer = NSTimer()
     private var totalTime : Double = 0
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var unavailableButton: UIButton!
+    
+    // the picker view
+    let pickerData = ["15 Minutes", "30 Minutes", "45 Minutes", "1 Hour", "A Long Time"]
     
     // the available button
     @IBAction func clickedAvailableButton(sender: AnyObject) {
-        currentStatus.text = "Available"
         theTimer.invalidate()
         timer.text = ""
         var serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
@@ -33,90 +32,94 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     // the unavailable button
     @IBAction func clickedUnavailableButton(sender: AnyObject) {
-        currentStatus.text = "Unavailable"
         theTimer.invalidate()
-        timer.text = ""
+        timer.text = "I am available for"
         var serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
         serveruser.changeStatus(0)
+        
+        unavailableButton.hidden = true
+        goButton.hidden = false
+        amountAvailable.hidden = false
     }
     
     // the button for the availability timer
     @IBAction func startTimer(sender: AnyObject) {
         theTimer.invalidate()
-        currentStatus.text = "Available for"
+        
         var serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
-        serveruser.changeStatus(0)
+        serveruser.changeStatus(2)
+
         if amountAvailable.selectedRowInComponent(0) == 0 {
-            timer.text = "15:00"
-            totalTime = 900
+            totalTime = 15
+            // totalTime = 900
         }
         else if amountAvailable.selectedRowInComponent(0) == 1 {
-            timer.text = "30:00"
-            totalTime = 1800
+            totalTime = 30
+            // totalTime = 1800
         }
         else if amountAvailable.selectedRowInComponent(0) == 2 {
-            timer.text = "45:00"
-            totalTime = 2700
+            totalTime = 45
+            //totalTime = 2700
+        }
+        else if amountAvailable.selectedRowInComponent(0) == 3 {
+            totalTime = 60
+            // totalTime = 3600
         }
         else {
-            timer.text = "60:00"
-            totalTime = 3600
+            timer.text = "Available"
+            theTimer.invalidate()
         }
         
-        let aSelector : Selector = "updateTime"
-        theTimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
-        startTime = NSDate.timeIntervalSinceReferenceDate()
-        //println(amountAvailable.selectedRowInComponent(0))
+        if timer.text != "Available" {
+            let aSelector : Selector = "updateTime"
+            theTimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+            startTime = NSDate.timeIntervalSinceReferenceDate()
+        }
         
+        amountAvailable.hidden = true
+        goButton.hidden = true
+        unavailableButton.hidden = false
     }
     
     // update and print the amount of time left for the availability timer
     func updateTime() {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
         
-        //Find the difference between current time and start time.
+        // Find the difference between current time and start time.
         var elapsedTime = currentTime - startTime
         var timeLeft : NSTimeInterval
-        
-    
         timeLeft = totalTime - elapsedTime
         
         if timeLeft <= 0 {
-            
             theTimer.invalidate()
+            timer.text = "Unavailable"
+            amountAvailable.hidden = false
+            goButton.hidden = false
+            unavailableButton.hidden = true
             
-            timer.text = ""
-            currentStatus.text = "Unavailable"
             var serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
-            serveruser.changeStatus(2)
-            return
-            
+            serveruser.changeStatus(0)
         }
+        else {
+            // calculate the minutes in elapsed time.
+            let minutes = UInt8(timeLeft / 60.0)
+            timeLeft -= (NSTimeInterval(minutes) * 60)
         
-        //calculate the minutes in elapsed time.
-        let minutes = UInt8(timeLeft / 60.0)
-        timeLeft -= (NSTimeInterval(minutes) * 60)
+            // calculate the seconds in elapsed time.
+            let seconds = UInt8(timeLeft)
+            timeLeft -= NSTimeInterval(seconds)
         
-        //calculate the seconds in elapsed time.
-        let seconds = UInt8(timeLeft)
-        timeLeft -= NSTimeInterval(seconds)
+            // add the leading zero for minutes and seconds and store them as string constants
+            let strMinutes = minutes > 9 ? String(minutes):"0" + String(minutes)
+            let strSeconds = seconds > 9 ? String(seconds):"0" + String(seconds)
         
-        
-        //add the leading zero for minutes and seconds and store them as string constants
-        let strMinutes = minutes > 9 ? String(minutes):"0" + String(minutes)
-        let strSeconds = seconds > 9 ? String(seconds):"0" + String(seconds)
-        
-        timer.text = "\(strMinutes):\(strSeconds)"
-        
+            timer.text = "\(strMinutes):\(strSeconds)"
+        }
     }
-    
-    // the picker view
-    let pickerData = ["15 Minutes", "30 Minutes", "45 Minutes", "1 Hour"]
     
     // load once, the first time
     override func viewDidLoad() {
-      super.viewDidLoad()
-        timer.text = ""
+        super.viewDidLoad()
         self.amountAvailable.dataSource = self
         self.amountAvailable.delegate = self
         // Do any additional setup after loading the view, typically from a nib
@@ -125,28 +128,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     // necessary for the UIPickerView
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
+    
     // displays names in the picker view
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return pickerData[row]
     }
-    
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-
-    private func timerSelectedView() {
-        
-    }
-    
-    private func timerNotSelectedView() {
-        
-    }
-    
 }
 

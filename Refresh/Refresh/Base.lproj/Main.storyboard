@@ -23,87 +23,59 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGa-tv-Y74">
-                                <rect key="frame" x="16" y="87" width="568" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIC-qh-vXD">
-                                <rect key="frame" x="215" y="481" width="170" height="35"/>
-                                <state key="normal" image="UnavailableButton.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickedUnavailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rXP-8p-AKJ"/>
-                                </connections>
-                            </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9jt-RF-Fbo">
-                                <rect key="frame" x="0.0" y="238" width="600" height="162"/>
+                                <rect key="frame" x="189" y="114" width="222" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="222" id="bSB-1M-ZPU"/>
+                                </constraints>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am AVAILABLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INz-TV-hzY">
-                                <rect key="frame" x="237" y="227" width="126" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYb-v3-Fdg">
-                                <rect key="frame" x="383" y="223" width="30" height="30"/>
-                                <state key="normal" title="Go">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYb-v3-Fdg">
+                                <rect key="frame" x="235" y="284" width="130" height="50"/>
+                                <state key="normal" image="go_button.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="startTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkd-AL-Ggh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qk-he-TCj">
-                                <rect key="frame" x="215" y="426" width="170" height="35"/>
-                                <state key="normal" image="AvailableButton.png">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am available for" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zw8-Vq-z7t">
+                                <rect key="frame" x="189" y="92" width="222" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="078-sC-0ag">
+                                <rect key="frame" x="210" y="202" width="180" height="50"/>
+                                <state key="normal" image="unavailable_button.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="clickedAvailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="emZ-5h-mXO"/>
+                                    <action selector="clickedUnavailableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UU1-bi-aVa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbV-2C-1LZ">
-                                <rect key="frame" x="264" y="178" width="72" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DGa-tv-Y74" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1eU-dY-5pm"/>
-                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="centerX" secondItem="INz-TV-hzY" secondAttribute="centerX" id="2nI-Yc-ouX"/>
-                            <constraint firstAttribute="centerY" secondItem="6Qk-he-TCj" secondAttribute="centerY" constant="-143.5" id="4Jb-Di-TQR"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5Wj-gT-4Z9"/>
-                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="9jt-RF-Fbo" secondAttribute="bottom" constant="26" id="7HT-Po-TeR"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DK5-7T-EZT"/>
-                            <constraint firstItem="DGa-tv-Y74" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Exu-i3-QCW"/>
-                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GMj-h1-Rvp"/>
-                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="top" secondItem="AbV-2C-1LZ" secondAttribute="bottom" constant="24" id="K3h-Rk-EQR"/>
-                            <constraint firstAttribute="centerX" secondItem="UIC-qh-vXD" secondAttribute="centerX" id="LGM-p1-Zcw"/>
-                            <constraint firstItem="AbV-2C-1LZ" firstAttribute="leading" secondItem="6Qk-he-TCj" secondAttribute="trailing" constant="-121" id="Phd-mW-geG"/>
-                            <constraint firstItem="UIC-qh-vXD" firstAttribute="top" secondItem="6Qk-he-TCj" secondAttribute="bottom" constant="20" id="PiX-i8-PEP"/>
+                            <constraint firstItem="078-sC-0ag" firstAttribute="top" secondItem="Zw8-Vq-z7t" secondAttribute="bottom" constant="74" id="JwG-Jm-uMG"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Qqx-Ud-HHg"/>
-                            <constraint firstAttribute="centerX" secondItem="6Qk-he-TCj" secondAttribute="centerX" id="W5y-iz-bIr"/>
-                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="INz-TV-hzY" secondAttribute="bottom" constant="178" id="cVe-x9-dUc"/>
-                            <constraint firstItem="6Qk-he-TCj" firstAttribute="top" secondItem="DGa-tv-Y74" secondAttribute="bottom" constant="316" id="dXM-I0-4GX"/>
-                            <constraint firstItem="INz-TV-hzY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="227" id="fms-7R-tHt"/>
+                            <constraint firstAttribute="centerX" secondItem="Zw8-Vq-z7t" secondAttribute="centerX" id="SXV-A7-daa"/>
+                            <constraint firstItem="Zw8-Vq-z7t" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="35" id="bRT-6J-y9h"/>
+                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="top" secondItem="Zw8-Vq-z7t" secondAttribute="bottom" constant="-14" id="bXh-IF-XdF"/>
+                            <constraint firstAttribute="centerX" secondItem="9jt-RF-Fbo" secondAttribute="centerX" id="hNb-lZ-8MV"/>
                             <constraint firstItem="Hae-fT-hFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kbZ-u2-9IO"/>
-                            <constraint firstItem="jYb-v3-Fdg" firstAttribute="leading" secondItem="6Qk-he-TCj" secondAttribute="trailing" constant="-2" id="oeU-Ux-Wae"/>
-                            <constraint firstItem="jYb-v3-Fdg" firstAttribute="top" secondItem="Hae-fT-hFa" secondAttribute="bottom" constant="166" id="qmH-Ci-s0D"/>
-                            <constraint firstItem="9jt-RF-Fbo" firstAttribute="centerX" secondItem="6Qk-he-TCj" secondAttribute="centerX" id="s1U-Bh-dO9"/>
+                            <constraint firstAttribute="centerX" secondItem="jYb-v3-Fdg" secondAttribute="centerX" id="szw-xd-Lja"/>
+                            <constraint firstItem="jYb-v3-Fdg" firstAttribute="top" secondItem="9jt-RF-Fbo" secondAttribute="bottom" constant="8" id="uuu-nT-wAx"/>
+                            <constraint firstAttribute="centerX" secondItem="078-sC-0ag" secondAttribute="centerX" id="yM7-rY-P28"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Status" image="status_icon.png" id="4YM-Pm-aZa"/>
                     <connections>
                         <outlet property="amountAvailable" destination="9jt-RF-Fbo" id="Qr1-MU-IUq"/>
-                        <outlet property="availableButton" destination="6Qk-he-TCj" id="Ut0-9Z-3ie"/>
-                        <outlet property="currentStatus" destination="DGa-tv-Y74" id="kH8-MB-lRY"/>
-                        <outlet property="timer" destination="AbV-2C-1LZ" id="5ju-Kp-1iX"/>
-                        <outlet property="unavailableButton" destination="UIC-qh-vXD" id="kYy-Lu-nn6"/>
+                        <outlet property="goButton" destination="jYb-v3-Fdg" id="o0D-Ko-lm5"/>
+                        <outlet property="timer" destination="Zw8-Vq-z7t" id="cNk-Wp-6sI"/>
+                        <outlet property="unavailableButton" destination="078-sC-0ag" id="QG3-by-Gpa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -442,8 +414,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We'll send you a confirmation code via SMS." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybt-ud-VzO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll send you a confirmation code via SMS." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybt-ud-VzO">
                                 <rect key="frame" x="146" y="187" width="309" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="309" id="11q-il-K5K"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -463,11 +438,14 @@
                             <constraint firstItem="96U-lA-dSX" firstAttribute="leading" secondItem="EGk-V0-8bM" secondAttribute="trailing" constant="8" symbolic="YES" id="9rW-7g-Cxq"/>
                             <constraint firstAttribute="centerX" secondItem="d6M-7s-HaV" secondAttribute="centerX" id="ALK-mb-gPu"/>
                             <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="96U-lA-dSX" secondAttribute="bottom" constant="50" id="C1B-Lr-nvc"/>
+                            <constraint firstItem="d6M-7s-HaV" firstAttribute="top" secondItem="Ybt-ud-VzO" secondAttribute="bottom" constant="8" symbolic="YES" id="LRk-hf-7ta"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="leading" secondItem="hhB-U8-nOc" secondAttribute="leadingMargin" id="SxQ-pX-Duc"/>
+                            <constraint firstItem="Ybt-ud-VzO" firstAttribute="top" secondItem="96U-lA-dSX" secondAttribute="bottom" constant="21" id="bCN-sj-whp"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="trailing" secondItem="hhB-U8-nOc" secondAttribute="trailingMargin" id="bod-ba-IiW"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="40" id="ckP-fR-2qI"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="centerX" secondItem="erl-pz-OZn" secondAttribute="centerX" id="e91-cj-TC8"/>
                             <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="55" id="iAW-Lj-4Nc"/>
+                            <constraint firstAttribute="centerX" secondItem="Ybt-ud-VzO" secondAttribute="centerX" id="rcY-jk-ll0"/>
                             <constraint firstItem="EGk-V0-8bM" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="44" id="xQL-Xs-Zmb"/>
                         </constraints>
                     </view>
@@ -581,11 +559,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AvailableButton.png" width="170" height="35"/>
-        <image name="UnavailableButton.png" width="170" height="35"/>
         <image name="contacts_icon.png" width="60" height="60"/>
+        <image name="go_button.png" width="130" height="50"/>
         <image name="now_icon.png" width="60" height="60"/>
         <image name="status_icon.png" width="60" height="60"/>
+        <image name="unavailable_button.png" width="180" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z0N-7X-EWz"/>
