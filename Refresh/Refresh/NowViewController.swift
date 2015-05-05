@@ -16,6 +16,9 @@ class NowViewController: UITableViewController {
     private var availableImage = UIImage(named: "available.png")
     private var notAvailableImage = UIImage(named: "unavailable.png")
     private var statusUpdateTime:Double = 1
+    private var newContact : Contacts = Contacts() // store the contact information
+    private var startTime : NSTimeInterval = 0.0 // checking the length of the phone call
+    
     var serverUser:ServerUser = ServerUser() //Empty ServerUserObject - Cannot initialize object here because 'defaults' not recognized
 
     override func viewDidLoad() {
@@ -24,17 +27,8 @@ class NowViewController: UITableViewController {
     
     // Called right before view appears each time
     override func viewWillAppear(animated: Bool) {
-        
         //Initialize the server object to
         serverUser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
-
-        /*var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
-        actInd.center = self.view.center
-        actInd.hidesWhenStopped = true
-        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        view.addSubview(actInd)
-        actInd.startAnimating()
-        actInd.stopAnimating()*/
         
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
@@ -43,8 +37,7 @@ class NowViewController: UITableViewController {
         var statusUpdate = NSTimer.scheduledTimerWithTimeInterval(statusUpdateTime, target: self, selector: Selector("updateStatus"), userInfo: nil, repeats: true)
     }
     
-    func updateStatus()
-    {
+    func updateStatus() {
         serverUser.getStatusOfOtherUsers(contacts)
         sortContacts()
         self.tableView.reloadData()
@@ -74,16 +67,14 @@ class NowViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as! NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
-        if contact.firstName == "null"
-        {
+        if contact.firstName == "null" {
             cell.nameLabel.text = contact.lastName
         }
-        else if contact.lastName == "null"
-        {
+        else if contact.lastName == "null" {
             cell.nameLabel.text = contact.firstName
         }
         else {
-        cell.nameLabel.text = contact.firstName + " " + contact.lastName
+            cell.nameLabel.text = contact.firstName + " " + contact.lastName
         }
         
         if contact.status == 2 {
@@ -96,10 +87,6 @@ class NowViewController: UITableViewController {
         return cell
     }
 
-    // store the contact information
-    private var newContact : Contacts = Contacts()
-    // checking the length of the phone call
-    private var startTime : NSTimeInterval = 0.0
     // Call contact on click
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let contact = contacts[indexPath.row] as Contacts
@@ -113,47 +100,33 @@ class NowViewController: UITableViewController {
     }
     
     // cancel button for saving call info
-    @IBAction func cancelToNowViewController(segue : UIStoryboardSegue)
-    {
+    @IBAction func cancelToNowViewController(segue : UIStoryboardSegue) {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
         var elapsed = currentTime - startTime
-        var localdatabase = LocalDatabase()
-        localdatabase.initializeDatabase()
+        
         if elapsed >= 10 {
-            
             var date = NSDate()
             var dateformatter = NSDateFormatter()
             dateformatter.dateStyle = .ShortStyle
-            //dateformatter.timeStyle = .ShortStyle
             
             newContact.lastCallDate = dateformatter.stringFromDate(date)
             localdatabase.editContact(newContact)
-            
-        } 
-        
+        }
     }
     
     // save button for saving call info
-    @IBAction func saveContactInfo(segue : UIStoryboardSegue)
-    {
+    @IBAction func saveContactInfo(segue : UIStoryboardSegue) {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
         var elapsed = currentTime - startTime
  
         if let saveinfoviewcontroller = segue.sourceViewController as? SaveInfoController {
-           
-            var localdatabase = LocalDatabase()
-            localdatabase.initializeDatabase()
-            
             // check how long the phone call was 
             if elapsed >= 10 {
-                
                 var date = NSDate()
                 var dateformatter = NSDateFormatter()
                 dateformatter.dateStyle = .ShortStyle
-                //dateformatter.timeStyle = .ShortStyle
                 
                 newContact.lastCallDate = dateformatter.stringFromDate(date)
-
             }
             
             newContact.lastCallInfo = saveinfoviewcontroller.calltext
@@ -161,17 +134,14 @@ class NowViewController: UITableViewController {
             dateformat.dateStyle = .ShortStyle
             //dateformat.timeStyle = .ShortStyle
             var special = dateformat.stringFromDate(saveinfoviewcontroller.specialDate)
-            if (newContact.specialDates == "")
-            {
+            if (newContact.specialDates == "") {
                 newContact.specialDates = special
             }
-            else
-            {
-            newContact.specialDates = "\(newContact.specialDates)\n\(special)"
+            else {
+                newContact.specialDates = "\(newContact.specialDates)\n\(special)"
             }
+            
             localdatabase.editContact(newContact)
         }
-    
     }
-    
 }
