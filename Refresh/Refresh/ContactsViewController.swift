@@ -54,7 +54,6 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
                 newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
             }
         }
-        // TODO: else should throw visible error to user and not add to database
         
         if (!localdatabase.doesContactExist(newContact)) {
             contacts.append(newContact)
@@ -109,16 +108,14 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath: indexPath) as! UITableViewCell
         let contact = contacts[indexPath.row] as Contacts
-        if contact.firstName == "null"
-        {
+        if contact.firstName == "" {
             cell.textLabel?.text = contact.lastName
         }
-        else if contact.lastName == "null"
-        {
+        else if contact.lastName == "" {
             cell.textLabel?.text = contact.firstName
         }
         else {
-        cell.textLabel?.text = contact.firstName + " " + contact.lastName
+            cell.textLabel?.text = contact.firstName + " " + contact.lastName
         }
         
         return cell

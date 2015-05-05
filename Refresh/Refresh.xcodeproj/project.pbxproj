@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071CD9001AF94412004705AB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071CD8FF1AF94411004705AB /* SettingsViewController.swift */; };
 		0720CB571AF8514F0056A2FA /* go_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB561AF8514F0056A2FA /* go_button.png */; };
 		0720CB601AF851630056A2FA /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB581AF851630056A2FA /* Icon-60@2x.png */; };
 		0720CB611AF851630056A2FA /* Icon-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB591AF851630056A2FA /* Icon-29@3x.png */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071CD8FF1AF94411004705AB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0720CB561AF8514F0056A2FA /* go_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = go_button.png; path = Images.xcassets/go_button.png; sourceTree = "<group>"; };
 		0720CB581AF851630056A2FA /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-60@2x.png"; sourceTree = "<group>"; };
 		0720CB591AF851630056A2FA /* Icon-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@3x.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-29@3x.png"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				2219F0641AEDB8DD00A2CC6B /* SaveInfoController.swift */,
 				07CED34B1AE4BC7300DEC805 /* PhoneVerificationViewController.swift */,
 				07B53BD71AEC9E64000C132E /* PhoneConfirmationViewController.swift */,
+				071CD8FF1AF94411004705AB /* SettingsViewController.swift */,
 				07C4F3FE1AC3855E0071A762 /* Main.storyboard */,
 				07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */,
 				07C4F4011AC3855E0071A762 /* Images.xcassets */,
@@ -366,6 +369,7 @@
 				07DC9E691AD6211100977DA4 /* RefreshNetwork.swift in Sources */,
 				073F86C11ACCC6F600814584 /* Contacts.swift in Sources */,
 				2219F0651AEDB8DD00A2CC6B /* SaveInfoController.swift in Sources */,
+				071CD9001AF94412004705AB /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

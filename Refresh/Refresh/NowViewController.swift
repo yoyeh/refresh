@@ -67,10 +67,10 @@ class NowViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("NowContactCell", forIndexPath: indexPath) as! NowContactCell
         
         let contact = contacts[indexPath.row] as Contacts
-        if contact.firstName == "null" {
+        if contact.firstName == "" {
             cell.nameLabel.text = contact.lastName
         }
-        else if contact.lastName == "null" {
+        else if contact.lastName == "" {
             cell.nameLabel.text = contact.firstName
         }
         else {

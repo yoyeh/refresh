@@ -9,16 +9,16 @@
 import Foundation
 
 class Contacts {
-    var firstName = "null"
-    var lastName = "null"
+    var firstName = ""
+    var lastName = ""
     var callFrequency = 0
-    var lastCallDate = "null"
-    var lastCallInfo = "null"
+    var lastCallDate = ""
+    var lastCallInfo = ""
     var specialDates = ""
     var activeSince = -1
     
     var status = 1 // status: [0] unavailable [1] unknown [2] available
-    var phoneNumber = "null"
+    var phoneNumber = ""
     
     var fullName:String {
         return "\(firstName) \(lastName)"
@@ -62,7 +62,7 @@ class Contacts {
         let frequency = contact.callFrequency * 7
         var days : Int
         
-        if contact.lastCallDate == "null"
+        if contact.lastCallDate == ""
         {
             days = 0
         }

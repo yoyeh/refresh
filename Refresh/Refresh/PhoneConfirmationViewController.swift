@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 
 class PhoneConfirmationViewController: UIViewController,UITextFieldDelegate {
-
     private var defaults = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var confirmationCodeInput: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
-    
     @IBOutlet weak var phoneNumberLabel: UILabel!
+    
     @IBAction func clickedConfirmButton(sender: AnyObject) {
         // Verify random code here
         var code = confirmationCodeInput.text
