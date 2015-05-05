@@ -22,11 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(notificationSettings)
    
         let defaults = NSUserDefaults.standardUserDefaults()
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         if defaults.boolForKey("hasBeenLaunched") {
             // not first launch
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            
             
             let verStatus = defaults.integerForKey("verificationStatus")
             if verStatus == 0 {
@@ -54,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // [0] has not entered phone number
             // [1] phone number entered but not verfied
             // [2] phone number verified
+            
+            var initialViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("VerifyPhoneStoryboardID") as! UIViewController
+            self.window?.rootViewController = initialViewController
         }
         
         return true

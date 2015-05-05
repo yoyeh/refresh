@@ -94,7 +94,7 @@ class ServerUser
             else
             {
                 var jsonObj = self.JSONParseDict(data)
-                println(jsonObj)
+//                println(jsonObj)
                 callback(jsonObj, nil)
             }
         }

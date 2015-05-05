@@ -30,23 +30,13 @@ class PhoneConfirmationViewController: UIViewController,UITextFieldDelegate {
         sleep(10)
         
         println("printing verified after the request is processed: \(verified)")
-        // If matches server code, then segue to UITabBarController
-        // defaults.setInteger(2, forKey: "verificationStatus") // verified status
         
-        // Otherwise alert
-        
-        // Instead of text is not empty, verify confirmation code
-
-        
-        if (!confirmationCodeInput.text.isEmpty) {
-            // valid code
+        if verified {
             var confirmationCode = confirmationCodeInput.text
-            
             defaults.setInteger(2, forKey: "verificationStatus") // verified status
             self.performSegueWithIdentifier("SuccessfulConfirmationSegue", sender: self)
         }
         else {
-            // invalid phone number - prompt user with alert to enter valid phone number
             let alert = UIAlertView()
             alert.title = "Invalid Confirmation Code"
             alert.message = "Please re-enter the confirmation code or re-enter your phone number."
