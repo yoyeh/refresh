@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     // the unavailable button
     @IBAction func clickedUnavailableButton(sender: AnyObject) {
         theTimer.invalidate()
-        timer.text = "I am available for"
+        timer.text = "I am available for:"
         var serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
         serveruser.changeStatus(0)
         
@@ -82,7 +82,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         if timeLeft <= 0 {
             theTimer.invalidate()
-            timer.text = "Unavailable"
+            timer.text = "I am available for:"
             amountAvailable.hidden = false
             goButton.hidden = false
             unavailableButton.hidden = true
