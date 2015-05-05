@@ -13,4 +13,5 @@ class NowContactCell: UITableViewCell {
     
     @IBOutlet weak var statusImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var activeSinceLabel: UILabel!
 }

@@ -32,7 +32,7 @@ class ContactsDetailViewController: UIViewController {
     }
     
     @IBAction func frequencyStepperValueChanged(sender: UIStepper) {
-        callFrequencyLabel.text = Int(sender.value).description
+        callFrequencyLabel.text = "Every " + Int(sender.value).description + " weeks"
     }
     
     var detailContact: Contacts? {
@@ -47,7 +47,7 @@ class ContactsDetailViewController: UIViewController {
         if let contact = detailContact {
             title = contact.firstName
             
-            callFrequencyLabel?.text = String(contact.callFrequency)
+            callFrequencyLabel?.text = "Every " + String(contact.callFrequency) + " weeks"
             detailLabel?.text = contact.contactDetails
             
             // write copy contact duplicate or copy function?
