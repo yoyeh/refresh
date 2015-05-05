@@ -102,13 +102,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         oneDayNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         UIApplication.sharedApplication().scheduleLocalNotification(oneDayNotification)
         
-        
-        var threeDayNotification = UILocalNotification()
-        threeDayNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
-        threeDayNotification.alertBody = "It's been a while since your friends have heard from you."
-        threeDayNotification.timeZone = NSTimeZone.defaultTimeZone()
-        threeDayNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-        UIApplication.sharedApplication().scheduleLocalNotification(threeDayNotification)
+//        var threeDayNotification = UILocalNotification()
+//        threeDayNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+//        threeDayNotification.alertBody = "It's been a while since your friends have heard from you."
+//        threeDayNotification.timeZone = NSTimeZone.defaultTimeZone()
+//        threeDayNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+//        UIApplication.sharedApplication().scheduleLocalNotification(threeDayNotification)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

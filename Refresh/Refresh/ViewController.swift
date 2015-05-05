@@ -11,24 +11,14 @@ import UIKit
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var amountAvailable: UIPickerView!
     @IBOutlet weak var timer: UILabel!
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var unavailableButton: UIButton!
     
     private var defaults = NSUserDefaults.standardUserDefaults()
     private var startTime = NSTimeInterval()
     private var theTimer = NSTimer()
     private var totalTime : Double = 0
-    @IBOutlet weak var goButton: UIButton!
-    @IBOutlet weak var unavailableButton: UIButton!
-    
-    // the picker view
-    let pickerData = ["15 Minutes", "30 Minutes", "45 Minutes", "1 Hour", "A Long Time"]
-    
-    // the available button
-    @IBAction func clickedAvailableButton(sender: AnyObject) {
-        theTimer.invalidate()
-        timer.text = ""
-        var serveruser = ServerUser(phoneNumber: defaults.stringForKey("mainUserPhoneNumber")!, serverConnection: true)
-        serveruser.changeStatus(2)
-    }
+    private var pickerData = ["15 Minutes", "30 Minutes", "45 Minutes", "1 Hour", "A Long Time"]
 
     // the unavailable button
     @IBAction func clickedUnavailableButton(sender: AnyObject) {
