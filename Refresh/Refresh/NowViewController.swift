@@ -32,8 +32,11 @@ class NowViewController: UITableViewController {
         
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
+        //for contact1 in contacts {
+        //println(contact1.callFrequency)
+        //}
         updateStatus()
-        
+        println("got here")
         var statusUpdate = NSTimer.scheduledTimerWithTimeInterval(statusUpdateTime, target: self, selector: Selector("updateStatus"), userInfo: nil, repeats: true)
     }
     
@@ -46,7 +49,7 @@ class NowViewController: UITableViewController {
     // Sort contacts
     func sortContacts() {
         // Sort the contacts array by time since last call
-        contacts.sort { $0.sortLastDate($0) < $1.sortLastDate($1) }
+        contacts.sort { $0.sortLastDate() < $1.sortLastDate() }
 
         // Sort the contacts array by status
         contacts.sort { $0.status > $1.status }
