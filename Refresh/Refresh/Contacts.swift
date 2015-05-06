@@ -11,7 +11,7 @@ import Foundation
 class Contacts {
     var firstName = ""
     var lastName = ""
-    var callFrequency = 0
+    var callFrequency = 2
     var lastCallDate = ""
     var lastCallInfo = ""
     var specialDates = ""
