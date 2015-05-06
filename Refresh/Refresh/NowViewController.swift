@@ -46,7 +46,7 @@ class NowViewController: UITableViewController {
     // Sort contacts
     func sortContacts() {
         // Sort the contacts array by time since last call
-        contacts.sort { $0.sortLastDate($0) < $1.sortLastDate($1) }
+//        contacts.sort { $0.sortLastDate($0) < $1.sortLastDate($1) }
 
         // Sort the contacts array by status
         contacts.sort { $0.status > $1.status }

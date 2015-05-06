@@ -59,6 +59,7 @@ class Contacts {
         //println(last)
         let current = NSDate().timeIntervalSince1970
         //println(current)
+        println(contact.callFrequency)
         let frequency = contact.callFrequency * 7
         var days : Int
         

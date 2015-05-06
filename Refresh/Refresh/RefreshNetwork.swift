@@ -257,6 +257,7 @@ class ServerUser
     //Getting the status of otherPerson
     func getStatusOfOtherUsers(otherPeople: [Contacts])
     {
+        //notification
         var otherPeoplePhoneNumbers = [String]()
         var phoneToContactDict: [String: Contacts] = [String: Contacts]()
         
