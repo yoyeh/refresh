@@ -89,17 +89,17 @@ class NowViewController: UITableViewController {
         let oneWeek = 7 * oneDay
         
         var activeSince = contact.activeSince
-        if activeSince > -1 {
+        if activeSince > 0 {
             if activeSince < oneHour {
-                cell.activeSinceLabel.text = "Active" + String(activeSince) + "m ago"
+                cell.activeSinceLabel.text = "Active " + String(activeSince) + "m ago"
             }
             else if activeSince < oneDay {
                 var hours = Int(round(Double(activeSince) / Double(oneHour)))
-                cell.activeSinceLabel.text = "Active" + String(hours) + "h ago"
+                cell.activeSinceLabel.text = "Active " + String(hours) + "h ago"
             }
             else if activeSince < oneWeek {
                 var days = Int(round(Double(activeSince) / Double(oneDay)))
-                cell.activeSinceLabel.text = "Active" + String(days) + "d ago"
+                cell.activeSinceLabel.text = "Active " + String(days) + "d ago"
             }
             else {
                 cell.activeSinceLabel.text = "Active >1w ago"
