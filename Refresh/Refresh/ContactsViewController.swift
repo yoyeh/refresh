@@ -51,7 +51,13 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
         // Get all phone numbers of contact, choose first one
         if var phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty)?.takeRetainedValue() {
             if let phoneNumber = ABMultiValueCopyValueAtIndex(phones, 0).takeRetainedValue() as? String {
-                newContact.phoneNumber = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
+                var phone = "".join(phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
+                if count(phone) == 10 {
+                    newContact.phoneNumber = "1" + phone
+                }
+                else {
+                    newContact.phoneNumber = phone
+                }
             }
         }
         
