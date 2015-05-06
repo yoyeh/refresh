@@ -138,6 +138,7 @@ class NowViewController: UITableViewController {
             dateformatter.dateStyle = .ShortStyle
             
             newContact.lastCallDate = dateformatter.stringFromDate(date)
+            newContact.specialDates = newContact.removeOldDates()
             localdatabase.editContact(newContact)
         }
     }
@@ -168,7 +169,7 @@ class NowViewController: UITableViewController {
             else {
                 newContact.specialDates = "\(newContact.specialDates)\n\(special)"
             }
-            
+            newContact.specialDates = newContact.removeOldDates()
             localdatabase.editContact(newContact)
         }
     }
