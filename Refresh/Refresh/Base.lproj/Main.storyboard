@@ -522,7 +522,7 @@
                             <constraint firstItem="erl-pz-OZn" firstAttribute="trailing" secondItem="hhB-U8-nOc" secondAttribute="trailingMargin" id="bod-ba-IiW"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="top" secondItem="erl-pz-OZn" secondAttribute="bottom" constant="40" id="ckP-fR-2qI"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="centerX" secondItem="erl-pz-OZn" secondAttribute="centerX" id="e91-cj-TC8"/>
-                            <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="31" id="iAW-Lj-4Nc"/>
+                            <constraint firstItem="erl-pz-OZn" firstAttribute="top" secondItem="V8A-gq-8p4" secondAttribute="bottom" constant="75" id="iAW-Lj-4Nc"/>
                             <constraint firstItem="Ybt-ud-VzO" firstAttribute="top" secondItem="EGk-V0-8bM" secondAttribute="bottom" constant="38" id="j4A-b7-1nz"/>
                             <constraint firstItem="96U-lA-dSX" firstAttribute="leading" secondItem="EGk-V0-8bM" secondAttribute="trailing" constant="8" symbolic="YES" id="uvs-VS-Z9F"/>
                         </constraints>
@@ -555,7 +555,7 @@
                                     <constraint firstAttribute="width" constant="123" id="ZBZ-6v-ufB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type in your Confirmation Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bey-a4-cDy">
                                 <rect key="frame" x="180" y="95" width="243" height="21"/>
@@ -595,13 +595,14 @@
                             <constraint firstItem="ilQ-xR-yti" firstAttribute="top" secondItem="z0w-vR-gic" secondAttribute="bottom" constant="30" id="93m-wd-Qcv"/>
                             <constraint firstItem="TqA-jU-lNk" firstAttribute="top" secondItem="ilQ-xR-yti" secondAttribute="bottom" constant="21" id="9FD-O0-710"/>
                             <constraint firstItem="z0w-vR-gic" firstAttribute="top" secondItem="Bey-a4-cDy" secondAttribute="bottom" constant="21" id="JO0-ip-j75"/>
-                            <constraint firstItem="Bey-a4-cDy" firstAttribute="top" secondItem="dhc-bM-Bpf" secondAttribute="bottom" constant="31" id="Thy-u9-67O"/>
+                            <constraint firstItem="Bey-a4-cDy" firstAttribute="top" secondItem="dhc-bM-Bpf" secondAttribute="bottom" constant="75" id="Thy-u9-67O"/>
                             <constraint firstAttribute="centerX" secondItem="ilQ-xR-yti" secondAttribute="centerX" id="UJu-zv-GvO"/>
                             <constraint firstAttribute="centerX" secondItem="z0w-vR-gic" secondAttribute="centerX" id="YSc-Bk-1KN"/>
+                            <constraint firstItem="1Pj-oA-iJ4" firstAttribute="top" secondItem="TqA-jU-lNk" secondAttribute="bottom" constant="3" id="ajz-Nb-pGl"/>
                             <constraint firstAttribute="centerX" secondItem="Bey-a4-cDy" secondAttribute="centerX" constant="-1.5" id="d2p-SQ-jtP"/>
-                            <constraint firstItem="1Pj-oA-iJ4" firstAttribute="centerX" secondItem="TqA-jU-lNk" secondAttribute="centerX" id="eMx-h9-Om5"/>
                             <constraint firstAttribute="centerX" secondItem="TqA-jU-lNk" secondAttribute="centerX" id="gqi-kJ-qL1"/>
                             <constraint firstItem="1Pj-oA-iJ4" firstAttribute="top" secondItem="TqA-jU-lNk" secondAttribute="bottom" constant="3" id="yLN-n3-aMa"/>
+                            <constraint firstItem="1Pj-oA-iJ4" firstAttribute="centerX" secondItem="TqA-jU-lNk" secondAttribute="centerX" id="zEA-hY-gFW"/>
                         </constraints>
                     </view>
                     <connections>
