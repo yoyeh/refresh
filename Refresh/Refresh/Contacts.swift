@@ -47,23 +47,22 @@ class Contacts {
     init() {}
     
     // sort the contacts by the last date they were called (for sorting in the Now view)
-    func sortLastDate(contact : Contacts) -> Int
+    func sortLastDate() -> Int
     {
         let dateformatter = NSDateFormatter()
         dateformatter.dateStyle = .ShortStyle
         //dateformatter.timeStyle = .ShortStyle
-        let date2 = dateformatter.dateFromString(contact.lastCallDate)
+        let date2 = dateformatter.dateFromString(lastCallDate)
         //println(date2)
         
         let last = date2?.timeIntervalSince1970
         //println(last)
         let current = NSDate().timeIntervalSince1970
         //println(current)
-        println(contact.callFrequency)
-        let frequency = contact.callFrequency * 7
+        let frequency = callFrequency * 7
         var days : Int
         
-        if contact.lastCallDate == ""
+        if lastCallDate == ""
         {
             days = 0
         }
@@ -73,8 +72,8 @@ class Contacts {
             dateformat.dateStyle = .ShortStyle
             //dateformat.timeStyle = .ShortStyle
             let calendar = NSCalendar.currentCalendar()
-            
-            let allDates = contact.specialDates.componentsSeparatedByString("\n")
+            if specialDates != "" {
+            let allDates = specialDates.componentsSeparatedByString("\n")
             for dateString in allDates
             {
                 let date = dateformat.dateFromString(dateString)
@@ -84,7 +83,7 @@ class Contacts {
                     return days
                 }
             }
-            
+            }
             let timeElapsed = Int(current - last!)
             days = frequency - timeElapsed/86460
         }
@@ -93,13 +92,13 @@ class Contacts {
     }
     
     // remove dates that have already passed from the special dates part of the contact (don't remove days that are today)
-    func removeOldDates(contact : Contacts) -> String
+    func removeOldDates() -> String
     {
         var dateformat = NSDateFormatter()
         dateformat.dateStyle = .ShortStyle
         //dateformat.timeStyle = .ShortStyle
         var newDates : String = ""
-        let allDates = contact.specialDates.componentsSeparatedByString("\n")
+        let allDates = specialDates.componentsSeparatedByString("\n")
         for dateString in allDates
         {
             let date = dateformat.dateFromString(dateString)
