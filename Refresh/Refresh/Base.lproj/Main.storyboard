@@ -306,7 +306,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kJY-Ur-LSg">
-                                <rect key="frame" x="490" y="122" width="94" height="29"/>
+                                <rect key="frame" x="490" y="112" width="94" height="29"/>
                                 <connections>
                                     <action selector="frequencyStepperValueChanged:" destination="fsf-AB-ms8" eventType="valueChanged" id="mbf-EI-Dbv"/>
                                 </connections>
@@ -357,7 +357,7 @@
                             <constraint firstItem="REM-fZ-V3K" firstAttribute="top" secondItem="rOo-WK-LL8" secondAttribute="bottom" constant="8" id="fkE-nH-TCp"/>
                             <constraint firstItem="rOo-WK-LL8" firstAttribute="top" secondItem="xiB-SZ-bDL" secondAttribute="bottom" constant="30" id="gQ9-tJ-7oo"/>
                             <constraint firstItem="xiB-SZ-bDL" firstAttribute="top" secondItem="sp8-MS-bOI" secondAttribute="bottom" constant="8" symbolic="YES" id="hQi-7Y-1rm"/>
-                            <constraint firstItem="kJY-Ur-LSg" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="58" id="uYs-J4-M3Y"/>
+                            <constraint firstItem="kJY-Ur-LSg" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="48" id="uYs-J4-M3Y"/>
                             <constraint firstItem="sp8-MS-bOI" firstAttribute="top" secondItem="m3G-hT-QSN" secondAttribute="bottom" constant="30" id="wb6-lS-79v"/>
                         </constraints>
                     </view>
