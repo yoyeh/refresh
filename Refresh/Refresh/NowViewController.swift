@@ -32,11 +32,8 @@ class NowViewController: UITableViewController {
         
         localdatabase.initializeDatabase()
         contacts = localdatabase.returnContactList()!
-        //for contact1 in contacts {
-        //println(contact1.callFrequency)
-        //}
+
         updateStatus()
-        println("got here")
         var statusUpdate = NSTimer.scheduledTimerWithTimeInterval(statusUpdateTime, target: self, selector: Selector("updateStatus"), userInfo: nil, repeats: true)
     }
     

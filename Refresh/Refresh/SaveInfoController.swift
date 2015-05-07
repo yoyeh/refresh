@@ -21,7 +21,9 @@ class SaveInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentDate: NSDate = NSDate()
         specialdate.datePickerMode = UIDatePickerMode.Date
+        specialdate.minimumDate = currentDate
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

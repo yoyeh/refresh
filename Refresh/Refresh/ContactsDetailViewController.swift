@@ -13,10 +13,13 @@ class ContactsDetailViewController: UIViewController {
     private var localdatabase = LocalDatabase()
     private var updatedContact = Contacts()
     
-    @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var callFrequencyLabel: UILabel!
     @IBOutlet weak var frequencyStepper: UIStepper!
+    
+    @IBOutlet weak var lastCallLabel: UILabel!
+    @IBOutlet weak var specialDatesLabel: UILabel!
+    
     
     @IBAction func editButtonPressed(sender: UIBarButtonItem) {
         if sender.title == "Edit" {
@@ -32,7 +35,7 @@ class ContactsDetailViewController: UIViewController {
     }
     
     @IBAction func frequencyStepperValueChanged(sender: UIStepper) {
-        callFrequencyLabel.text = "Every " + Int(sender.value).description + " weeks"
+        callFrequencyLabel.text = "Every " + Int(sender.value).description + " week(s)"
     }
     
     var detailContact: Contacts? {
@@ -48,7 +51,12 @@ class ContactsDetailViewController: UIViewController {
             title = contact.firstName
             
             callFrequencyLabel?.text = "Every " + String(contact.callFrequency) + " weeks"
-            detailLabel?.text = contact.contactDetails
+            var lastCallDate = contact.lastCallDate
+            var lastCallInfo = contact.lastCallInfo
+            lastCallLabel?.text = "\(lastCallDate)\n\(lastCallInfo)"
+            
+            var specialDates = contact.specialDates
+            specialDatesLabel?.text = "\(specialDates)"
             
             // write copy contact duplicate or copy function?
             updatedContact = Contacts(firstname: contact.firstName, lastname: contact.lastName, callfrequency: contact.callFrequency, lastcalldate: contact.lastCallDate, lastcallinfo: contact.lastCallInfo, specialdates: contact.specialDates, Status: contact.status, phonenumber: contact.phoneNumber)
