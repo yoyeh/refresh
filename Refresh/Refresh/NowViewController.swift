@@ -157,8 +157,13 @@ class NowViewController: UITableViewController {
                 
                 newContact.lastCallDate = dateformatter.stringFromDate(date)
             }
+            var text : String = saveinfoviewcontroller.calltext
+        
+            if count(text) > 140 {
+               text = text.substringToIndex(advance(text.startIndex, 140))
             
-            newContact.lastCallInfo = saveinfoviewcontroller.calltext
+            }
+            newContact.lastCallInfo = text
             var dateformat = NSDateFormatter()
             dateformat.dateStyle = .ShortStyle
             //dateformat.timeStyle = .ShortStyle
@@ -167,10 +172,24 @@ class NowViewController: UITableViewController {
                 newContact.specialDates = special
             }
             else {
-                newContact.specialDates = "\(newContact.specialDates)\n\(special)"
+                var doesDateExist : Bool = false
+                let calendar = NSCalendar.currentCalendar()
+                let dates = newContact.specialDates.componentsSeparatedByString("\n")
+                for dateString in dates
+                {
+                    let date = dateformat.dateFromString(dateString)
+                    
+                    if (calendar.isDate(date!, inSameDayAsDate: saveinfoviewcontroller.specialDate)) {
+                        doesDateExist = true
+                    }
+                }
+                if !doesDateExist && dates.count < 10 {
+                    newContact.specialDates = "\(newContact.specialDates)\n\(special)"
+                }
             }
-            newContact.specialDates = newContact.removeOldDates()
-            localdatabase.editContact(newContact)
         }
+
+        newContact.specialDates = newContact.removeOldDates()
+        localdatabase.editContact(newContact)
     }
 }
