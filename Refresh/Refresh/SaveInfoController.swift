@@ -21,7 +21,9 @@ class SaveInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentDate: NSDate = NSDate()
         specialdate.datePickerMode = UIDatePickerMode.Date
+        specialdate.minimumDate = currentDate
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -40,6 +42,19 @@ class SaveInfoController: UIViewController {
            calltext = callinfotext.text
            specialDate = specialdate.date
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    // Hide keyboard when user taps anywhere outside keyboard
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
 }

@@ -70,7 +70,6 @@ class Contacts {
         {
             var dateformat = NSDateFormatter()
             dateformat.dateStyle = .ShortStyle
-            //dateformat.timeStyle = .ShortStyle
             let calendar = NSCalendar.currentCalendar()
             if specialDates != "" {
             let allDates = specialDates.componentsSeparatedByString("\n")
@@ -87,7 +86,6 @@ class Contacts {
             let timeElapsed = Int(current - last!)
             days = frequency - timeElapsed/86460
         }
-        //println(days)
         return days
     }
     
@@ -96,7 +94,6 @@ class Contacts {
     {
         var dateformat = NSDateFormatter()
         dateformat.dateStyle = .ShortStyle
-        //dateformat.timeStyle = .ShortStyle
         var newDates : String = ""
         let allDates = specialDates.componentsSeparatedByString("\n")
         for dateString in allDates
@@ -105,9 +102,7 @@ class Contacts {
             let otherdate = NSDate()
             let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
             let newDate = cal!.startOfDayForDate(otherdate)
-            //println(newDate)
             if date != nil && (newDate.earlierDate(date!) != date || newDate.isEqualToDate(date!)) {
-                //println("yes")
                 if newDates == "" {
                     newDates = dateString
                 }
@@ -116,7 +111,6 @@ class Contacts {
                     newDates = "\(newDates)\n\(dateString)"
                 }
             }
-           // else { println("no")}
         }
         return newDates
     }

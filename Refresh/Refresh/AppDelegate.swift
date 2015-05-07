@@ -62,12 +62,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Navigation Bar Styling
-        UINavigationBar.appearance().barTintColor = UIColor(red: 234.0/255.0, green: 46.0/255.0, blue: 73.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().barTintColor = UIColor(red: 115.0/255.0, green: 199.0/255.0, blue: 20.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
 
         // Tab Controller Styling
-        UITabBar.appearance().barTintColor = UIColor(red: 184.0/255.0, green: 233.0/255.0, blue: 134.0/255.0, alpha: 1.0)
+        UITabBar.appearance().barTintColor = UIColor(red: 238.0/255.0, green: 238.0/255.0, blue: 238.0/255.0, alpha: 1.0)
         
         return true
     }
