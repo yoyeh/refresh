@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		071CD9001AF94412004705AB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071CD8FF1AF94411004705AB /* SettingsViewController.swift */; };
-		071CD9021AF94F15004705AB /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 071CD9011AF94F14004705AB /* settings_icon.png */; };
 		0720CB571AF8514F0056A2FA /* go_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB561AF8514F0056A2FA /* go_button.png */; };
 		0720CB601AF851630056A2FA /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB581AF851630056A2FA /* Icon-60@2x.png */; };
 		0720CB611AF851630056A2FA /* Icon-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0720CB591AF851630056A2FA /* Icon-29@3x.png */; };
@@ -24,9 +23,6 @@
 		073F86C11ACCC6F600814584 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F86C01ACCC6F500814584 /* Contacts.swift */; };
 		073F86CB1ACD1B2500814584 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86C91ACD1B2500814584 /* Default-568h@2x.png */; };
 		073F86D31ACD992A00814584 /* NowContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F86D21ACD992900814584 /* NowContactCell.swift */; };
-		073F86D91ACDC71E00814584 /* status_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86D81ACDC71D00814584 /* status_icon.png */; };
-		073F86DC1ACDCA2C00814584 /* contacts_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86DA1ACDCA2C00814584 /* contacts_icon.png */; };
-		073F86DD1ACDCA2C00814584 /* now_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 073F86DB1ACDCA2C00814584 /* now_icon.png */; };
 		073F86DF1ACDE20000814584 /* ContactsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F86DE1ACDE20000814584 /* ContactsDetailViewController.swift */; };
 		076DD3411ADF06CE00DE484B /* available.png in Resources */ = {isa = PBXBuildFile; fileRef = 076DD33F1ADF06CE00DE484B /* available.png */; };
 		076DD3421ADF06CE00DE484B /* unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 076DD3401ADF06CE00DE484B /* unavailable.png */; };
@@ -46,10 +42,14 @@
 		07CED34C1AE4BC7300DEC805 /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CED34B1AE4BC7300DEC805 /* PhoneVerificationViewController.swift */; };
 		07DC9E691AD6211100977DA4 /* RefreshNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9E681AD6211100977DA4 /* RefreshNetwork.swift */; };
 		07DC9E6B1AD621EE00977DA4 /* RefreshLocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9E6A1AD621EE00977DA4 /* RefreshLocalDatabase.swift */; };
-		07E5202D1AFB3A02006AA95C /* status_icon_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E5202C1AFB3A02006AA95C /* status_icon_2.png */; };
-		07E520311AFB3FEA006AA95C /* settings_icon_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E5202E1AFB3FEA006AA95C /* settings_icon_2.png */; };
-		07E520321AFB3FEA006AA95C /* contacts_icon_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E5202F1AFB3FEA006AA95C /* contacts_icon_2.png */; };
-		07E520331AFB3FEA006AA95C /* now_icon_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E520301AFB3FEA006AA95C /* now_icon_2.png */; };
+		07E520371AFB43D3006AA95C /* status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E520361AFB43D3006AA95C /* status@2x.png */; };
+		07E5203B1AFB45A7006AA95C /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E520381AFB45A7006AA95C /* settings@2x.png */; };
+		07E5203C1AFB45A7006AA95C /* contacts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E520391AFB45A7006AA95C /* contacts@2x.png */; };
+		07E5203D1AFB45A7006AA95C /* now@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E5203A1AFB45A7006AA95C /* now@2x.png */; };
+		07E520401AFB478C006AA95C /* unavailable_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E5203E1AFB478C006AA95C /* unavailable_button@2x.png */; };
+		07E520411AFB478C006AA95C /* go_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E5203F1AFB478C006AA95C /* go_button@2x.png */; };
+		07E520441AFB4813006AA95C /* unavailable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E520421AFB4813006AA95C /* unavailable@2x.png */; };
+		07E520451AFB4813006AA95C /* available@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E520431AFB4813006AA95C /* available@2x.png */; };
 		2219F0651AEDB8DD00A2CC6B /* SaveInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219F0641AEDB8DD00A2CC6B /* SaveInfoController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,6 @@
 
 /* Begin PBXFileReference section */
 		071CD8FF1AF94411004705AB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		071CD9011AF94F14004705AB /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings_icon.png; path = Images.xcassets/settings_icon.png; sourceTree = "<group>"; };
 		0720CB561AF8514F0056A2FA /* go_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = go_button.png; path = Images.xcassets/go_button.png; sourceTree = "<group>"; };
 		0720CB581AF851630056A2FA /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-60@2x.png"; sourceTree = "<group>"; };
 		0720CB591AF851630056A2FA /* Icon-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@3x.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-29@3x.png"; sourceTree = "<group>"; };
@@ -81,9 +80,6 @@
 		073F86C01ACCC6F500814584 /* Contacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		073F86C91ACD1B2500814584 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Refresh/Images.xcassets/Default-568h@2x.png"; sourceTree = "<group>"; };
 		073F86D21ACD992900814584 /* NowContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NowContactCell.swift; path = ../NowContactCell.swift; sourceTree = "<group>"; };
-		073F86D81ACDC71D00814584 /* status_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_icon.png; path = Images.xcassets/status_icon.png; sourceTree = "<group>"; };
-		073F86DA1ACDCA2C00814584 /* contacts_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contacts_icon.png; path = Images.xcassets/contacts_icon.png; sourceTree = "<group>"; };
-		073F86DB1ACDCA2C00814584 /* now_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = now_icon.png; path = Images.xcassets/now_icon.png; sourceTree = "<group>"; };
 		073F86DE1ACDE20000814584 /* ContactsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsDetailViewController.swift; sourceTree = "<group>"; };
 		076DD33F1ADF06CE00DE484B /* available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = available.png; path = Images.xcassets/available.png; sourceTree = "<group>"; };
 		076DD3401ADF06CE00DE484B /* unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unavailable.png; path = Images.xcassets/unavailable.png; sourceTree = "<group>"; };
@@ -114,10 +110,14 @@
 		07CED34B1AE4BC7300DEC805 /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		07DC9E681AD6211100977DA4 /* RefreshNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshNetwork.swift; sourceTree = "<group>"; };
 		07DC9E6A1AD621EE00977DA4 /* RefreshLocalDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshLocalDatabase.swift; sourceTree = "<group>"; };
-		07E5202C1AFB3A02006AA95C /* status_icon_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_icon_2.png; path = Images.xcassets/status_icon_2.png; sourceTree = "<group>"; };
-		07E5202E1AFB3FEA006AA95C /* settings_icon_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings_icon_2.png; path = Images.xcassets/settings_icon_2.png; sourceTree = "<group>"; };
-		07E5202F1AFB3FEA006AA95C /* contacts_icon_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contacts_icon_2.png; path = Images.xcassets/contacts_icon_2.png; sourceTree = "<group>"; };
-		07E520301AFB3FEA006AA95C /* now_icon_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = now_icon_2.png; path = Images.xcassets/now_icon_2.png; sourceTree = "<group>"; };
+		07E520361AFB43D3006AA95C /* status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "status@2x.png"; path = "Images.xcassets/status@2x.png"; sourceTree = "<group>"; };
+		07E520381AFB45A7006AA95C /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Images.xcassets/settings@2x.png"; sourceTree = "<group>"; };
+		07E520391AFB45A7006AA95C /* contacts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contacts@2x.png"; path = "Images.xcassets/contacts@2x.png"; sourceTree = "<group>"; };
+		07E5203A1AFB45A7006AA95C /* now@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "now@2x.png"; path = "Images.xcassets/now@2x.png"; sourceTree = "<group>"; };
+		07E5203E1AFB478C006AA95C /* unavailable_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "unavailable_button@2x.png"; path = "Images.xcassets/unavailable_button@2x.png"; sourceTree = "<group>"; };
+		07E5203F1AFB478C006AA95C /* go_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "go_button@2x.png"; path = "Images.xcassets/go_button@2x.png"; sourceTree = "<group>"; };
+		07E520421AFB4813006AA95C /* unavailable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "unavailable@2x.png"; path = "Images.xcassets/unavailable@2x.png"; sourceTree = "<group>"; };
+		07E520431AFB4813006AA95C /* available@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "available@2x.png"; path = "Images.xcassets/available@2x.png"; sourceTree = "<group>"; };
 		2219F0641AEDB8DD00A2CC6B /* SaveInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveInfoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,26 +197,26 @@
 				07C4F3FE1AC3855E0071A762 /* Main.storyboard */,
 				07C4F3FA1AC3855E0071A762 /* AppDelegate.swift */,
 				07C4F4011AC3855E0071A762 /* Images.xcassets */,
-				0720CB721AF85C4E0056A2FA /* unavailable_button.png */,
-				07E5202E1AFB3FEA006AA95C /* settings_icon_2.png */,
-				07E5202F1AFB3FEA006AA95C /* contacts_icon_2.png */,
-				07E520301AFB3FEA006AA95C /* now_icon_2.png */,
+				07E520361AFB43D3006AA95C /* status@2x.png */,
+				07E520381AFB45A7006AA95C /* settings@2x.png */,
+				07E520391AFB45A7006AA95C /* contacts@2x.png */,
+				07E5203A1AFB45A7006AA95C /* now@2x.png */,
 				0720CB581AF851630056A2FA /* Icon-60@2x.png */,
 				0720CB591AF851630056A2FA /* Icon-29@3x.png */,
 				0720CB5A1AF851630056A2FA /* Icon-29@2x.png */,
-				07E5202C1AFB3A02006AA95C /* status_icon_2.png */,
 				0720CB5B1AF851630056A2FA /* Icon-40@3x.png */,
 				0720CB5C1AF851630056A2FA /* Icon-40@2x.png */,
 				0720CB5D1AF851630056A2FA /* Icon-76.png */,
 				0720CB5E1AF851630056A2FA /* Icon-76@2x.png */,
 				0720CB5F1AF851630056A2FA /* Icon-60@3x.png */,
 				0720CB561AF8514F0056A2FA /* go_button.png */,
+				07E5203E1AFB478C006AA95C /* unavailable_button@2x.png */,
+				07E5203F1AFB478C006AA95C /* go_button@2x.png */,
+				0720CB721AF85C4E0056A2FA /* unavailable_button.png */,
+				07E520421AFB4813006AA95C /* unavailable@2x.png */,
+				07E520431AFB4813006AA95C /* available@2x.png */,
 				076DD33F1ADF06CE00DE484B /* available.png */,
 				076DD3401ADF06CE00DE484B /* unavailable.png */,
-				073F86D81ACDC71D00814584 /* status_icon.png */,
-				073F86DA1ACDCA2C00814584 /* contacts_icon.png */,
-				073F86DB1ACDCA2C00814584 /* now_icon.png */,
-				071CD9011AF94F14004705AB /* settings_icon.png */,
 				07C4F4031AC3855E0071A762 /* LaunchScreen.xib */,
 				07C4F3F81AC3855E0071A762 /* Supporting Files */,
 				079067EC1AD37BC700612C53 /* Refresh-Bridging-Header.h */,
@@ -332,28 +332,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				0720CB641AF851630056A2FA /* Icon-40@2x.png in Resources */,
-				071CD9021AF94F15004705AB /* settings_icon.png in Resources */,
+				07E5203B1AFB45A7006AA95C /* settings@2x.png in Resources */,
+				07E520401AFB478C006AA95C /* unavailable_button@2x.png in Resources */,
+				07E5203D1AFB45A7006AA95C /* now@2x.png in Resources */,
+				07E520371AFB43D3006AA95C /* status@2x.png in Resources */,
 				07C4F4001AC3855E0071A762 /* Main.storyboard in Resources */,
+				07E520411AFB478C006AA95C /* go_button@2x.png in Resources */,
 				0720CB661AF851630056A2FA /* Icon-76@2x.png in Resources */,
 				0720CB611AF851630056A2FA /* Icon-29@3x.png in Resources */,
 				076DD3411ADF06CE00DE484B /* available.png in Resources */,
-				07E520331AFB3FEA006AA95C /* now_icon_2.png in Resources */,
-				07E520321AFB3FEA006AA95C /* contacts_icon_2.png in Resources */,
+				07E5203C1AFB45A7006AA95C /* contacts@2x.png in Resources */,
+				07E520441AFB4813006AA95C /* unavailable@2x.png in Resources */,
 				0720CB601AF851630056A2FA /* Icon-60@2x.png in Resources */,
-				073F86DC1ACDCA2C00814584 /* contacts_icon.png in Resources */,
 				0720CB631AF851630056A2FA /* Icon-40@3x.png in Resources */,
 				07C4F4051AC3855E0071A762 /* LaunchScreen.xib in Resources */,
-				07E5202D1AFB3A02006AA95C /* status_icon_2.png in Resources */,
 				076DD3421ADF06CE00DE484B /* unavailable.png in Resources */,
-				073F86D91ACDC71E00814584 /* status_icon.png in Resources */,
 				07C4F4021AC3855E0071A762 /* Images.xcassets in Resources */,
 				0720CB571AF8514F0056A2FA /* go_button.png in Resources */,
-				073F86DD1ACDCA2C00814584 /* now_icon.png in Resources */,
 				0720CB671AF851630056A2FA /* Icon-60@3x.png in Resources */,
 				0720CB731AF85C4E0056A2FA /* unavailable_button.png in Resources */,
 				0720CB621AF851630056A2FA /* Icon-29@2x.png in Resources */,
 				073F86CB1ACD1B2500814584 /* Default-568h@2x.png in Resources */,
-				07E520311AFB3FEA006AA95C /* settings_icon_2.png in Resources */,
+				07E520451AFB4813006AA95C /* available@2x.png in Resources */,
 				0720CB651AF851630056A2FA /* Icon-76.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
