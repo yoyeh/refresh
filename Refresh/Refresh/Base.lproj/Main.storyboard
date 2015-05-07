@@ -224,7 +224,7 @@
         <scene sceneID="9jl-I5-ipZ">
             <objects>
                 <navigationController id="Xd5-lB-GUJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now" image="now_icon.png" id="gqO-Od-5Ux"/>
+                    <tabBarItem key="tabBarItem" title="Now" image="now_icon_2.png" id="gqO-Od-5Ux"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GJQ-YP-oyJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -294,13 +294,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3G-hT-QSN">
-                                <rect key="frame" x="16" y="126" width="45" height="22"/>
+                                <rect key="frame" x="16" y="113" width="45" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiB-SZ-bDL">
-                                <rect key="frame" x="16" y="208" width="568" height="22"/>
+                                <rect key="frame" x="16" y="195" width="568" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -312,7 +312,7 @@
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call Frequency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQb-yQ-wnr">
-                                <rect key="frame" x="16" y="97" width="129" height="21"/>
+                                <rect key="frame" x="16" y="84" width="129" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="129" id="Rqq-xJ-trp"/>
                                     <constraint firstAttribute="height" constant="21" id="can-T7-uda"/>
@@ -322,19 +322,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Call" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp8-MS-bOI">
-                                <rect key="frame" x="16" y="178" width="73" height="22"/>
+                                <rect key="frame" x="16" y="165" width="73" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Dates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOo-WK-LL8">
-                                <rect key="frame" x="16" y="260" width="115" height="22"/>
+                                <rect key="frame" x="16" y="247" width="115" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REM-fZ-V3K">
-                                <rect key="frame" x="16" y="290" width="45" height="22"/>
+                                <rect key="frame" x="16" y="277" width="45" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -344,7 +344,7 @@
                         <constraints>
                             <constraint firstItem="xiB-SZ-bDL" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="28x-zs-jLD"/>
                             <constraint firstItem="xiB-SZ-bDL" firstAttribute="leading" secondItem="rOo-WK-LL8" secondAttribute="leading" id="4t7-k2-RZ4"/>
-                            <constraint firstItem="sQb-yQ-wnr" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="33" id="7p3-C2-cOG"/>
+                            <constraint firstItem="sQb-yQ-wnr" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="20" id="7p3-C2-cOG"/>
                             <constraint firstItem="sQb-yQ-wnr" firstAttribute="leading" secondItem="m3G-hT-QSN" secondAttribute="leading" id="92A-0f-EBF"/>
                             <constraint firstItem="xiB-SZ-bDL" firstAttribute="trailing" secondItem="6hy-6r-BaL" secondAttribute="trailingMargin" id="DaS-04-NhI"/>
                             <constraint firstItem="m3G-hT-QSN" firstAttribute="top" secondItem="sQb-yQ-wnr" secondAttribute="bottom" constant="8" symbolic="YES" id="EL9-Mg-LYv"/>
@@ -384,7 +384,7 @@
         <scene sceneID="sbc-Ep-1ls">
             <objects>
                 <navigationController id="Age-bF-lCn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contacts" image="contacts_icon.png" id="f8l-dM-jul"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="contacts_icon_2.png" id="f8l-dM-jul"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DI4-6g-ygc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -667,7 +667,7 @@
         <scene sceneID="An0-32-dUX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SYA-fn-bEK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Status" image="status_icon.png" id="4YM-Pm-aZa"/>
+                    <tabBarItem key="tabBarItem" title="Status" image="status_icon_2.png" id="4YM-Pm-aZa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xvw-2I-tAr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -686,7 +686,7 @@
         <scene sceneID="LSM-M3-EvQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5FM-co-Cdm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings_icon.png" id="w3t-Yx-Sw1"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings_icon_2.png" id="w3t-Yx-Sw1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zZV-w1-wt7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -703,11 +703,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="contacts_icon.png" width="60" height="60"/>
+        <image name="contacts_icon_2.png" width="50" height="50"/>
         <image name="go_button.png" width="130" height="50"/>
-        <image name="now_icon.png" width="60" height="60"/>
-        <image name="settings_icon.png" width="60" height="60"/>
-        <image name="status_icon.png" width="60" height="60"/>
+        <image name="now_icon_2.png" width="50" height="50"/>
+        <image name="settings_icon_2.png" width="50" height="50"/>
+        <image name="status_icon_2.png" width="50" height="50"/>
         <image name="unavailable_button.png" width="180" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>

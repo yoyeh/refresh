@@ -50,7 +50,7 @@ class ContactsDetailViewController: UIViewController {
         if let contact = detailContact {
             title = contact.firstName
             
-            callFrequencyLabel?.text = "Every " + String(contact.callFrequency) + " weeks"
+            callFrequencyLabel?.text = "Every " + String(contact.callFrequency) + " week(s)"
             var lastCallDate = contact.lastCallDate
             var lastCallInfo = contact.lastCallInfo
             lastCallLabel?.text = "\(lastCallDate)\n\(lastCallInfo)"
