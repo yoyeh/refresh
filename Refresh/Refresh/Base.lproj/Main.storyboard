@@ -333,8 +333,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REM-fZ-V3K">
-                                <rect key="frame" x="16" y="277" width="45" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REM-fZ-V3K">
+                                <rect key="frame" x="16" y="277" width="568" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -348,15 +348,16 @@
                             <constraint firstItem="sQb-yQ-wnr" firstAttribute="leading" secondItem="m3G-hT-QSN" secondAttribute="leading" id="92A-0f-EBF"/>
                             <constraint firstItem="xiB-SZ-bDL" firstAttribute="trailing" secondItem="6hy-6r-BaL" secondAttribute="trailingMargin" id="DaS-04-NhI"/>
                             <constraint firstItem="m3G-hT-QSN" firstAttribute="top" secondItem="sQb-yQ-wnr" secondAttribute="bottom" constant="8" symbolic="YES" id="EL9-Mg-LYv"/>
+                            <constraint firstItem="REM-fZ-V3K" firstAttribute="trailing" secondItem="xiB-SZ-bDL" secondAttribute="trailing" id="ElC-7s-ALN"/>
                             <constraint firstItem="sp8-MS-bOI" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="K5U-8r-X1H"/>
                             <constraint firstItem="xiB-SZ-bDL" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="NIc-ig-Jh5"/>
                             <constraint firstItem="xiB-SZ-bDL" firstAttribute="leading" secondItem="sp8-MS-bOI" secondAttribute="leading" id="RlN-m2-8tj"/>
                             <constraint firstItem="m3G-hT-QSN" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="ZdV-L8-1p1"/>
+                            <constraint firstItem="REM-fZ-V3K" firstAttribute="leading" secondItem="rOo-WK-LL8" secondAttribute="leading" id="b5o-z0-W6F"/>
                             <constraint firstItem="kJY-Ur-LSg" firstAttribute="trailing" secondItem="6hy-6r-BaL" secondAttribute="trailingMargin" id="bjO-Nd-9TK"/>
-                            <constraint firstItem="REM-fZ-V3K" firstAttribute="leading" secondItem="6hy-6r-BaL" secondAttribute="leadingMargin" id="cKX-TX-M93"/>
-                            <constraint firstItem="REM-fZ-V3K" firstAttribute="top" secondItem="rOo-WK-LL8" secondAttribute="bottom" constant="8" id="fkE-nH-TCp"/>
                             <constraint firstItem="rOo-WK-LL8" firstAttribute="top" secondItem="xiB-SZ-bDL" secondAttribute="bottom" constant="30" id="gQ9-tJ-7oo"/>
                             <constraint firstItem="xiB-SZ-bDL" firstAttribute="top" secondItem="sp8-MS-bOI" secondAttribute="bottom" constant="8" symbolic="YES" id="hQi-7Y-1rm"/>
+                            <constraint firstItem="REM-fZ-V3K" firstAttribute="top" secondItem="rOo-WK-LL8" secondAttribute="bottom" constant="8" symbolic="YES" id="tqu-Aa-U8J"/>
                             <constraint firstItem="kJY-Ur-LSg" firstAttribute="top" secondItem="bdw-Ki-iH7" secondAttribute="bottom" constant="48" id="uYs-J4-M3Y"/>
                             <constraint firstItem="sp8-MS-bOI" firstAttribute="top" secondItem="m3G-hT-QSN" secondAttribute="bottom" constant="30" id="wb6-lS-79v"/>
                         </constraints>
