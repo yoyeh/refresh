@@ -62,6 +62,8 @@ class PhoneConfirmationViewController: UIViewController,UITextFieldDelegate {
         defaults = NSUserDefaults.standardUserDefaults()
         let phone = defaults.stringForKey("mainUserPhoneNumber")
         phoneNumberLabel.text = "Phone number entered: " + phone!
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
 
     // Hide keyboard when user taps anywhere outside keyboard
