@@ -14,10 +14,16 @@ class SaveInfoController: UIViewController {
  
     @IBOutlet weak var callinfotext: UITextField!
     @IBOutlet weak var specialdate: UIDatePicker!
+    @IBOutlet weak var yesButton: UIButton!
     
     var calltext : String = "hello"
     var contact : Contacts!
     var specialDate : NSDate!
+    
+    @IBAction func showDatePicker(sender: UIButton) {
+        yesButton.hidden = true
+        specialdate.hidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +43,9 @@ class SaveInfoController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "saveContactInfo"
-        {
-           calltext = callinfotext.text
-           specialDate = specialdate.date
+        if segue.identifier == "saveContactInfo" {
+            calltext = callinfotext.text
+            specialDate = specialdate.date
         }
     }
     
@@ -50,6 +55,9 @@ class SaveInfoController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         tapRecognizer.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapRecognizer)
+        
+        yesButton.hidden = false
+        specialdate.hidden = true
     }
     
     // Hide keyboard when user taps anywhere outside keyboard
