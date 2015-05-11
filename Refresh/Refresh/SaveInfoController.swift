@@ -31,10 +31,6 @@ class SaveInfoController: UIViewController {
         specialdate.datePickerMode = UIDatePickerMode.Date
         specialdate.minimumDate = currentDate
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,7 +41,13 @@ class SaveInfoController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "saveContactInfo" {
             calltext = callinfotext.text
+            println(calltext)
+            if specialdate.hidden == true {
+                specialDate = nil
+            }
+            else {
             specialDate = specialdate.date
+            }
         }
     }
     

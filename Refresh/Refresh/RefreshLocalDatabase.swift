@@ -169,9 +169,12 @@ class LocalDatabase
     {
         var phone = contact.phoneNumber
         let contactDB = FMDatabase(path : databasePath as String)
+        let info = contact.lastCallInfo.stringByReplacingOccurrencesOfString("'", withString: "''")
+        let first = contact.firstName.stringByReplacingOccurrencesOfString("'", withString: "''")
+        let last = contact.lastName.stringByReplacingOccurrencesOfString("'", withString: "''")
         
         if contactDB.open() {
-            let querySQL = "UPDATE CONTACTS SET firstname = '\(contact.firstName)', lastname = '\(contact.lastName)',  frequency = '\(contact.callFrequency)', lastdate = '\(contact.lastCallDate)', lastinfo = '\(contact.lastCallInfo)', specialdates = '\(contact.specialDates)', available = '\(contact.status)' WHERE phone = '\(phone)'"
+            let querySQL = "UPDATE CONTACTS SET firstname = '\(first)', lastname = '\(last)',  frequency = '\(contact.callFrequency)', lastdate = '\(contact.lastCallDate)', lastinfo = '\(info)', specialdates = '\(contact.specialDates)', available = '\(contact.status)' WHERE phone = '\(phone)'"
             let items = contactDB.executeUpdate(querySQL, withArgumentsInArray: nil)
             
             if items {

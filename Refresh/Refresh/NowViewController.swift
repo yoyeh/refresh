@@ -164,6 +164,7 @@ class NowViewController: UITableViewController {
             var dateformat = NSDateFormatter()
             dateformat.dateStyle = .ShortStyle
             //dateformat.timeStyle = .ShortStyle
+            if saveinfoviewcontroller.specialDate != nil {
             var special = dateformat.stringFromDate(saveinfoviewcontroller.specialDate)
             if (newContact.specialDates == "") {
                 newContact.specialDates = special
@@ -185,8 +186,8 @@ class NowViewController: UITableViewController {
                 }
             }
         }
-
         newContact.specialDates = newContact.removeOldDates()
         localdatabase.editContact(newContact)
+        }
     }
 }

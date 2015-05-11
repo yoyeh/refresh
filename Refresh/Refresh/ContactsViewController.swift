@@ -95,6 +95,7 @@ class ContactsViewController: UITableViewController, ABPeoplePickerNavigationCon
                 let contact = contacts[indexPath.row]
                 contact.specialDates = contact.removeOldDates()
                 localdatabase.editContact(contact)
+                
                 let navController = segue.destinationViewController as! UINavigationController
                 let detailController = navController.topViewController as! ContactsDetailViewController
                 detailController.detailContact = contact
