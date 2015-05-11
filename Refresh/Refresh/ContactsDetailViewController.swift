@@ -78,6 +78,7 @@ class ContactsDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        detailContact = localdatabase.accessContact(updatedContact)!
+        configureView()
     }
-
 }

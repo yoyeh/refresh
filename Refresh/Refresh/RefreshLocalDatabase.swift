@@ -76,7 +76,7 @@ class LocalDatabase
         return
     }
     
-    // Accesses a single contact using phone number
+    // Accesses a single contact
     func accessContact(contact: Contacts) -> Contacts?
     {
         var phoneNumber = contact.phoneNumber
