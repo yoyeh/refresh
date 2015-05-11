@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // not first launch
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             
-            
             let verStatus = defaults.integerForKey("verificationStatus")
             if verStatus == 0 {
                 // show screen to enter phone number
