@@ -84,20 +84,62 @@ class ServerUser
         HTTPsendRequest(request)
         {
             (data: String, error: String?) -> Void in
-            //println("Gets into HTTPGetJsonCallBack")
             if (error != nil)
             {
-                //println("if")
-                //println(data)
                 callback(Dictionary<String, [AnyObject]>(), error)
             }
             else
             {
                 var jsonObj = self.JSONParseDict(data)
-//                println(jsonObj)
                 callback(jsonObj, nil)
             }
         }
+    }
+    
+    
+    
+    //HTTP Get request for verifciation - in case we need it later
+    private func HTTPGetVerification(url: String, jsonObj: AnyObject, callback: (Bool, String?) -> Void) {
+
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        println(jsonObj)
+        let jsonString = JSONStringify(jsonObj)
+        println(jsonString)
+        let data: NSData = jsonString.dataUsingEncoding(NSUTF8StringEncoding)!
+        request.HTTPBody = data
+        
+        HTTPsendRequest(request)
+        {
+            (data: String, error: String?) -> Void in
+            if (error != nil)
+            {
+                callback(false , error)
+            }
+            else
+            {
+                if (data == "false") {callback(false, nil)}
+                if (data == "true") {callback(true, nil)}
+            }
+        }
+    }
+    
+    private func HTTPRequestVerify(url: String, jsonObj: AnyObject, callback: (String, String?) -> Void) {
+        
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let jsonString = JSONStringify(jsonObj)
+        let data: NSData = jsonString.dataUsingEncoding(NSUTF8StringEncoding)!
+        request.HTTPBody = data
+        
+        //You don't have to do anything with the data
+        HTTPsendRequest(request, callback: callback)
     }
     
     //value will be in JSON format
@@ -111,33 +153,6 @@ class ServerUser
             }
         }
         return ""
-    }
-    
-    //HTTP Get request for verifciation - in case we need it later
-    private func HTTPGetVerification(url: String, callback: (Bool, String?) -> Void) {
-        //println("HTTPGet request")
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        HTTPsendRequest(request)
-        {
-            (data: String, error: String?) -> Void in
-            //println("Gets into HTTPGetJsonCallBack")
-            if (error != nil)
-            {
-                //println("if")
-                //println(data)
-                callback(false , error)
-            }
-            else
-            {
-//                println(data)
-                if (data == "false") {callback(false, nil)}
-                if (data == "true") {callback(true, nil)}
-//                if (data == "false") {verified = false}
-//                if (data == "true") {verified = true}
-
-                println("gets past the function callbacks")
-            }
-        }
     }
 
     
@@ -233,15 +248,18 @@ class ServerUser
     //Sends a verification request to the server, asking to verify yourPhoneNumber
     func sendVerificationRequest()
     {
-        HTTPGet(databaseURL + "/preverify/\(yourPhoneNumber)", callback: regCallBack)
+        let jsonObject:[String:AnyObject] = ["phone": yourPhoneNumber]
+        HTTPRequestVerify(databaseURL + "/preverify", jsonObj: jsonObject, callback:regCallBack)
     }
     
     
     //confirms if the code matches the phonenumber that you entered
-    //Q: why does 
-    func confirmVerificationCode(code: String, inout verified: Bool)
+    //Q: why does --- Change this to look like getStatus function - returns JSOIN object, but you also have pass it a JSON file
+    func confirmVerificationCode(codeUser: String, inout verified: Bool)
     {
-        HTTPGetVerification(databaseURL + "/verify/\(yourPhoneNumber)/\(code)",
+        println("code: \(codeUser)")
+        let jsonObject:[String: AnyObject] = ["code": codeUser, "phone": yourPhoneNumber]
+        HTTPGetVerification(databaseURL + "/verify", jsonObj: jsonObject,
             callback: {
                 (data: Bool, error: String?) -> Void in
                 if (error != nil) {
@@ -257,17 +275,14 @@ class ServerUser
     //Getting the status of otherPerson
     func getStatusOfOtherUsers(otherPeople: [Contacts])
     {
-        //notification
         var otherPeoplePhoneNumbers = [String]()
         var phoneToContactDict: [String: Contacts] = [String: Contacts]()
         
         for contact in otherPeople {
             phoneToContactDict[contact.phoneNumber] = contact
             otherPeoplePhoneNumbers.append(contact.phoneNumber)
-//            println(contact.phoneNumber)
         }
         let jsonObject:[String:[AnyObject]] = ["phonenumbers": otherPeoplePhoneNumbers]
-        //println(jsonObject)
         
         //This call back function is called within the HTTPGetJSON //3)
         HTTPGetStatus(databaseURL + "/db/getStatus/\(yourPhoneNumber)", jsonObj: jsonObject,
@@ -276,23 +291,12 @@ class ServerUser
             if (error != nil) {
                 println(error)
             } else {
-                //pair = (status, x) where x = number of minutes since last active 
-                //If the other person has never been online, x = -1 
-                //If the person does not have you as their contact, x = -1
-                //If the person does not exit on the server, x = -1
                 for (phonenumber, pair) in data
                 {
-                    //println(phonenumber)
-                    //println(phoneToContactDict[phonenumber]!.pair)
-//                    println(pair)
-//                    phoneToContactDict[phonenumber]!.status = pair[0] as! Int
                     var status = pair[0] as! Int
                     phoneToContactDict[phonenumber]!.status = status
                     var roundedActiveMinutes:Int = Int(round(pair[1] as! Float))
-//                    println(roundedActiveMinutes)
                     phoneToContactDict[phonenumber]!.activeSince = roundedActiveMinutes
-//                    println(phoneToContactDict[phonenumber]!.status)
-//                    println("Active Since: \(phoneToContactDict[phonenumber]!.activeSince)")
                 }
             }
         })
